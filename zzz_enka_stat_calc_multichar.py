@@ -40,6 +40,144 @@ def load_json(path: Path) -> Any:
         return json.load(f)
 
 
+# The *TemplateTb.json dumps use obfuscated field names. These maps translate
+# them into the readable keys the calculator expects.
+TB_ROOT_KEY = "MLOEFHJHCID"
+
+WEAPON_LEVEL_FIELDS = {
+    "APDCBEGPHJO": "Rarity",
+    "GJGMIBEOBHP": "Level",
+    "EOMOGNMMOEJ": "EnhanceRate",
+}
+
+WEAPON_STAR_FIELDS = {
+    "APDCBEGPHJO": "Rarity",
+    "LMBCLMNIJNA": "BreakLevel",
+    "EENDAEFLEJO": "StarRate",
+    "IIPAHNFIJOH": "RandRate",
+}
+
+EQUIPMENT_LEVEL_FIELDS = {
+    "APDCBEGPHJO": "Rarity",
+    "GJGMIBEOBHP": "Level",
+    "EOMOGNMMOEJ": "EnhanceRate",
+}
+
+
+def load_template_table(path: Path, field_map: dict[str, str]) -> list[dict[str, int]]:
+    """Load an obfuscated *TemplateTb.json dump and rename its fields."""
+    raw = load_json(path)
+    rows = raw[TB_ROOT_KEY] if isinstance(raw, dict) else raw
+    out: list[dict[str, int]] = []
+    for row in rows:
+        out.append({name: int(row[key]) for key, name in field_map.items() if key in row})
+    return out
+
+
+def find_row(rows: list[dict[str, int]], label: str, **match: int) -> dict[str, int]:
+    """Look up a template row, raising a readable error instead of StopIteration."""
+    for row in rows:
+        if all(row.get(k) == v for k, v in match.items()):
+            return row
+    raise LookupError(f"no {label} row for " + ", ".join(f"{k}={v}" for k, v in match.items()))
+
+
+# Skill slots as they appear in the API's SkillLevelList "Index" field.
+SKILL_INDEX_TO_NAME: dict[int, str] = {
+    0: "Basic Attack",
+    1: "Dodge",
+    2: "Assist",
+    3: "Special Attack",
+    4: "Chain Attack",
+    5: "Core Skill",
+    6: "Ultimate",
+}
+
+CORE_SKILL_LETTERS = ["-", "A", "B", "C", "D", "E", "F"]
+
+RANK_LETTERS = {2: "B", 3: "A", 4: "S"}
+
+# In-game display labels for each property id, plus whether the raw value is a
+# basis-point percentage (True) or a flat number (False).
+PROP_DISPLAY: dict[int, tuple[str, bool]] = {
+    11101: ("HP", False), 11102: ("HP", True), 11103: ("HP", False),
+    12101: ("ATK", False), 12102: ("ATK", True), 12103: ("ATK", False),
+    12201: ("Impact", False), 12202: ("Impact", True),
+    12301: ("Sheer Force", False), 12303: ("Sheer Force", False),
+    13101: ("DEF", False), 13102: ("DEF", True), 13103: ("DEF", False),
+    20101: ("CRIT Rate", True), 20103: ("CRIT Rate", True),
+    21101: ("CRIT DMG", True), 21103: ("CRIT DMG", True),
+    23101: ("PEN Ratio", True), 23103: ("PEN Ratio", True),
+    23201: ("PEN", False), 23203: ("PEN", False),
+    30501: ("Energy Regen", False), 30502: ("Energy Regen", True), 30503: ("Energy Regen", False),
+    31201: ("Anomaly Proficiency", False), 31203: ("Anomaly Proficiency", False),
+    31401: ("Anomaly Mastery", False), 31402: ("Anomaly Mastery", True), 31403: ("Anomaly Mastery", False),
+    31501: ("Physical DMG", True), 31503: ("Physical DMG", True),
+    31601: ("Fire DMG", True), 31603: ("Fire DMG", True),
+    31701: ("Ice DMG", True), 31703: ("Ice DMG", True),
+    31801: ("Electric DMG", True), 31803: ("Electric DMG", True),
+    31901: ("Ether DMG", True), 31903: ("Ether DMG", True),
+    32001: ("Decibel Regen", False), 32002: ("Decibel Regen", True), 32003: ("Decibel Regen", False),
+    32201: ("Sheer DMG", True), 32203: ("Sheer DMG", True),
+    32301: ("Wind DMG", True), 32303: ("Wind DMG", True),
+}
+
+# Disc slot -> the piece's in-game position label.
+DISC_SLOT_NAMES = {1: "1", 2: "2", 3: "3", 4: "4", 5: "5", 6: "6"}
+
+
+def localize(loc: dict[str, str], key: str | None, fallback: str = "?") -> str:
+    """Translate an internal name key (e.g. Item_Weapon_S_1181_Name) to English."""
+    if not key:
+        return fallback
+    return loc.get(key, key)
+
+
+def format_prop(prop_id: int, value: float) -> str:
+    """Render a raw property value the way the game shows it."""
+    label, is_pct = PROP_DISPLAY.get(int(prop_id), (PROP_ID_TO_NAME.get(int(prop_id), str(prop_id)), False))
+    if is_pct:
+        return f"{label} {value / 100:.1f}%"
+    return f"{label} {math.floor(value):g}"
+
+
+def print_disc_details(
+    avatar: dict[str, Any],
+    equipments: dict[str, Any],
+    equipment_level_rows,
+    loc: dict[str, str],
+) -> None:
+    """Print each equipped Drive Disc with its main stat and rolled sub stats."""
+    equipped = sorted(avatar.get("EquippedList", []), key=lambda e: int(e["Slot"]))
+    if not equipped:
+        return
+    print("  Drive Disc Details:")
+    for equip in equipped:
+        disc = equip["Equipment"]
+        meta = equipments["Items"][str(disc["Id"])]
+        rarity = int(meta["Rarity"])
+        suit_name = localize(loc, equipments["Suits"][str(meta["SuitId"])].get("Name"), str(meta["SuitId"]))
+        slot = DISC_SLOT_NAMES.get(int(equip["Slot"]), str(equip["Slot"]))
+        lvl = int(disc["Level"])
+        level_row = find_row(equipment_level_rows, "EquipmentLevelTemplate", Rarity=rarity, Level=lvl)
+
+        main = disc["MainPropertyList"][0]
+        main_value = math.floor(main["PropertyValue"] * (1 + level_row["EnhanceRate"] / 10000))
+        main_text = format_prop(int(main["PropertyId"]), main_value)
+
+        print(
+            f"    [{slot}] {suit_name} "
+            f"{RANK_LETTERS.get(rarity, '?')}-rank +{lvl}  ->  {main_text}"
+        )
+        for sub in disc["RandomPropertyList"]:
+            rolls = int(sub["PropertyLevel"])
+            total = sub["PropertyValue"] * rolls
+            sub_text = format_prop(int(sub["PropertyId"]), total)
+            print(f"          - {sub_text}  ({rolls} roll{'s' if rolls != 1 else ''})")
+
+
+
+
 class Layer:
     def __init__(self) -> None:
         self.props = {k: 0.0 for k in ALL_PROPS}
@@ -113,8 +251,9 @@ def make_weapon_layer(api_agent: dict[str, Any], weapons: dict[str, Any], weapon
     rarity = int(data["Rarity"])
     lvl = int(w["Level"])
     break_level = int(w["BreakLevel"])
-    level_row = next(r for r in weapon_level_rows if r["Rarity"] == rarity and r["Level"] == lvl)
-    star_row = next(r for r in weapon_star_rows if r["Rarity"] == rarity and r["BreakLevel"] == break_level)
+    level_row = find_row(weapon_level_rows, "WeaponLevelTemplate", Rarity=rarity, Level=lvl)
+    star_row = find_row(weapon_star_rows, "WeaponStarTemplate", Rarity=rarity, BreakLevel=break_level)
+
 
     out = Layer()
     main = data["MainStat"]
@@ -134,7 +273,8 @@ def make_disc_layer(avatar: dict[str, Any], equipments: dict[str, Any], equipmen
         disc_meta = equipments["Items"][disc_id]
         rarity = int(disc_meta["Rarity"])
         lvl = int(disc["Level"])
-        level_row = next(r for r in equipment_level_rows if r["Rarity"] == rarity and r["Level"] == lvl)
+        level_row = find_row(equipment_level_rows, "EquipmentLevelTemplate", Rarity=rarity, Level=lvl)
+
         main = disc["MainPropertyList"][0]
         main_value = math.floor(main["PropertyValue"] * (1 + level_row["EnhanceRate"] / 10000))
         out.add(property_name(int(main["PropertyId"])), main_value)
@@ -181,22 +321,79 @@ def prop(layer: Layer, name: str) -> float:
 
 def final_stats(s: Layer) -> dict[str, float]:
     return {
-        "HP": prop(s, "HpMax_Base") + math.ceil(prop(s, "HpMax_Base") * prop(s, "HpMax_Ratio") / 10000) + prop(s, "HpMax_Delta"),
-        "ATK": prop(s, "Atk_Base") * (1 + prop(s, "Atk_Ratio") / 10000) + prop(s, "Atk_Delta"),
-        "DEF": prop(s, "Def_Base") * (1 + prop(s, "Def_Ratio") / 10000) + prop(s, "Def_Delta"),
-        "Impact": prop(s, "BreakStun_Base") * (1 + prop(s, "BreakStun_Ratio") / 10000),
-        "CRIT Rate": prop(s, "Crit_Base") + prop(s, "Crit_Delta"),
-        "CRIT DMG": prop(s, "CritDmg_Base") + prop(s, "CritDmg_Delta"),
-        "PEN Ratio": prop(s, "PenRatio_Base") + prop(s, "PenRatio_Delta"),
-        "PEN": prop(s, "PenDelta_Base") + prop(s, "PenDelta_Delta"),
-        "Anomaly Proficiency": prop(s, "ElementMystery_Base") + prop(s, "ElementMystery_Delta"),
-        "Anomaly Mastery": prop(s, "ElementAbnormalPower_Base") * (1 + prop(s, "ElementAbnormalPower_Ratio") / 10000) + prop(s, "ElementAbnormalPower_Delta"),
-        "Energy Regen": (prop(s, "SpRecover_Base") * (1 + prop(s, "SpRecover_Ratio") / 10000) + prop(s, "SpRecover_Delta")) / 100,
-        "Sheer Force": prop(s, "SkipDefAtk_Base") + prop(s, "SkipDefAtk_Delta"),
-        "Ice DMG": prop(s, "AddedDamageRatio_Ice_Base") + prop(s, "AddedDamageRatio_Ice_Delta"),
-        "Ether DMG": prop(s, "AddedDamageRatio_Ether_Base") + prop(s, "AddedDamageRatio_Ether_Delta"),
-    }
+        "HP": prop(s, "HpMax_Base")
+        + math.ceil(prop(s, "HpMax_Base") * prop(s, "HpMax_Ratio") / 10000)
+        + prop(s, "HpMax_Delta"),
 
+        "ATK": prop(s, "Atk_Base")
+        * (1 + prop(s, "Atk_Ratio") / 10000)
+        + prop(s, "Atk_Delta"),
+
+        "DEF": prop(s, "Def_Base")
+        * (1 + prop(s, "Def_Ratio") / 10000)
+        + prop(s, "Def_Delta"),
+
+        "Impact": prop(s, "BreakStun_Base")
+        * (1 + prop(s, "BreakStun_Ratio") / 10000),
+
+        "CRIT Rate": prop(s, "Crit_Base") + prop(s, "Crit_Delta"),
+
+        "CRIT DMG": prop(s, "CritDmg_Base") + prop(s, "CritDmg_Delta"),
+
+        "PEN Ratio": prop(s, "PenRatio_Base") + prop(s, "PenRatio_Delta"),
+
+        "PEN": prop(s, "PenDelta_Base") + prop(s, "PenDelta_Delta"),
+
+        "Anomaly Proficiency":
+            prop(s, "ElementMystery_Base")
+            + prop(s, "ElementMystery_Delta"),
+
+        "Anomaly Mastery":
+            prop(s, "ElementAbnormalPower_Base")
+            * (1 + prop(s, "ElementAbnormalPower_Ratio") / 10000)
+            + prop(s, "ElementAbnormalPower_Delta"),
+
+        "Energy Regen":
+            (
+                prop(s, "SpRecover_Base")
+                * (1 + prop(s, "SpRecover_Ratio") / 10000)
+                + prop(s, "SpRecover_Delta")
+            ) / 100,
+
+        "Sheer Force":
+            prop(s, "SkipDefAtk_Base")
+            + prop(s, "SkipDefAtk_Delta"),
+
+        # Elemental DMG
+        "Physical DMG":
+            prop(s, "AddedDamageRatio_Physics_Base")
+            + prop(s, "AddedDamageRatio_Physics_Delta"),
+
+        "Fire DMG":
+            prop(s, "AddedDamageRatio_Fire_Base")
+            + prop(s, "AddedDamageRatio_Fire_Delta"),
+
+        "Ice DMG":
+            prop(s, "AddedDamageRatio_Ice_Base")
+            + prop(s, "AddedDamageRatio_Ice_Delta"),
+
+        "Electric DMG":
+            prop(s, "AddedDamageRatio_Elec_Base")
+            + prop(s, "AddedDamageRatio_Elec_Delta"),
+
+        "Ether DMG":
+            prop(s, "AddedDamageRatio_Ether_Base")
+            + prop(s, "AddedDamageRatio_Ether_Delta"),
+
+        "Wind DMG":
+            prop(s, "AddedDamageRatio_Wind_Base")
+            + prop(s, "AddedDamageRatio_Wind_Delta"),
+
+        # Sheer damage bonus
+        "Sheer DMG":
+            prop(s, "SkipDefDamageRatio_Base")
+            + prop(s, "SkipDefDamageRatio_Delta"),
+    }
 
 def main() -> None:
     base_dir = Path(__file__).resolve().parent
@@ -208,9 +405,16 @@ def main() -> None:
     equipments = load_json(base_dir / "equipments.json")
     avatars = load_json(base_dir / "avatars.json")
 
-    wl = [{"Rarity": 4, "Level": 60, "EnhanceRate": 94090}]
-    ws = [{"Rarity": 4, "BreakLevel": 5, "StarRate": 44610, "RandRate": 15000}]
-    el = [{"Rarity": 4, "Level": 15, "EnhanceRate": 30000}]
+    locale_path = base_dir / "locale_en.json"
+    loc: dict[str, str] = load_json(locale_path) if locale_path.exists() else {}
+
+
+    # Full growth tables (all rarities / levels / break levels) instead of the
+    # previous single hard-coded Rarity-4 row, which crashed on A/B rank gear.
+    wl = load_template_table(base_dir / "WeaponLevelTemplateTb.json", WEAPON_LEVEL_FIELDS)
+    ws = load_template_table(base_dir / "WeaponStarTemplateTb.json", WEAPON_STAR_FIELDS)
+    el = load_template_table(base_dir / "EquipmentLevelTemplateTb.json", EQUIPMENT_LEVEL_FIELDS)
+
 
     for avatar in avatars_list:
         avatar_id = int(avatar["Id"])
@@ -230,15 +434,76 @@ def main() -> None:
         summed = state.summed()
         stats = final_stats(summed)
 
+        # ---- Header: who is this, and what are they running? ----
+        excel = avatars[str(avatar_id)]
+        agent_name = localize(loc, excel.get("Name"), str(avatar_id))
+        rank = {2: "B", 3: "A", 4: "S"}.get(int(excel.get("Rarity", 0)), "?")
+        element = "/".join(excel.get("ElementTypes", [])[-1:]) or "?"
+
+        weapon_api = avatar["Weapon"]
+        weapon_meta = weapons[str(weapon_api["Id"])]
+        weapon_name = localize(loc, weapon_meta.get("ItemName"), str(weapon_api["Id"]))
+        weapon_rank = {2: "B", 3: "A", 4: "S"}.get(int(weapon_meta.get("Rarity", 0)), "?")
+
+        core_level = int(avatar["CoreSkillEnhancement"])
+        core_letter = CORE_SKILL_LETTERS[core_level] if core_level < len(CORE_SKILL_LETTERS) else str(core_level)
+
+        print("=" * 62)
+        print(f"{agent_name}  [{rank}-rank {element} {excel.get('ProfessionType', '?')}]")
+        print(
+            f"  Level {avatar['Level']}  |  Promotion {avatar['PromotionLevel']}"
+            f"  |  Mindscape M{avatar['TalentLevel']}"
+            f"  |  Core Skill {core_letter} ({core_level})"
+        )
+        print(
+            f"  W-Engine: {weapon_name} [{weapon_rank}-rank]"
+            f"  Lv.{weapon_api['Level']}  Phase {weapon_api['UpgradeLevel']}"
+            f"  (Mod {weapon_api['BreakLevel']})"
+        )
+
+        suit_counts: defaultdict[int, int] = defaultdict(int)
+        for equip in avatar.get("EquippedList", []):
+            suit_counts[int(equipments["Items"][str(equip["Equipment"]["Id"])]["SuitId"])] += 1
+        if suit_counts:
+            sets = ", ".join(
+                f"{localize(loc, equipments['Suits'][str(sid)].get('Name'), str(sid))} x{count}"
+                for sid, count in sorted(suit_counts.items(), key=lambda kv: -kv[1])
+            )
+            print(f"  Drive Discs: {sets}")
+
+        print_disc_details(avatar, equipments, el, loc)
+
+        skills = sorted(avatar.get("SkillLevelList", []), key=lambda s: int(s["Index"]))
+
+        if skills:
+            print("  Skill Levels:")
+            for skill in skills:
+                idx = int(skill["Index"])
+                label = SKILL_INDEX_TO_NAME.get(idx, f"Skill {idx}")
+                print(f"    {label:16}: {skill['Level']}")
+        print()
+
         print("-- Layer breakdown --")
+
         for name, layer in state.layers:
             nonzero = {k: math.floor(v) for k, v in layer.props.items() if v}
             print(f"{name}: {nonzero}")
         print()
         print("-- Final stats --")
         for name, value in stats.items():
-            if name in {"CRIT Rate", "CRIT DMG", "PEN Ratio", "Ice DMG", "Ether DMG"}:
-                print(f"{name:22}: {math.floor(value)/100:.1f}%")
+            if name in {
+                "CRIT Rate",
+                "CRIT DMG",
+                "PEN Ratio",
+                "Physical DMG",
+                "Fire DMG",
+                "Ice DMG",
+                "Electric DMG",
+                "Ether DMG",
+                "Wind DMG",
+                "Sheer DMG",
+            }:
+                print(f"{name:22}: {math.floor(value) / 100:.1f}%")
             elif name == "Energy Regen":
                 print(f"{name:22}: {value:g}")
             else:
