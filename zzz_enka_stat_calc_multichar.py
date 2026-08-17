@@ -191,6 +191,7 @@ def final_stats(s: Layer) -> dict[str, float]:
         "PEN": prop(s, "PenDelta_Base") + prop(s, "PenDelta_Delta"),
         "Anomaly Proficiency": prop(s, "ElementMystery_Base") + prop(s, "ElementMystery_Delta"),
         "Anomaly Mastery": prop(s, "ElementAbnormalPower_Base") * (1 + prop(s, "ElementAbnormalPower_Ratio") / 10000) + prop(s, "ElementAbnormalPower_Delta"),
+        "Energy Regen": (prop(s, "SpRecover_Base") * (1 + prop(s, "SpRecover_Ratio") / 10000) + prop(s, "SpRecover_Delta")) / 100,
         "Sheer Force": prop(s, "SkipDefAtk_Base") + prop(s, "SkipDefAtk_Delta"),
         "Ice DMG": prop(s, "AddedDamageRatio_Ice_Base") + prop(s, "AddedDamageRatio_Ice_Delta"),
         "Ether DMG": prop(s, "AddedDamageRatio_Ether_Base") + prop(s, "AddedDamageRatio_Ether_Delta"),
@@ -238,6 +239,8 @@ def main() -> None:
         for name, value in stats.items():
             if name in {"CRIT Rate", "CRIT DMG", "PEN Ratio", "Ice DMG", "Ether DMG"}:
                 print(f"{name:22}: {math.floor(value)/100:.1f}%")
+            elif name == "Energy Regen":
+                print(f"{name:22}: {value:g}")
             else:
                 print(f"{name:22}: {math.floor(value):g}")
 
