@@ -83,14 +83,23 @@ def find_row(rows: list[dict[str, int]], label: str, **match: int) -> dict[str, 
 
 
 # Skill slots as they appear in the API's SkillLevelList "Index" field.
+# SKILL_INDEX_TO_NAME: dict[int, str] = {
+#     0: "Basic Attack",
+#     1: "Dodge",
+#     2: "Assist",
+#     3: "Special Attack",
+#     # 4: "Chain Attack",
+#     5: "Core Skill",
+#     6: "Ultimate",
+# }
 SKILL_INDEX_TO_NAME: dict[int, str] = {
     0: "Basic Attack",
-    1: "Dodge",
-    2: "Assist",
-    3: "Special Attack",
-    4: "Chain Attack",
+    2: "Dodge",
+    6: "Assist",
+    1: "Special Attack",
+    3: "Chain Attack",
+    # 4: "Chain Attack",
     5: "Core Skill",
-    6: "Ultimate",
 }
 
 CORE_SKILL_LETTERS = ["-", "A", "B", "C", "D", "E", "F"]
@@ -414,7 +423,7 @@ def main() -> None:
     wl = load_template_table(base_dir / "WeaponLevelTemplateTb.json", WEAPON_LEVEL_FIELDS)
     ws = load_template_table(base_dir / "WeaponStarTemplateTb.json", WEAPON_STAR_FIELDS)
     el = load_template_table(base_dir / "EquipmentLevelTemplateTb.json", EQUIPMENT_LEVEL_FIELDS)
-
+    
 
     for avatar in avatars_list:
         avatar_id = int(avatar["Id"])

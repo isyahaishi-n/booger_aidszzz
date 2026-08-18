@@ -1,0 +1,1858 @@
+{
+  "Alice": {
+    "1": {
+      "title": "Palmful of Cilantro",
+      "desc": "When Alice triggers a Polarity Assault, she gains 25 Blade Etiquette.\nWhen she triggers Assault against an enemy, the target's DEF is reduced by 20% for 30s.",
+      "odd_level_skill_bump": true
+    },
+    "2": {
+      "title": "Sage at the Sword's Tip",
+      "desc": "When Ultimate: Starfall Finale's Finishing Move hits an enemy, it triggers Polarity Assault.\nAll squad members' Assault DMG increases by 15%. Disorder DMG against enemies suffering from Physical Anomaly increases by 15%.\nUpon entering the battlefield, Alice immediately gains 1,000 Decibels. Triggers once per 180s in Investigation Zone mode.",
+      "odd_level_skill_bump": false
+    },
+    "3": {
+      "title": "Symmetrism",
+      "desc": "Basic Attack, Dodge, Assist, Special Attack, and Chain Attack Lv. +2 (odd Mindscape levels don't have written effect text — this is the actual in-game effect)",
+      "odd_level_skill_bump": true
+    },
+    "4": {
+      "title": "Rosemary on Her Lips",
+      "desc": "Alice ignores 10% of the target's Physical RES.\nEnhanced Basic Attack: Celestial Overture accumulates 25% more Physical Anomaly Buildup.",
+      "odd_level_skill_bump": false
+    },
+    "5": {
+      "title": "Passion for the Supernatural",
+      "desc": "Basic Attack, Dodge, Assist, Special Attack, and Chain Attack Lv. +2 (odd Mindscape levels don't have written effect text — this is the actual in-game effect)",
+      "odd_level_skill_bump": true
+    },
+    "6": {
+      "title": "A Heart of Thyme",
+      "desc": "When Alice uses a third-stage charged Basic Attack: Starshine Waltz or Ultimate: Starfall Finale, she enters the Victory State for 30s. During this time, whenever any squad member lands a hit on a target, Alice will follow up with an extra attack against the target, dealing Physical DMG equal to 3,300% of her Anomaly Proficiency. This effect can trigger once every 1s and is guaranteed to CRIT. This effect can trigger up to 6 times. Gaining the Victory State again refreshes the available trigger count.",
+      "odd_level_skill_bump": false
+    }
+  },
+  "Anbi": {
+    "1": {
+      "title": "Rapid Charge Mode",
+      "desc": "When the 4th hit of Anby's Basic Attack hits an enemy, her Energy Generation Rate is increased by 12% for 30s.",
+      "odd_level_skill_bump": true
+    },
+    "2": {
+      "title": "Precision Discharge",
+      "desc": "When Basic Attack: Thunderbolt hits a Stunned enemy, its DMG is increased by 30%. When Anby's EX Special Attack hits an enemy that is not Stunned, the Daze inflicted is increased by 10%.",
+      "odd_level_skill_bump": false
+    },
+    "3": {
+      "title": "Well-Disciplined",
+      "desc": "Basic Attack, Dodge, Assist, Special Attack, and Chain Attack Lv. +2 (odd Mindscape levels don't have written effect text — this is the actual in-game effect)",
+      "odd_level_skill_bump": true
+    },
+    "4": {
+      "title": "Conducting Charge",
+      "desc": "When Anby launches a Chain Attack or uses her Ultimate, off-field Electric Agents recover 3 Energy.\nFor every 12% Energy Generation Rate Anby has, recover an additional 2 Energy, up to a maximum of 6.",
+      "odd_level_skill_bump": false
+    },
+    "5": {
+      "title": "Street Experience",
+      "desc": "Basic Attack, Dodge, Assist, Special Attack, and Chain Attack Lv. +2 (odd Mindscape levels don't have written effect text — this is the actual in-game effect)",
+      "odd_level_skill_bump": true
+    },
+    "6": {
+      "title": "Charging Field",
+      "desc": "When Anby uses her EX Special Attack, she gains 8 stacks of Charge (max 8 stacks). When she hits an enemy with her Basic Attack or Dash Attack, 1 stack of Charge is consumed, increasing that attack's DMG by 45%.",
+      "odd_level_skill_bump": false
+    }
+  },
+  "Anton": {
+    "1": {
+      "title": "Warm-Up Exercises",
+      "desc": "When Drill Attack hits an enemy, Anton gains additional Energy, up to a maximum of 5 Energy per skill use.",
+      "odd_level_skill_bump": true
+    },
+    "2": {
+      "title": "State of Flow",
+      "desc": "When Anton uses his EX Special Attack and enters Burst Mode, he gains a Shield that equals to 7.5% of his Max HP.\nWhile in Burst Mode, entering combat or switching in reapplies the Shield effect. This effect can trigger once every 15s.\nThe Shield dissipates when Burst Mode ends.",
+      "odd_level_skill_bump": false
+    },
+    "3": {
+      "title": "Rotational Training",
+      "desc": "Basic Attack, Dodge, Assist, Special Attack, and Chain Attack Lv. +2 (odd Mindscape levels don't have written effect text — this is the actual in-game effect)",
+      "odd_level_skill_bump": true
+    },
+    "4": {
+      "title": "Everyone Get Fired Up!",
+      "desc": "When Anton uses a Chain Attack or Ultimate, all squad members' CRIT Rate increases by 10% for 12s.",
+      "odd_level_skill_bump": false
+    },
+    "5": {
+      "title": "Jack of All Trades",
+      "desc": "Basic Attack, Dodge, Assist, Special Attack, and Chain Attack Lv. +2 (odd Mindscape levels don't have written effect text — this is the actual in-game effect)",
+      "odd_level_skill_bump": true
+    },
+    "6": {
+      "title": "Break the Limit",
+      "desc": "When Anton's Piledriver Attack triggers a critical hit, his Basic Attack: Enthusiastic Drills (Burst Mode) and Dodge Counter: Overload Drill (Burst Mode) deal 4% more DMG for 30s, stacking up to 6 times. Repeated triggers reset the duration.",
+      "odd_level_skill_bump": false
+    }
+  },
+  "Aokaku": {
+    "1": {
+      "title": "Uplifting Current",
+      "desc": "When Soukaku triggers Core Passive: Blade Banner or Additional Ability: Group Set Meal, the buff duration is increased by 8s.",
+      "odd_level_skill_bump": true
+    },
+    "2": {
+      "title": "Experimental Charging Module",
+      "desc": "When Soukaku's Basic Attack, Dash Attack, Dodge Counter, or Quick Assist hits an enemy, there's a 15% chance she gains 1 stack of Vortex, triggering up to once per second.\nWhen Vortex reaches max stacks, any additional stacks grant Soukaku 1.2 Energy instead.",
+      "odd_level_skill_bump": false
+    },
+    "3": {
+      "title": "Attendance Meal Allowance",
+      "desc": "Basic Attack, Dodge, Assist, Special Attack, and Chain Attack Lv. +2 (odd Mindscape levels don't have written effect text — this is the actual in-game effect)",
+      "odd_level_skill_bump": true
+    },
+    "4": {
+      "title": "Hypothermia",
+      "desc": "If an enemy is hit by Fly the Flag, the target's Ice RES is reduced by 10% for 8s.",
+      "odd_level_skill_bump": false
+    },
+    "5": {
+      "title": "Late-Night Snacks",
+      "desc": "Basic Attack, Dodge, Assist, Special Attack, and Chain Attack Lv. +2 (odd Mindscape levels don't have written effect text — this is the actual in-game effect)",
+      "odd_level_skill_bump": true
+    },
+    "6": {
+      "title": "Northern Wind",
+      "desc": "While in the Frosted Banner state, the number of usable enhanced Basic Attacks and enhanced Dash Attacks are increased to 12, and also deal 45% more DMG.",
+      "odd_level_skill_bump": false
+    }
+  },
+  "Aria": {
+    "1": {
+      "title": "Energetic Sound Waves",
+      "desc": "When Aria's Basic Attack, Special Attack, or EX Special Attack deals DMG to enemies, it ignores 10% of the target's Ether Anomaly Buildup RES.\nAdditionally, when Aria triggers Abloom, it has a chance to trigger a critical hit. The base CRIT Rate is 25%, and CRIT DMG is 25%. If initial Anomaly Mastery exceeds 100, each additional point of initial Anomaly Mastery increases this effect's CRIT Rate by 0.5%.",
+      "odd_level_skill_bump": true
+    },
+    "2": {
+      "title": "Fantastical Beat",
+      "desc": "When Aria attacks or triggers Abloom, it ignores 16% of the target's DEF. During Moment of Delusion, attacks and Abloom triggers also ignore an additional 8% of the target's DEF.",
+      "odd_level_skill_bump": false
+    },
+    "3": {
+      "title": "Delulu",
+      "desc": "Basic Attack, Dodge, Assist, Special Attack, and Chain Attack Lv. +2 (odd Mindscape levels don't have written effect text — this is the actual in-game effect)",
+      "odd_level_skill_bump": true
+    },
+    "4": {
+      "title": "Mechanical Angel",
+      "desc": "When Aria triggers Abloom, she gains 4 Energy and 70 Decibels. This effect can trigger once every 10s.",
+      "odd_level_skill_bump": false
+    },
+    "5": {
+      "title": "Tears in the Rain",
+      "desc": "Basic Attack, Dodge, Assist, Special Attack, and Chain Attack Lv. +2 (odd Mindscape levels don't have written effect text — this is the actual in-game effect)",
+      "odd_level_skill_bump": true
+    },
+    "6": {
+      "title": "Construct's Dream",
+      "desc": "Upon entering the battlefield, Aria immediately gains 1,200 Decibels. In Investigation Zone mode, this effect can trigger once every 180s. After Aria enters Moment of Delusion, she will not exit it, and enhanced Basic Attack: Perfect Pitch and her Ultimate deal 40% increased Ether DMG.\nWhile in Moment of Delusion, when an enemy on the field enters an Anomaly state, Aria gains 1 stacks of All-Out Cheering. This effect can occur once every 6s.\nWhen gaining the All-Out Cheering effect, if already at 3 stacks of All-Out Cheering, any excess All-Out Cheering is converted into 2 Fandom Power and generated on the field.",
+      "odd_level_skill_bump": false
+    }
+  },
+  "Astra": {
+    "1": {
+      "title": "12-Tone Equal Temperament",
+      "desc": "When Astra Yao's attack hits an enemy, the target's All-Attribute RES is reduced by 6%, stacking up to 3 times and lasting 30s. Repeated triggers reset the duration.\nUpon entering the battlefield, Astra Yao immediately gains 1,000 Decibels. This effect can trigger once every 180s in Investigation Zone Mode.\nWhen activating her Ultimate, all squad members gain 1 stack of Song of Protection for 60s. When attacked by an enemy, consume Song of Protection, granting Invulnerability for 1s.",
+      "odd_level_skill_bump": true
+    },
+    "2": {
+      "title": "Art of Greed",
+      "desc": "The ATK buff from Core Passive: \"Graceful Andante\" is further increased by 19%, with an increased maximum of 400.\nWhile in the Idyllic Cadenza state, when other squad members switch in through a Quick Assist, Chain Attack, Defensive Assist, or Evasive Assist, Astra Yao will additionally follow up with 1 Tremolo and 3 Tone Clusters to attack. This effect can trigger once every 3s.",
+      "odd_level_skill_bump": false
+    },
+    "3": {
+      "title": "Interwoven Staff Notation",
+      "desc": "Basic Attack, Dodge, Assist, Special Attack, and Chain Attack Lv. +2 (odd Mindscape levels don't have written effect text — this is the actual in-game effect)",
+      "odd_level_skill_bump": true
+    },
+    "4": {
+      "title": "\"Hair Upon Your Nape\"",
+      "desc": "After activating a Chain Attack or Ultimate, within 15s, Astra Yao can trigger a Quick Assist even if she does not have Chords. When the attack hits an enemy, the interval for triggering a Quick Assist is reduced to 1s.\nWhile in the Idyllic Cadenza state, when other squad members enter the field via a Quick Assist, they will receive different buffs based on their specialty, and this effect can be triggered once every 3s for the entire squad:\nAttack: The next Quick Assist heavy attack on an enemy will deal extra DMG equal to 300% of Astra Yao's ATK;\nAnomaly: The next Quick Assist will have 50% increased Anomaly Buildup;\nStun: The next Quick Assist will inflict 50% increased Daze.",
+      "odd_level_skill_bump": false
+    },
+    "5": {
+      "title": "Proxy and Silk String",
+      "desc": "Basic Attack, Dodge, Assist, Special Attack, and Chain Attack Lv. +2 (odd Mindscape levels don't have written effect text — this is the actual in-game effect)",
+      "odd_level_skill_bump": true
+    },
+    "6": {
+      "title": "We Are the World",
+      "desc": "While in the Idyllic Cadenza state, the DMG multiplier for Tremolo and Tone Clusters released or followed up with will increase to 200% of the original, and CRIT Rate is increased by 80%.\nWhen triggering a Precise Assist, Astra Yao will automatically follow up with the charged 3rd-hit of Basic Attack: \"Capriccio\", with a 80% increased CRIT Rate. This effect can trigger once every 10s.",
+      "odd_level_skill_bump": false
+    }
+  },
+  "Azural": {
+    "1": {
+      "title": "Boundless Hospitality",
+      "desc": "The amount of Positive Reviews accumulated each second and gained when EX Special Attack: Rock, EX Special Attack: Scissors, or EX Special Attack: Paper! hits an enemy increase by 16%.\nWhile the Overwhelmingly Positive effect is active, characters ignore 15% of enemy All-Attribute RES.",
+      "odd_level_skill_bump": true
+    },
+    "2": {
+      "title": "24/7 Hotline",
+      "desc": "Enemies affected by Malicious Complaint gain an additional 20% Stun DMG Multiplier when Stunned.\nAll units deal 15% increased DMG to targets affected by Malicious Complaint.",
+      "odd_level_skill_bump": false
+    },
+    "3": {
+      "title": "Call From the Hollow",
+      "desc": "Basic Attack, Dodge, Assist, Special Attack, and Chain Attack Lv. +2 (odd Mindscape levels don't have written effect text — this is the actual in-game effect)",
+      "odd_level_skill_bump": true
+    },
+    "4": {
+      "title": "The Past Never Fades",
+      "desc": "Upon entering combat, Dialyn recovers 20 Energy. This effect can trigger once every 180s in Investigation Zone Mode.\nWhile the Overwhelmingly Positive effect is active, Dialyn's ATK increases by 500.",
+      "odd_level_skill_bump": false
+    },
+    "5": {
+      "title": "Lies",
+      "desc": "Basic Attack, Dodge, Assist, Special Attack, and Chain Attack Lv. +2 (odd Mindscape levels don't have written effect text — this is the actual in-game effect)",
+      "odd_level_skill_bump": true
+    },
+    "6": {
+      "title": "Truth",
+      "desc": "When an ally enters the field with an Ultimate through the Core Passive's effect, that ally gains the Aftertone effect.\nWith this effect, landing an attack causes Dialyn to deal an additional instance of Physical DMG equal to 480% of Dialyn's ATK.\nThis DMG is treated as EX Special Attack DMG, and can trigger once every second, up to 12 times.\nGaining Aftertone again refreshes its trigger count. Only one ally can have Aftertone at a time.",
+      "odd_level_skill_bump": false
+    }
+  },
+  "BanYue": {
+    "1": {
+      "title": "Greed Burns Like Fire",
+      "desc": "When Banyue hits an enemy with EX Special Attack: One's Path or EX Special Attack: Earth Shaker, he inflicts the Tremor state. In this state, enemies Fire RES is reduced by 10%, lasting 30s.\nWhen EX Special Attack: Lion's Roar, EX Special Attack: Lion's Roar - Wrath, EX Special Attack: Mountain Tremor, EX Special Attack: Mountain Tremor - Wrath, Basic Attack: Toppling Mountain, and Basic Attack: Crushing Peaks hits an enemy in the Tremor state, the Sheer DMG dealt is increased by 10%.\nWhen Basic Attack: Crushing Peaks hits a Stunned enemy, the current Stun duration is extended by 2s. This effect can only trigger once per Stun and does not stack with similar effects.",
+      "odd_level_skill_bump": true
+    },
+    "2": {
+      "title": "Anger Cuts Like a Blade",
+      "desc": "The CRIT DMG bonus from the Core Passive is increased by an additional 15%, and the Fire DMG bonus is increased by an additional 15%.\nWhile in the Visage of Wrath state, Banyue restores an additional 5 Adrenaline when consuming Mountain's Might to unleash an EX Special Attack.",
+      "odd_level_skill_bump": false
+    },
+    "3": {
+      "title": "Ignorance Binds Like Chains",
+      "desc": "Basic Attack, Dodge, Assist, Special Attack, and Chain Attack Lv. +2 (odd Mindscape levels don't have written effect text — this is the actual in-game effect)",
+      "odd_level_skill_bump": true
+    },
+    "4": {
+      "title": "Purge Unit - Type Zero",
+      "desc": "EX Special Attack: Lion's Roar - Wrath, EX Special Attack: Mountain Tremor - Wrath, Basic Attack: Toppling Mountain, and Basic Attack: Crushing Peaks DMG increase by 30%.",
+      "odd_level_skill_bump": false
+    },
+    "5": {
+      "title": "Student",
+      "desc": "Basic Attack, Dodge, Assist, Special Attack, and Chain Attack Lv. +2 (odd Mindscape levels don't have written effect text — this is the actual in-game effect)",
+      "odd_level_skill_bump": true
+    },
+    "6": {
+      "title": "Descended Vidyaraja",
+      "desc": "At any time, when Banyue uses an EX Special Attack, he also gains Vidyaraja.\nThe Fire DMG bonus from Vidyaraja is increased by an additional 8%, and its duration is extended to 30s.\nWhen activating Basic Attack: Crushing Peaks, Banyue deals Fire DMG equal to 600% of his Sheer Force to nearby enemies.\nUsing Dodge: Battle Cry immediately after an EX Special Attack also grants Vidyaraja.",
+      "odd_level_skill_bump": false
+    }
+  },
+  "Ben": {
+    "1": {
+      "title": "Reacting Force",
+      "desc": "When successfully Blocking an enemy with Ben's Special Attack or EX Special Attack, the DMG dealt by the blocked enemy is reduced by 30% for 15s.",
+      "odd_level_skill_bump": true
+    },
+    "2": {
+      "title": "Offense Through Defense",
+      "desc": "When successfully triggering a Block Counter during Ben's Special Attack or EX Special Attack, inflict an additional 300% of Ben's DEF as DMG.",
+      "odd_level_skill_bump": false
+    },
+    "3": {
+      "title": "Careful Accounting",
+      "desc": "Basic Attack, Dodge, Assist, Special Attack, and Chain Attack Lv. +2 (odd Mindscape levels don't have written effect text — this is the actual in-game effect)",
+      "odd_level_skill_bump": true
+    },
+    "4": {
+      "title": "Agile Adaptation",
+      "desc": "When successfully blocking enemy DMG with Ben's invulnerable effect during his Special Attack or EX Special Attack, the following counter deals 30% more DMG.",
+      "odd_level_skill_bump": false
+    },
+    "5": {
+      "title": "Meticulous Detail",
+      "desc": "Basic Attack, Dodge, Assist, Special Attack, and Chain Attack Lv. +2 (odd Mindscape levels don't have written effect text — this is the actual in-game effect)",
+      "odd_level_skill_bump": true
+    },
+    "6": {
+      "title": "Wild Spirit",
+      "desc": "After launching an attack or follow-up attack during Ben's EX Special Attack, Daze inflicted by Basic Attacks, Dash Attack, and Dodge Counter is increased by 20%, lasting 12s.",
+      "odd_level_skill_bump": false
+    }
+  },
+  "Billy": {
+    "1": {
+      "title": "Dazzling Entrance",
+      "desc": "When Billy hits an enemy with a Dash Attack or Dodge Counter, he gains an additional 2.7 Energy. Can trigger once every 5s.",
+      "odd_level_skill_bump": true
+    },
+    "2": {
+      "title": "Roaming Gunslinger",
+      "desc": "Billy's Dodge Counter DMG increases by 25%. Rolling Shots during his Basic Attacks count as dodges, making Billy Invulnerable during skill activation and able to trigger Perfect Dodges. When a Rolling Shot triggers a Perfect Dodge, it will automatically follow up with a Dodge Counter.",
+      "odd_level_skill_bump": false
+    },
+    "3": {
+      "title": "Teachings of the Starlight Knights",
+      "desc": "Basic Attack, Dodge, Assist, Special Attack, and Chain Attack Lv. +2 (odd Mindscape levels don't have written effect text — this is the actual in-game effect)",
+      "odd_level_skill_bump": true
+    },
+    "4": {
+      "title": "Starlight Ballistics",
+      "desc": "When Billy hits an enemy with his EX Special Attack, the skill's CRIT Rate increases based on the distance from the enemy. The closer he is to the target, the greater the effect, up to a maximum increase of 32%.",
+      "odd_level_skill_bump": false
+    },
+    "5": {
+      "title": "Lost Technological Construct",
+      "desc": "Basic Attack, Dodge, Assist, Special Attack, and Chain Attack Lv. +2 (odd Mindscape levels don't have written effect text — this is the actual in-game effect)",
+      "odd_level_skill_bump": true
+    },
+    "6": {
+      "title": "Starlight Hero",
+      "desc": "When Billy accumulates 10 hits on enemies or triggers a Perfect Dodge, his DMG increases by 6%, stacking up to 5 times. The effect resets if he is knocked back or launched by an enemy.",
+      "odd_level_skill_bump": false
+    }
+  },
+  "Brujas": {
+    "1": {
+      "title": "Luxurious Cat House",
+      "desc": "Orphie & Magus' Special Attack: Corrosive Flash, EX Special Attack: Crimson Vortex, EX Special Attack: Heat Charge, and EX Special Attack: Fiery Eruption ignore 15% of target's Fire RES,\nand Agents with Zeroed In deal 20% increased DMG.",
+      "odd_level_skill_bump": true
+    },
+    "2": {
+      "title": "Weird Food List",
+      "desc": "When Orphie & Magus launch an Aftershock, restore 65 Decibels. This effect can trigger once every 4s.\nAfter Orphie & Magus use their Ultimate, their ATK increases by 20% for up to 45s.",
+      "odd_level_skill_bump": false
+    },
+    "3": {
+      "title": "\"Tactics Manual\"",
+      "desc": "Basic Attack, Dodge, Assist, Special Attack, and Chain Attack Lv. +2 (odd Mindscape levels don't have written effect text — this is the actual in-game effect)",
+      "odd_level_skill_bump": true
+    },
+    "4": {
+      "title": "Pink Holster",
+      "desc": "Initial duration of Zeroed In increases to 16s, and Orphie & Magus's EX Special Attack: Heat Charge and Ultimate: Dance With Fire DMG increases by 40%.",
+      "odd_level_skill_bump": false
+    },
+    "5": {
+      "title": "Ferry Toll",
+      "desc": "Basic Attack, Dodge, Assist, Special Attack, and Chain Attack Lv. +2 (odd Mindscape levels don't have written effect text — this is the actual in-game effect)",
+      "odd_level_skill_bump": true
+    },
+    "6": {
+      "title": "Magic Seed",
+      "desc": "With enough energy, after the fire blade attack of Basic Attack: High-Pressure Flamethrower, press <IconMap:Icon_SpecialReady> to immediately follow up with EX Special Attack: Crimson Vortex.\nWhen the fire blade attack of Basic Attack: High-Pressure Flamethrower is activated, recover 10 Bottled Heat, and the Interrupt Level during the low firepower phase of EX Special Attack: Heat Charge will also increase.\nWhen the laser from EX Special Attack: Heat Charge or Ultimate hits enemies, it deals additional Fire DMG equal to 250% of Orphie & Magus's ATK.\nThis effect can trigger once every 0.5s and is counted as EX Special Attack and Aftershock DMG.",
+      "odd_level_skill_bump": false
+    }
+  },
+  "Burnice": {
+    "1": {
+      "title": "Kindred Flames",
+      "desc": "Increases the limit of Heat from 100 to 140. Upon entering the battlefield, Burnice accumulates an additional 40 Heat.\nIncreases the DMG Multiplier of the Afterburn effect by 100% of Burnice's ATK.\nAdditionally, the accumulated Fire Anomaly Buildup from the Afterburn effect is increased by 25%.",
+      "odd_level_skill_bump": true
+    },
+    "2": {
+      "title": "Extra at No Additional Charge",
+      "desc": "When triggering the Afterburn effect, Thermal Penetration is applied to the enemy,\nstacking up to 5 times and lasting 6s. Repeated triggers reset the duration.\nWhen any allied unit in the squad hits the enemy, the attack's PEN Ratio is increased by 4% for each stack of Thermal Penetration, up to a max of 20%.",
+      "odd_level_skill_bump": false
+    },
+    "3": {
+      "title": "Optimistic by Nature",
+      "desc": "Basic Attack, Dodge, Assist, Special Attack, and Chain Attack Lv. +2 (odd Mindscape levels don't have written effect text — this is the actual in-game effect)",
+      "odd_level_skill_bump": true
+    },
+    "4": {
+      "title": "Ultimate Fuel Supply",
+      "desc": "When an EX Special Attack or Assist Attack hits an enemy, the move's CRIT Rate increases by 30%.\nThe max flame spray duration of EX Special Attack: Intense Heat Stirring Method - Double Shot is increased by 1s.",
+      "odd_level_skill_bump": false
+    },
+    "5": {
+      "title": "Dance of Fire and Ice",
+      "desc": "Basic Attack, Dodge, Assist, Special Attack, and Chain Attack Lv. +2 (odd Mindscape levels don't have written effect text — this is the actual in-game effect)",
+      "odd_level_skill_bump": true
+    },
+    "6": {
+      "title": "Burning Invitation",
+      "desc": "When Burnice hits an enemy with EX Special Attack: Intense Heat Stirring Method - Double Shot, it triggers an additional special Afterburn effect, dealing 60% of Burnice's ATK as Fire DMG to the target. This effect can trigger once every 0.5s and does not consume Heat.\nAfter hitting an enemy with EX Special Attack: Intense Heat Stirring Method - Double Shot, while the move is active, EX Special Attack: Intense Heat Stirring Method - Double Shot, special Afterburn effects, and Burn DMG will ignore 25% of the target's Fire RES.\nWhen EX Special Attack: Intense Heat Stirring Method - Double Shot's fire blast hits an enemy, if that enemy is Burned, trigger an additional instance of Burn DMG equal to 1,800% of the original DMG. This effect can trigger once every 20s for each target.",
+      "odd_level_skill_bump": false
+    }
+  },
+  "Caesar": {
+    "1": {
+      "title": "Spearhead Advance",
+      "desc": "When Caesar becomes the active character in combat, she instantly buffs all squad members with a Radiant Aegis shield. This effect can trigger once every 300s.\nWhile Radiant Aegis is active, enemies within a 5m radius of the shield bearer suffer a 15% All-Attribute RES reduction.",
+      "odd_level_skill_bump": true
+    },
+    "2": {
+      "title": "Legacy of the Far Lands",
+      "desc": "While Radiant Aegis from Core Passive: Barrier of Resilience is active, Caesar's Energy Generation Rate increases by 10%, and the shield bearer's ATK boost is increased to 150% of its original value.",
+      "odd_level_skill_bump": false
+    },
+    "3": {
+      "title": "Absolute Trust",
+      "desc": "Basic Attack, Dodge, Assist, Special Attack, and Chain Attack Lv. +2 (odd Mindscape levels don't have written effect text — this is the actual in-game effect)",
+      "odd_level_skill_bump": true
+    },
+    "4": {
+      "title": "Aries the Battering-Ram",
+      "desc": "When Caesar uses a Chain Attack or Ultimate, she gains 3 additional Assist Points.\nIf her Energy is below 20, she can activate EX Special Attack: Overpowered Shield Bash with 1 Assist Point instead. This substitution can trigger once every 5s.",
+      "odd_level_skill_bump": false
+    },
+    "5": {
+      "title": "Romantic Conquest",
+      "desc": "Basic Attack, Dodge, Assist, Special Attack, and Chain Attack Lv. +2 (odd Mindscape levels don't have written effect text — this is the actual in-game effect)",
+      "odd_level_skill_bump": true
+    },
+    "6": {
+      "title": "Overlord's Will",
+      "desc": "EX Special Attack: Overpowered Shield Bash and Assist Follow-Up: Aiding Blade are guaranteed to trigger a critical hit.\nThe skill's DMG is increased by 50% and deals additional 50% DMG to the primary target.\nWhen Caesar uses EX Special Attack: Overpowered Shield Bash or Assist Follow-Up: Aiding Blade, her CRIT Rate is increased by 30% and her CRIT DMG is increased by 60% for 15s.",
+      "odd_level_skill_bump": false
+    }
+  },
+  "Cissia": {
+    "1": {
+      "title": "Traveler and Prey",
+      "desc": "The Venom gained upon entering the battlefield increases to 6.\nThe DEF ignore from the Core Passive increases to 140% of its original value, and all squad members ignore 5% of the target's Electric RES.\nCorrode Bone DMG ignores 10% of the target's Electric RES.",
+      "odd_level_skill_bump": true
+    },
+    "2": {
+      "title": "Hunger and Hard Truths",
+      "desc": "After a Chain Attack: Gang Operation or Ultimate: Ophidiophobia hits a Stunned enemy, gain an additional 3 Venom.\nBasic Attack: Serpent's Kiss deals 35% increased DMG.",
+      "odd_level_skill_bump": false
+    },
+    "3": {
+      "title": "Chains and a Warm Nest",
+      "desc": "Basic Attack, Dodge, Assist, Special Attack, and Chain Attack Lv. +2 (odd Mindscape levels don't have written effect text — this is the actual in-game effect)",
+      "odd_level_skill_bump": true
+    },
+    "4": {
+      "title": "A Rogue's Resolve",
+      "desc": "When using an EX Special Attack, Chain Attack, or Ultimate, gain 1 stack of Decidedness, stacking up to 3 times.\nWhen using Basic Attack: Serpent's Kiss, consume all Decidedness. Each stack consumed triggers 1 special instance of Corrode Bone that does not consume Venom. This Corrode Bone does not cause Daze.",
+      "odd_level_skill_bump": false
+    },
+    "5": {
+      "title": "False Evidence and Fangs",
+      "desc": "Basic Attack, Dodge, Assist, Special Attack, and Chain Attack Lv. +2 (odd Mindscape levels don't have written effect text — this is the actual in-game effect)",
+      "odd_level_skill_bump": true
+    },
+    "6": {
+      "title": "Home and Sixth Street",
+      "desc": "Each time Corrode Bone is triggered, gain 1 stack of Bone-Deep Corrosion.\nWhen attacks from any squad member, other than Corrode Bone, hit an enemy, consume 1 stack of Bone-Deep Corrosion to trigger 1 special Corrode Bone. This instance of Corrode Bone cannot inflict Daze, and at most 1 stack of Bone-Deep Corrosion can be consumed every 3s.",
+      "odd_level_skill_bump": false
+    }
+  },
+  "Clara": {
+    "1": {
+      "title": "Leisure Moment",
+      "desc": "When Piper's Special Attack: Tire Spin, EX Special Attack: Engine Spin, or Ultimate hits an enemy with a spinning slash, there is a 50% chance to gain an additional stack of Power. The maximum stack limit of Power is increased to 30.",
+      "odd_level_skill_bump": true
+    },
+    "2": {
+      "title": "Motivation",
+      "desc": "During Special Attack: Tire Spin and EX Special Attack: Engine Spin, Piper's movement speed increases. When using Special Attack: One Trillion Tons, EX Special Attack: Really Heavy, or Ultimate to launch a downward smash that hits an enemy, the Physical DMG dealt by the move is increased by 10%. For each stack of Power, this buff is further increased by 1%.",
+      "odd_level_skill_bump": false
+    },
+    "3": {
+      "title": "Truck Expert",
+      "desc": "Basic Attack, Dodge, Assist, Special Attack, and Chain Attack Lv. +2 (odd Mindscape levels don't have written effect text — this is the actual in-game effect)",
+      "odd_level_skill_bump": true
+    },
+    "4": {
+      "title": "Refined Techniques",
+      "desc": "Whenever a squad member inflicts an Attribute Anomaly on an enemy, Piper recovers 20 Energy. This effect can trigger once every 30s.",
+      "odd_level_skill_bump": false
+    },
+    "5": {
+      "title": "Personal Hobbies",
+      "desc": "Basic Attack, Dodge, Assist, Special Attack, and Chain Attack Lv. +2 (odd Mindscape levels don't have written effect text — this is the actual in-game effect)",
+      "odd_level_skill_bump": true
+    },
+    "6": {
+      "title": "Mild Excitement",
+      "desc": "Increases the duration limit of EX Special Attack: Engine Spin by 2s and extends the duration of Power by 4s.",
+      "odd_level_skill_bump": false
+    }
+  },
+  "Corin": {
+    "1": {
+      "title": "Open Trauma",
+      "desc": "When Corin's Chain Attack or Ultimate hits an enemy, her DMG against the target increases by 12% for 15s.",
+      "odd_level_skill_bump": true
+    },
+    "2": {
+      "title": "Atomic Smash",
+      "desc": "When Corin's EX Special Attack, Chain Attack or Ultimate hits an enemy, the target's Physical RES is reduced by 0.5%, stacking up to 20 times and lasting 5s. The duration of each stack is calculated separately.",
+      "odd_level_skill_bump": false
+    },
+    "3": {
+      "title": "Amateur Maid",
+      "desc": "Basic Attack, Dodge, Assist, Special Attack, and Chain Attack Lv. +2 (odd Mindscape levels don't have written effect text — this is the actual in-game effect)",
+      "odd_level_skill_bump": true
+    },
+    "4": {
+      "title": "Battlefield Retainer",
+      "desc": "When Corin uses a Quick Assist, Defensive Assist, or Chain Attack, she recovers 7.2 Energy. This effect can trigger once every 16s.",
+      "odd_level_skill_bump": false
+    },
+    "5": {
+      "title": "Special Ops Maid",
+      "desc": "Basic Attack, Dodge, Assist, Special Attack, and Chain Attack Lv. +2 (odd Mindscape levels don't have written effect text — this is the actual in-game effect)",
+      "odd_level_skill_bump": true
+    },
+    "6": {
+      "title": "Accumulated Release",
+      "desc": "When Corin's extended slash hits an enemy, she obtains a stack of Charge (max 40 stacks).\nDuring a Dodge Counter, Special Attack, EX Special Attack, Quick Assist, or Assist Follow-Up, when her chainsaw detonation hits an enemy, consumes all stacks of Charge. Each stack consumed causes the attack to deal an additional 3% of ATK as DMG.",
+      "odd_level_skill_bump": false
+    }
+  },
+  "Ellen": {
+    "1": {
+      "title": "Glacial Omen",
+      "desc": "Upon hitting an enemy with a Swift Scissors strike during Dash Attack: Arctic Ambush, the obtained Flash Freeze Charges are increased to 3.\nUpon hitting an enemy with a Charged Scissors strike during Dash Attack: Arctic Ambush, the obtained Flash Freeze Charges are increased to 6.\nFor each Flash Freeze Charge consumed, Ellen's CRIT Rate is increased by 2% for 15s, stacking up to 6 times. The duration of each stack is calculated separately.",
+      "odd_level_skill_bump": true
+    },
+    "2": {
+      "title": "Arctic Ocean Predator",
+      "desc": "The 3rd hit of Basic Attack: Flash Freeze Trimming can be directly followed up with EX Special Attack: Sharknami.\nWhen using an EX Special Attack, each Flash Freeze Charge increases the current attack's CRIT DMG by 20%, up to a maximum of 60%.",
+      "odd_level_skill_bump": false
+    },
+    "3": {
+      "title": "Overtime-Intolerant",
+      "desc": "Basic Attack, Dodge, Assist, Special Attack, and Chain Attack Lv. +2 (odd Mindscape levels don't have written effect text — this is the actual in-game effect)",
+      "odd_level_skill_bump": true
+    },
+    "4": {
+      "title": "Endless Hoarfrost",
+      "desc": "Whenever a squad member Freezes or Stuns an enemy, Ellen gains 6 Flash Freeze Charges and the Quick Charge effect. She also recovers 4 Energy. The Energy recovery effect can trigger once per 10s.",
+      "odd_level_skill_bump": false
+    },
+    "5": {
+      "title": "Adequate Sleep",
+      "desc": "Basic Attack, Dodge, Assist, Special Attack, and Chain Attack Lv. +2 (odd Mindscape levels don't have written effect text — this is the actual in-game effect)",
+      "odd_level_skill_bump": true
+    },
+    "6": {
+      "title": "The Feast Begins",
+      "desc": "When Ellen uses an EX Special Attack, Chain Attack, or gains Quick Charge, her PEN Ratio increases by 20% for 6s. She also gains 1 stack of The Feast Begins, up to a maximum of 3 stacks. With 3 stacks of The Feast Begins, using a Charged Scissors strike during Dash Attack: Arctic Ambush consumes all stacks, increasing the DMG of the current attack by 250%.",
+      "odd_level_skill_bump": false
+    }
+  },
+  "Evelyn": {
+    "1": {
+      "title": "Dreamweave",
+      "desc": "Upon entering the battlefield, Evelyn immediately gains 1,500 Decibels. This effect can trigger once every 180s in Investigation Zone Mode.\nEnemies affected by Binding Seal will be Bound. When Evelyn attacks Bound enemies, she ignores 12% of their DEF.\nWhen Evelyn uses Special Attack: Binding Sunder - First Form or EX Special Attack: Binding Sunder - Final Form, the Bound effect spreads to all enemies hit by the skill. This spread Bound effect lasts for 10s.",
+      "odd_level_skill_bump": true
+    },
+    "2": {
+      "title": "Dance of Fire",
+      "desc": "Evelyn's ATK increases by 15%.\nWhen Evelyn uses Basic Attack: Garrote - First Form or Basic Attack: Garrote - Second Form, the Burning Embers consumed will be returned. This effect can trigger once every 25s.\nWhen Evelyn consumes Burning Tether Point to trigger Chain Attack: Lunalux - Snare, the skill's Interrupt Level increases.",
+      "odd_level_skill_bump": false
+    },
+    "3": {
+      "title": "Metamorphosis",
+      "desc": "Basic Attack, Dodge, Assist, Special Attack, and Chain Attack Lv. +2 (odd Mindscape levels don't have written effect text — this is the actual in-game effect)",
+      "odd_level_skill_bump": true
+    },
+    "4": {
+      "title": "Fate's Melody",
+      "desc": "Upon activating a Chain Attack or Ultimate, Evelyn immediately gains a shield equal to 10% of her Max HP. While this shield exists, Evelyn's CRIT DMG increases by 40%.",
+      "odd_level_skill_bump": false
+    },
+    "5": {
+      "title": "Crimson Threads Like the Dawn",
+      "desc": "Basic Attack, Dodge, Assist, Special Attack, and Chain Attack Lv. +2 (odd Mindscape levels don't have written effect text — this is the actual in-game effect)",
+      "odd_level_skill_bump": true
+    },
+    "6": {
+      "title": "Bond of Light and Shadow",
+      "desc": "Upon launching a Chain Attack or Ultimate, Evelyn gains Shadowstring Edge for 20s.\nDuring Shadowstring Edge, when Evelyn hits her primary target with a Basic Attack, Dash Attack, Special Attack, or EX Special Attack, she additionally executes a Lunalux Garrote follow-up attack, dealing Fire DMG equal to 375% of her ATK to enemies in the area.\nThis DMG is considered Chain Attack DMG and can trigger up to 16 times.\nGaining another Shadowstring Edge will refresh the trigger count.",
+      "odd_level_skill_bump": false
+    }
+  },
+  "Harumasa": {
+    "1": {
+      "title": "\"High Spirit\"",
+      "desc": "The maximum stack limit of Electro Prison from Basic Attack: Ha-Oto no Ya increases to 14 stacks.\nWhen an Electro Quiver is triggered, 2 consecutive Ha-Oto no Ya will be fired at the target.",
+      "odd_level_skill_bump": true
+    },
+    "2": {
+      "title": "Languish",
+      "desc": "When using an Chain Attack or Ultimate, Harumasa gains 7 stacks of Electro Blitz, up to a max of 7 stacks.\nWhile possessing Electro Blitz, the DMG of Dash Attack: Hiten no Tsuru - Slash increases by 50%.\nConsume 1 stack of Electro Blitz once Dash Attack: Hiten no Tsuru - Slash ends.",
+      "odd_level_skill_bump": false
+    },
+    "3": {
+      "title": "White Lies",
+      "desc": "Basic Attack, Dodge, Assist, Special Attack, and Chain Attack Lv. +2 (odd Mindscape levels don't have written effect text — this is the actual in-game effect)",
+      "odd_level_skill_bump": true
+    },
+    "4": {
+      "title": "Occasionally Motivated",
+      "desc": "Electro Prison now lasts for 20s. When Dash Attack: Hiten no Tsuru - Slash hits enemies, Harumasa gains 30 Decibels once per use of this skill.\nUpon activating an Ultimate, apply the maximum stacks of Electro Prison to all on-field enemies.",
+      "odd_level_skill_bump": false
+    },
+    "5": {
+      "title": "No One Knows",
+      "desc": "Basic Attack, Dodge, Assist, Special Attack, and Chain Attack Lv. +2 (odd Mindscape levels don't have written effect text — this is the actual in-game effect)",
+      "odd_level_skill_bump": true
+    },
+    "6": {
+      "title": "Tacit Understanding",
+      "desc": "After Ha-Oto no Ya hits Stunned enemies or enemies under Attribute Anomalies, Harumasa will ignore 15% of the target's Electric RES for 12s.\nEvery 12 times an enemy is hit by Ha-Oto no Ya, trigger an extra electromagnetic explosion, dealing 1,500% of Harumasa's ATK to the target as Electric DMG.",
+      "odd_level_skill_bump": false
+    }
+  },
+  "HugoVlad": {
+    "1": {
+      "title": "Child of Hatred",
+      "desc": "When triggering the Totalize effect in the Dark Abyss Reverb state, the skill's CRIT Rate is increased by an additional 12%, and CRIT DMG by 30%.",
+      "odd_level_skill_bump": true
+    },
+    "2": {
+      "title": "The Child Within",
+      "desc": "When Ultimate: Blaspheme triggers Totalize, it will not end the enemy's Stunned state.\nAdditionally, when Totalize is triggered, the skill will ignore 15% of the enemy's DEF.",
+      "odd_level_skill_bump": false
+    },
+    "3": {
+      "title": "Fruit of the Poisonous Tree",
+      "desc": "Basic Attack, Dodge, Assist, Special Attack, and Chain Attack Lv. +2 (odd Mindscape levels don't have written effect text — this is the actual in-game effect)",
+      "odd_level_skill_bump": true
+    },
+    "4": {
+      "title": "Dramatic Theory",
+      "desc": "After a Charged Shot hits an enemy, Hugo's attacks against that target will ignore 12% of that target's Ice RES for 15s, repeated triggers reset the duration.",
+      "odd_level_skill_bump": false
+    },
+    "5": {
+      "title": "Nirvana",
+      "desc": "Basic Attack, Dodge, Assist, Special Attack, and Chain Attack Lv. +2 (odd Mindscape levels don't have written effect text — this is the actual in-game effect)",
+      "odd_level_skill_bump": true
+    },
+    "6": {
+      "title": "Crown of Thorns",
+      "desc": "All shooting attacks that hit enemies trigger the Dark Abyss Reverb state, lasting up to 6s, and repeated triggers reset the duration.\nAdditionally, whenever any skill triggers the Totalize effect, that DMG is further increased by 60%.\nThe Finishing Move of EX Special Attack: Soul Hunter - Punishment also triggers the Totalize effect when hitting an enemy that isn't Stunned, boosting the DMG multiplier of the Finishing Move by a fixed 1,000 %.",
+      "odd_level_skill_bump": false
+    }
+  },
+  "JaneDoe": {
+    "1": {
+      "title": "Crime Counsel",
+      "desc": "The maximum uses of Basic Attack: Salchow Jump are increased by one.\nWhile in the Passion state, Jane's Physical Anomaly Buildup Rate increases by an extra 15% and each point of Jane's Anomaly Proficiency increases her DMG by 0.1%, up to a maximum increase of 30%.",
+      "odd_level_skill_bump": true
+    },
+    "2": {
+      "title": "Adapt to the Environment",
+      "desc": "When Jane's attack hits an enemy in the Gnawed state, or when any squad member triggers Assault on an enemy in the Gnawed state, 15% of the enemy's DEF is ignored. Additionally, when Assault DMG triggers a critical hit, the CRIT DMG dealt is increased by an additional 50%.",
+      "odd_level_skill_bump": false
+    },
+    "3": {
+      "title": "Anonymity",
+      "desc": "Basic Attack, Dodge, Assist, Special Attack, and Chain Attack Lv. +2 (odd Mindscape levels don't have written effect text — this is the actual in-game effect)",
+      "odd_level_skill_bump": true
+    },
+    "4": {
+      "title": "Adapt and Thrive",
+      "desc": "When any squad member triggers the Assault or Disorder effects, all squad members' Attribute Anomaly DMG is increased by 18%, lasting 15s.",
+      "odd_level_skill_bump": false
+    },
+    "5": {
+      "title": "Compulsive Hoarder",
+      "desc": "Basic Attack, Dodge, Assist, Special Attack, and Chain Attack Lv. +2 (odd Mindscape levels don't have written effect text — this is the actual in-game effect)",
+      "odd_level_skill_bump": true
+    },
+    "6": {
+      "title": "\"Shady\" Technique",
+      "desc": "While in the Passion state, Jane's CRIT Rate increases by 20%, and CRIT DMG by 40%. After any squad member inflicts Assault, Jane instantly enters the Passion state, and gains max Passion Stream. When that instance of Assault triggers a critical hit, Jane performs an additional attack on the target, dealing Physical DMG equal to 1,600% of her Anomaly Proficiency.",
+      "odd_level_skill_bump": false
+    }
+  },
+  "Jufufu": {
+    "1": {
+      "title": "Super Scary Little Tiger",
+      "desc": "Upon entering combat, Ju Fufu's CRIT Rate increases by 12%, and she immediately gains 100 Might.\nWhen Ju Fufu's Chain Attack hits an enemy, when the target is Stunned, the target's Stun DMG Multiplier increases by 35%, lasting for 30s.",
+      "odd_level_skill_bump": true
+    },
+    "2": {
+      "title": "Almighty Qingming Warrior",
+      "desc": "While in the Tiger's Roar state, character CRIT DMG increases by an additional 22%.\nWhenever any character activates an Ultimate, Ju Fufu gains 3 points of Momentum.",
+      "odd_level_skill_bump": false
+    },
+    "3": {
+      "title": "Righteous Young Hero",
+      "desc": "Basic Attack, Dodge, Assist, Special Attack, and Chain Attack Lv. +2 (odd Mindscape levels don't have written effect text — this is the actual in-game effect)",
+      "odd_level_skill_bump": true
+    },
+    "4": {
+      "title": "Monster-Slaying Tiger Mystic",
+      "desc": "While Ju Fufu is in the Tiger's Roar state, her CRIT DMG increases by 35%.",
+      "odd_level_skill_bump": false
+    },
+    "5": {
+      "title": "Unrivaled Almighty Senior",
+      "desc": "Basic Attack, Dodge, Assist, Special Attack, and Chain Attack Lv. +2 (odd Mindscape levels don't have written effect text — this is the actual in-game effect)",
+      "odd_level_skill_bump": true
+    },
+    "6": {
+      "title": "Roar of My Inner Tiger",
+      "desc": "Ju Fufu's Chain Attack DMG increases by 30%.\nUpon consuming Momentum and hitting an enemy in the high-speed spinning state, fire 3 popcorns, each dealing 160% of Fufu's ATK as DMG. This DMG is treated as Chain Attack DMG.",
+      "odd_level_skill_bump": false
+    }
+  },
+  "Lighter": {
+    "1": {
+      "title": "The Champion",
+      "desc": "Among the debuffs imposed by Core Passive: Accelerant, the Collapse effect increases Stun duration by 5s, while further reducing Ice RES and Fire RES by 10%. The more powerful Finishing Move that follows when Lighter's Morale is completely exhausted during a startup light punch or jab combo deals 30% increased DMG.",
+      "odd_level_skill_bump": true
+    },
+    "2": {
+      "title": "Red Scarf",
+      "desc": "When applying Collapse via Core Passive: Accelerant to enemies, the target's Stun DMG Multiplier increases by 25%. The increase to Ice DMG and Fire DMG provided by Elation from Additional Ability: Fighting Spirit increases to 120% of the original.",
+      "odd_level_skill_bump": false
+    },
+    "3": {
+      "title": "Mercenary Leader",
+      "desc": "Basic Attack, Dodge, Assist, Special Attack, and Chain Attack Lv. +2 (odd Mindscape levels don't have written effect text — this is the actual in-game effect)",
+      "odd_level_skill_bump": true
+    },
+    "4": {
+      "title": "Sunglasses",
+      "desc": "When Lighter is off-field, the Energy Regen for the on-field character is increased by 10%. Upon entering the Morale Burst state, Lighter restores 4 Energy for off-field characters. This effect can trigger once every 18s.",
+      "odd_level_skill_bump": false
+    },
+    "5": {
+      "title": "Decision Maker",
+      "desc": "Basic Attack, Dodge, Assist, Special Attack, and Chain Attack Lv. +2 (odd Mindscape levels don't have written effect text — this is the actual in-game effect)",
+      "odd_level_skill_bump": true
+    },
+    "6": {
+      "title": "Survivor",
+      "desc": "Lighter's Morale recovery efficiency is increased to 200% of its original value. When Lighter lands a heavy strike on enemies during a Basic Attack, Dodge Counter, Special Attack, EX Special Attack, Quick Assist, Assist Follow-Up, Chain Attack, or Ultimate, it will trigger the Blazing Impact effect, dealing 250% of ATK as Fire DMG. This effect can trigger once every 8s on each enemy. If Lighter's Impact exceeds 170 points, each additional point will further increase the multiplier of Blazing Impact by 5%, up to a maximum increase of 500%. The more powerful Finishing Move that follows when Lighter's Morale is completely exhausted during a light punch or jab combo will trigger an additional activation of Blazing Impact when hitting an enemy, ignoring the effect's cooldown.",
+      "odd_level_skill_bump": false
+    }
+  },
+  "Lisa": {
+    "1": {
+      "title": "Recharge Chamber",
+      "desc": "When the 4th hit of Grace's Basic Attack hits an enemy, all squad members gain 0.25 Energy.\nWithin the same move, this effect can grant a max of 2 Energy to all squad members.",
+      "odd_level_skill_bump": true
+    },
+    "2": {
+      "title": "Lightning Piercer",
+      "desc": "When Grace's grenade hits an enemy during a Basic Attack, Special Attack, or EX Special Attack, the target's Electric RES is reduced by 8.5%, and Electric Anomaly Buildup RES is reduced by 8.5%, lasting for 8s.",
+      "odd_level_skill_bump": false
+    },
+    "3": {
+      "title": "Chief Mechanic",
+      "desc": "Basic Attack, Dodge, Assist, Special Attack, and Chain Attack Lv. +2 (odd Mindscape levels don't have written effect text — this is the actual in-game effect)",
+      "odd_level_skill_bump": true
+    },
+    "4": {
+      "title": "Burst Capacitor",
+      "desc": "When Grace uses her EX Special Attack, she gains 6 stacks of Charge (max 6 stacks).\nWhen her Basic Attack: High-Pressure Spike or Dash Attack: Quick Inspection hits an enemy, 1 stack of Charge is consumed, increasing her Energy Generation Rate of the attack by 20%.",
+      "odd_level_skill_bump": false
+    },
+    "5": {
+      "title": "\"Frosty Cold Iron Witch\"",
+      "desc": "Basic Attack, Dodge, Assist, Special Attack, and Chain Attack Lv. +2 (odd Mindscape levels don't have written effect text — this is the actual in-game effect)",
+      "odd_level_skill_bump": true
+    },
+    "6": {
+      "title": "Detonation Trigger",
+      "desc": "When all Zap stacks are consumed to activate a Special Attack or EX Special Attack, Grace's skill is enhanced, tossing an extra grenade and increasing each grenade's DMG to 200%.",
+      "odd_level_skill_bump": false
+    }
+  },
+  "Longinus": {
+    "1": {
+      "title": "Rapid Heat",
+      "desc": "When Soldier 11 becomes the active character in combat, if her Energy is less than 40, her Energy is recovered to 80. This effect can trigger once every 50s.",
+      "odd_level_skill_bump": true
+    },
+    "2": {
+      "title": "Scorching Convergence",
+      "desc": "When triggering Fire Suppression, Basic Attack, Dash Attack, and Dodge Counter DMG increases by 3%, up to 12 stacks, lasting 15s, with the duration of each stack calculated separately.",
+      "odd_level_skill_bump": false
+    },
+    "3": {
+      "title": "Elite Soldier",
+      "desc": "Basic Attack, Dodge, Assist, Special Attack, and Chain Attack Lv. +2 (odd Mindscape levels don't have written effect text — this is the actual in-game effect)",
+      "odd_level_skill_bump": true
+    },
+    "4": {
+      "title": "Indulgent Blaze",
+      "desc": "If Fire Suppression is triggered during the 1st, 2nd, or 3rd hit of Soldier 11's Basic Attack or a Dash Attack, Anti-Interrupt Level increases and DMG received is reduced by 18% during skill activation.\nIf Fire Suppression is triggered during the 4th hit of her Basic Attack, she becomes invulnerable during skill activation.",
+      "odd_level_skill_bump": false
+    },
+    "5": {
+      "title": "Perfect Soldier",
+      "desc": "Basic Attack, Dodge, Assist, Special Attack, and Chain Attack Lv. +2 (odd Mindscape levels don't have written effect text — this is the actual in-game effect)",
+      "odd_level_skill_bump": true
+    },
+    "6": {
+      "title": "Scorching Flow",
+      "desc": "When Soldier 11 uses her EX Special Attack, Chain Attack, or Ultimate, she gains 8 stacks of Charge (max 8 stacks).\nWhen Fire Suppression is triggered, 1 stack of Charge is consumed, causing the current move to ignore 25% of the target's Fire RES.",
+      "odd_level_skill_bump": false
+    }
+  },
+  "Lucia": {
+    "1": {
+      "title": "Secret Friend",
+      "desc": "When Dreamer's Nursery Rhyme deals additional DMG, ignore 18% of enemy All-Attribute RES and have 5% increased Decibel Generation Rate.\nEach time Lucia performs a skill upgrade, she gains 1 stack of Echo, stacking up to 4 times. When Dreamer's Nursery Rhyme ends, if Lucia has any Echo stacks, 1 stack is consumed to reapply Dreamer's Nursery Rhyme to all squad members.",
+      "odd_level_skill_bump": true
+    },
+    "2": {
+      "title": "Great Magician",
+      "desc": "While Lucia is inside Ether Veil: Wellspring, Harmony deals 15% more DMG.\nAgents in the Darkbreaker state gain an additional 15% Sheer DMG increase while in Ether Veil: Wellspring.",
+      "odd_level_skill_bump": false
+    },
+    "3": {
+      "title": "The Best Partner",
+      "desc": "Basic Attack, Dodge, Assist, Special Attack, and Chain Attack Lv. +2 (odd Mindscape levels don't have written effect text — this is the actual in-game effect)",
+      "odd_level_skill_bump": true
+    },
+    "4": {
+      "title": "Late-Night Hours",
+      "desc": "When Ether Veil is activated or extended on the field, Lucia grants all squad members 100 Decibels. This effect can trigger once every 15s.",
+      "odd_level_skill_bump": false
+    },
+    "5": {
+      "title": "Dream Watcher",
+      "desc": "Basic Attack, Dodge, Assist, Special Attack, and Chain Attack Lv. +2 (odd Mindscape levels don't have written effect text — this is the actual in-game effect)",
+      "odd_level_skill_bump": true
+    },
+    "6": {
+      "title": "The Never-Ending Journey",
+      "desc": "When Lucia is inside any Ether Veil, her ATK increases by 2% of her initial Max HP, and Harmony always triggers a CRIT with Harmony CRIT DMG increased by 30%.",
+      "odd_level_skill_bump": false
+    }
+  },
+  "Lucy": {
+    "1": {
+      "title": "Drill Formations",
+      "desc": "When the guard boars launch Guard Boars: Spinning Swing!, Lucy recovers 2 Energy. This effect can trigger once every 15s, with each guard boar having its own separate cooldown.",
+      "odd_level_skill_bump": true
+    },
+    "2": {
+      "title": "Little Boar Captain",
+      "desc": "When Lucy uses a Chain Attack or Ultimate, it grants all squad members and Bangboo, and the guard boars themselves the Cheer On! status for 10s.",
+      "odd_level_skill_bump": false
+    },
+    "3": {
+      "title": "Ironfist Overseer",
+      "desc": "Basic Attack, Dodge, Assist, Special Attack, and Chain Attack Lv. +2 (odd Mindscape levels don't have written effect text — this is the actual in-game effect)",
+      "odd_level_skill_bump": true
+    },
+    "4": {
+      "title": "Chaos Ball Game",
+      "desc": "While in the Cheer On! state, allies' CRIT DMG is increased by an additional 10%.",
+      "odd_level_skill_bump": false
+    },
+    "5": {
+      "title": "Wildland Princess",
+      "desc": "Basic Attack, Dodge, Assist, Special Attack, and Chain Attack Lv. +2 (odd Mindscape levels don't have written effect text — this is the actual in-game effect)",
+      "odd_level_skill_bump": true
+    },
+    "6": {
+      "title": "Fierce Fangs of Fire",
+      "desc": "When another squad member in the Cheer On! state hits an enemy with an EX Special Attack, a guard boar will drop from the sky and cause an explosion, dealing Fire DMG equal to 300% of the guard boar's ATK.\nThis will extend the duration of the Cheer On! buff for all squad members and Bangboo, and for the guard boars themselves by 5s.\nThe duration can increase up to 3 times, with a maximum duration of 30s. Refreshing the Cheer On! state resets the stack count.\nAfter the guard boar's explosion, it will launch Guard Boars: Spinning Swing!.",
+      "odd_level_skill_bump": false
+    }
+  },
+  "Lycaon": {
+    "1": {
+      "title": "Full Moon Momentum",
+      "desc": "When Lycaon's EX Special Attack: Thrill of the Hunt hits an enemy, the attack's Daze increases by 12%. This effect can trigger once every 8s.\nWhen he charges his EX Special Attack: Thrill of the Hunt to completion, this buff will increase by an additional 10%.",
+      "odd_level_skill_bump": true
+    },
+    "2": {
+      "title": "Energy Feedback",
+      "desc": "When Stunning an enemy or triggering a squad member's Chain Attack, Lycaon gains 5 Energy. Can trigger once every 1s.",
+      "odd_level_skill_bump": false
+    },
+    "3": {
+      "title": "Attendant Training",
+      "desc": "Basic Attack, Dodge, Assist, Special Attack, and Chain Attack Lv. +2 (odd Mindscape levels don't have written effect text — this is the actual in-game effect)",
+      "odd_level_skill_bump": true
+    },
+    "4": {
+      "title": "Graceful Demeanor",
+      "desc": "If Lycaon is attacked while using a Basic Attack or Special Attack, he will immediately gain a Shield equal to 7.5% of his Max HP, lasting for 15s. During the Shield's duration, his Anti-Interrupt level is increased. This effect can trigger once every 15s.",
+      "odd_level_skill_bump": false
+    },
+    "5": {
+      "title": "Alpha Nature",
+      "desc": "Basic Attack, Dodge, Assist, Special Attack, and Chain Attack Lv. +2 (odd Mindscape levels don't have written effect text — this is the actual in-game effect)",
+      "odd_level_skill_bump": true
+    },
+    "6": {
+      "title": "Ruthless Hunter",
+      "desc": "When a charged attack hits an enemy, the target suffers 10% increased DMG from Lycaon, stacking up to 5 times and lasting 12s.\nOnly one stack can be gained per skill use, and repeated triggers reset the duration.",
+      "odd_level_skill_bump": false
+    }
+  },
+  "NangongYu": {
+    "1": {
+      "title": "Lazy Spotlight",
+      "desc": "When EX Special Attack: The Unbearable Weight of Love or Basic Attack: Adorable Explosive Impact hits an enemy, the enemy's All-Attribute RES decreases by 18% for 40s. Repeated triggers refresh the duration.\nWhen entering the battlefield, Nangong Yu's Downbeat is restored to the maximum. In Investigation Zone Mode, this effect can trigger once every 180s.",
+      "odd_level_skill_bump": true
+    },
+    "2": {
+      "title": "Painless Tears",
+      "desc": "Each stack of Vibrato's additional Abloom DMG ratio increase from Core Passive: Prodigious Idol increases by an additional 10%.\nThe Stun DMG Multiplier provided by Additional Ability: Angel Captain increases by an additional 30%.\nWhen the active character's Chain Attack heavy attack hits an enemy that is both Stunned and affected by an Attribute Anomaly, it triggers Polarity Disorder, dealing DMG equal to 25% of the original Disorder DMG. Each enemy can only trigger this effect once during the same Stun period.",
+      "odd_level_skill_bump": false
+    },
+    "3": {
+      "title": "Chips on the Scales",
+      "desc": "Basic Attack, Dodge, Assist, Special Attack, and Chain Attack Lv. +2 (odd Mindscape levels don't have written effect text — this is the actual in-game effect)",
+      "odd_level_skill_bump": true
+    },
+    "4": {
+      "title": "Accomplice's Dance Step",
+      "desc": "Anomaly Proficiency increases by 40.\nThe Anomaly Buildup of Basic Attack: Adorable Explosive Impact when hitting an enemy increases by 35%.",
+      "odd_level_skill_bump": false
+    },
+    "5": {
+      "title": "Center Stage",
+      "desc": "Basic Attack, Dodge, Assist, Special Attack, and Chain Attack Lv. +2 (odd Mindscape levels don't have written effect text — this is the actual in-game effect)",
+      "odd_level_skill_bump": true
+    },
+    "6": {
+      "title": "An Angel's Delusion",
+      "desc": "Nangong Yu's attacks deal 50% more Daze.\nWhen the enemy is not Stunned, each time any character triggers Abloom DMG, Disorder DMG, or inflicts an Attribute Anomaly on them, the enemy gains 1 stacks of Vibrato: Modified. When hit by the heavy attack of EX Special Attack: The Unbearable Weight of Love or Basic Attack: Adorable Explosive Impact, they gain 1 stacks of Vibrato: Modified. When hit by the heavy attack of Ultimate: Meteor Shower, they gain 2 stacks of Vibrato: Modified.\nVibrato: Modified can stack up to 4 times. When the enemy becomes Stunned, all Vibrato: Modified stacks are cleared. When Vibrato: Modified is cleared, if the enemy is under an Ether, Electric, Fire, Physical, Ice, or Wind Anomaly, Nangong Yu triggers an instance of Abloom DMG on the target, dealing an additional instance of Attribute Anomaly DMG equal to 800%/400%/1,000%/70%/100%/40% of the original Attribute Anomaly DMG. Each stack of Vibrato: Modified on the enemy increases this Abloom DMG ratio by an additional 25%.\nVibrato: Modified cannot stack with Vibrato.",
+      "odd_level_skill_bump": false
+    }
+  },
+  "Norano": {
+    "1": {
+      "title": "Drifter's Rules of Survival",
+      "desc": "Whenever Manato loses HP, the amount of HP lost is tallied. Each 1% of his Max HP tallied increases the Fire DMG of Assist Follow-Ups and Basic Attacks by 0.4%, up to a max of 20%.",
+      "odd_level_skill_bump": true
+    },
+    "2": {
+      "title": "Day & Night, Kitchen & Love",
+      "desc": "While in the Molten Edge state, Manato ignores 8% of a target's Fire RES.\nAfter being hit by an enemy while using Special Attack: Return to Ashes or Special Attack: Return to Ashes - Sacrifice, press <IconMap:Icon_Normal> to trigger an Assist Follow-Up.",
+      "odd_level_skill_bump": false
+    },
+    "3": {
+      "title": "Enter the Realm of Urban Legends",
+      "desc": "Basic Attack, Dodge, Assist, Special Attack, and Chain Attack Lv. +2 (odd Mindscape levels don't have written effect text — this is the actual in-game effect)",
+      "odd_level_skill_bump": true
+    },
+    "4": {
+      "title": "Childhood Oath",
+      "desc": "Max HP increases by 8%.\nDuring Special Attack: Return to Ashes and Special Attack: Return to Ashes - Sacrifice, when Manato takes fatal DMG, he remains in battle, with his HP not dropping below 1. This effect can trigger once every 10s.",
+      "odd_level_skill_bump": false
+    },
+    "5": {
+      "title": "Lone Shadow Returns to the Pack",
+      "desc": "Basic Attack, Dodge, Assist, Special Attack, and Chain Attack Lv. +2 (odd Mindscape levels don't have written effect text — this is the actual in-game effect)",
+      "odd_level_skill_bump": true
+    },
+    "6": {
+      "title": "Beyond Dreams of the Past",
+      "desc": "When Special Attack: Return to Ashes hits a Stunned enemy, Manato gains 75 Blazing Heart and 4 stacks of Remnant Flame, and pressing <IconMap:Icon_Normal> will launch an Assist Follow-Up. This Remnant Flame effect can trigger once every 20s.\nWhen his Assist Follow-Up hits an enemy, Manato's Fire DMG increases by 3% for 8s, stacking up to 5 times. Repeated triggers reset the duration.",
+      "odd_level_skill_bump": false
+    }
+  },
+  "Norma": {
+    "1": {
+      "title": "Visionary Extremism",
+      "desc": "Basic Attack, Dodge, Assist, Special Attack, and Chain Attack Lv. +2 (odd Mindscape levels don't have written effect text — this is the actual in-game effect)",
+      "odd_level_skill_bump": true
+    },
+    "2": {
+      "title": "Axiom of Universal Unity",
+      "desc": "The Stun DMG Multiplier granted by each stack of Tech Divide in Norma's Additional Ability: Advantage in Numbers is increased to 6%.\nWhen Norma uses Basic Attack: Hat Trick while in combat, she gains 25 Energy. This effect can trigger once every 20s.",
+      "odd_level_skill_bump": false
+    },
+    "3": {
+      "title": "Natural-Born Villain Paradox",
+      "desc": "Basic Attack, Dodge, Assist, Special Attack, and Chain Attack Lv. +2 (odd Mindscape levels don't have written effect text — this is the actual in-game effect)",
+      "odd_level_skill_bump": true
+    },
+    "4": {
+      "title": "Bangboo Superiority Theory",
+      "desc": "When Norma consumes Preheated Chamber to trigger a Chain Attack, both Norma and the corresponding Agent gain 200 Decibels.",
+      "odd_level_skill_bump": false
+    },
+    "5": {
+      "title": "En-Nah Big Bang",
+      "desc": "Basic Attack, Dodge, Assist, Special Attack, and Chain Attack Lv. +2 (odd Mindscape levels don't have written effect text — this is the actual in-game effect)",
+      "odd_level_skill_bump": true
+    },
+    "6": {
+      "title": "The Primary Cause of Genius",
+      "desc": "",
+      "odd_level_skill_bump": false
+    }
+  },
+  "Nostradamus": {
+    "1": {
+      "title": "Supercharged Bomb",
+      "desc": "The DMG and the Anomaly Buildup inflicted by Nicole's EX Special Attack increases by 16%. For each additional 0.1s of charging when Nicole activates her EX Special Attack, the duration of the energy field created at the target location increases by 0.15s ",
+      "odd_level_skill_bump": true
+    },
+    "2": {
+      "title": "Charging Device",
+      "desc": "Nicole recovers 5 Energy when Core Passive: Mechanical Case's debuff is triggered. This effect can trigger once every 15s.",
+      "odd_level_skill_bump": false
+    },
+    "3": {
+      "title": "A Hare's Cunning",
+      "desc": "Basic Attack, Dodge, Assist, Special Attack, and Chain Attack Lv. +2 (odd Mindscape levels don't have written effect text — this is the actual in-game effect)",
+      "odd_level_skill_bump": true
+    },
+    "4": {
+      "title": "Field Expansion",
+      "desc": "When Nicole uses her EX Special Attack, Chain Attack, or Ultimate, the diameter of the energy field generated at the target location is increased by 3m.",
+      "odd_level_skill_bump": false
+    },
+    "5": {
+      "title": "Industry Star",
+      "desc": "Basic Attack, Dodge, Assist, Special Attack, and Chain Attack Lv. +2 (odd Mindscape levels don't have written effect text — this is the actual in-game effect)",
+      "odd_level_skill_bump": true
+    },
+    "6": {
+      "title": "Corrupting Energy Field",
+      "desc": "When Nicole's energy fields deal DMG to an enemy, all units' CRIT Rate against that enemy increases by 1.5%, stacking up to 10 times, and lasting 12s. The duration of each stack is calculated separately.",
+      "odd_level_skill_bump": false
+    }
+  },
+  "OokumaMari": {
+    "1": {
+      "title": "Beat of the Hammer",
+      "desc": "After the 2nd or 4th hit of Koleda's Basic Attack or her enhanced Basic Attack, quickly use a Special Attack or EX Special Attack to increase the Daze dealt by 15%.",
+      "odd_level_skill_bump": true
+    },
+    "2": {
+      "title": "Kinetic Recovery",
+      "desc": "When Koleda's EX Special Attack hits an enemy, she recovers 60 Energy. Can trigger once every 45s.",
+      "odd_level_skill_bump": false
+    },
+    "3": {
+      "title": "\"Mind Your Own!\"",
+      "desc": "Basic Attack, Dodge, Assist, Special Attack, and Chain Attack Lv. +2 (odd Mindscape levels don't have written effect text — this is the actual in-game effect)",
+      "odd_level_skill_bump": true
+    },
+    "4": {
+      "title": "Furnace's Glow",
+      "desc": "Koleda gains one stack of Charge (max 2 stacks) when consuming Furnace Fire to use her Enhanced Basic Attack.\nWhen her Chain Attack: Natural Disaster or Ultimate: Hammerquake hits an enemy, she consumes all stacks of Charge to increase the attack's DMG by 18% per stack.",
+      "odd_level_skill_bump": false
+    },
+    "5": {
+      "title": "\"You Dare Underestimate Me?\"",
+      "desc": "Basic Attack, Dodge, Assist, Special Attack, and Chain Attack Lv. +2 (odd Mindscape levels don't have written effect text — this is the actual in-game effect)",
+      "odd_level_skill_bump": true
+    },
+    "6": {
+      "title": "Saturated Blast",
+      "desc": "When EX Special Attack, Chain Attack, or Ultimate triggers an explosion that hits an enemy, it deals additional DMG equal to 360% of Koleda's ATK.",
+      "odd_level_skill_bump": false
+    }
+  },
+  "PanYinhu": {
+    "1": {
+      "title": "Qi Shield",
+      "desc": "All units deal 10% increased DMG to enemies affected by Depleted Qi.",
+      "odd_level_skill_bump": true
+    },
+    "2": {
+      "title": "Yunkui Pressure-Point Strike",
+      "desc": "For every 6 points of Break Force consumed, Pan Yinhu will recover 4 Energy, and the Depleted Qi effect applied when Special Attack: Touch of Death hits an enemy will have its duration increased to 12s.",
+      "odd_level_skill_bump": false
+    },
+    "3": {
+      "title": "Non-Meridian Pressure Point",
+      "desc": "Basic Attack, Dodge, Assist, Special Attack, and Chain Attack Lv. +2 (odd Mindscape levels don't have written effect text — this is the actual in-game effect)",
+      "odd_level_skill_bump": true
+    },
+    "4": {
+      "title": "First-Class Head Chef",
+      "desc": "When Ultimate: A Feast Fit for an Emperor! heals all squad members, the HP recovery is increased by 25%, and the healing over time effect is increased by 25%. On activating Ultimate: A Feast Fit for an Emperor!, gain the Backup Provisions effect. Whenever any character in the squad loses HP, consume the Backup Provisions effect to instantly restore 50% of the HP recovered with Ultimate: A Feast Fit for an Emperor!'s instant HP recovery effect. This effect does not stack.",
+      "odd_level_skill_bump": false
+    },
+    "5": {
+      "title": "\"Thiren\"",
+      "desc": "Basic Attack, Dodge, Assist, Special Attack, and Chain Attack Lv. +2 (odd Mindscape levels don't have written effect text — this is the actual in-game effect)",
+      "odd_level_skill_bump": true
+    },
+    "6": {
+      "title": "Meridian Theory",
+      "desc": "The Meridian Flow effect provided by Core Passive: Meridian Enlightenment increases by an extra 6% of Pan Yinhu's initial ATK. The maximum Sheer Force provided by this effect increases to 720.",
+      "odd_level_skill_bump": false
+    }
+  },
+  "Promeia": {
+    "1": {
+      "title": "Innocent Idealism",
+      "desc": "When Promeia uses Ultimate: Glaciating Impalement, she gains an additional effect: if Trial by Cold points are not at maximum, gain 1 point of Trial by Cold. This effect can trigger once after using Ultimate: Glaciating Impalement.\nWhen any squad member triggers Abloom on enemies with Presumption of Guilt, it ignores an additional 20% DEF.",
+      "odd_level_skill_bump": true
+    },
+    "2": {
+      "title": "Faltering Conviction",
+      "desc": "Promeia's Anomaly Proficiency increases by 40.\nThe multiplier of Abloom triggered by consuming Trial by Cold increases by 120%.",
+      "odd_level_skill_bump": false
+    },
+    "3": {
+      "title": "Cruel Moonlight",
+      "desc": "Basic Attack, Dodge, Assist, Special Attack, and Chain Attack Lv. +2 (odd Mindscape levels don't have written effect text — this is the actual in-game effect)",
+      "odd_level_skill_bump": true
+    },
+    "4": {
+      "title": "Ruthless Accusation",
+      "desc": "When Promeia triggers Abloom, she restores 5 Corrosive Chill. This effect can trigger once every 0.5s.",
+      "odd_level_skill_bump": false
+    },
+    "5": {
+      "title": "The Dying Moth",
+      "desc": "Basic Attack, Dodge, Assist, Special Attack, and Chain Attack Lv. +2 (odd Mindscape levels don't have written effect text — this is the actual in-game effect)",
+      "odd_level_skill_bump": true
+    },
+    "6": {
+      "title": "To Be Continued",
+      "desc": "When Promeia consumes Trial by Cold to trigger Abloom, it triggers an additional special Abloom effect, dealing Attribute Anomaly DMG of the corresponding attribute at a fixed 200% multiplier. 5 Corrosive Chill and 100 Decibels are also restored. This effect can trigger at most once every 15s.\nIn addition, Attribute Anomaly DMG and Disorder DMG dealt by Promeia ignore 15% of enemies' All-Attribute RES.",
+      "odd_level_skill_bump": false
+    }
+  },
+  "Pulchra": {
+    "1": {
+      "title": "Self-Interest",
+      "desc": "When dealing DMG to enemies affected by Binding Trap, increase own CRIT Rate by 10%.",
+      "odd_level_skill_bump": true
+    },
+    "2": {
+      "title": "Opportunistic",
+      "desc": "While in the Hunter's Gait state from Core Passive: Hunter's Instinct, Pulchra's ATK is increased by an additional 10%.",
+      "odd_level_skill_bump": false
+    },
+    "3": {
+      "title": "Territorial",
+      "desc": "Basic Attack, Dodge, Assist, Special Attack, and Chain Attack Lv. +2 (odd Mindscape levels don't have written effect text — this is the actual in-game effect)",
+      "odd_level_skill_bump": true
+    },
+    "4": {
+      "title": "Joy of the Hunt",
+      "desc": "Reduces Energy Cost of activating EX Special Attack: Rending Claw - Flashstep by 5.",
+      "odd_level_skill_bump": false
+    },
+    "5": {
+      "title": "Tail Game",
+      "desc": "Basic Attack, Dodge, Assist, Special Attack, and Chain Attack Lv. +2 (odd Mindscape levels don't have written effect text — this is the actual in-game effect)",
+      "odd_level_skill_bump": true
+    },
+    "6": {
+      "title": "Behind the Mask",
+      "desc": "Special Attack: Rending Claw - Nightmare Shadow's DMG is increased by 15%, and the number of times the repeated attack can trigger is increased by 2.\nAdditional Ability: Business Partner's Binding Trap effect now also applies to all damage types, not just Aftershock DMG.",
+      "odd_level_skill_bump": false
+    }
+  },
+  "Pyrois": {
+    "1": {
+      "title": "Shadows of Twilight Past",
+      "desc": "Upon entering the battlefield, Pyrois gains 1,000 Decibels.\nThis effect can trigger once every 180s in Investigation Zone mode.\nCRIT Rate increases by 8%.",
+      "odd_level_skill_bump": true
+    },
+    "2": {
+      "title": "Blazing Cavalry",
+      "desc": "Using Ultimate: Triumphant Return grants 1,500 Decibels. This effect can trigger once every 180s.\nPyrois's Decibel limit increases by 1,000.",
+      "odd_level_skill_bump": false
+    },
+    "3": {
+      "title": "Chains of Fate",
+      "desc": "Basic Attack, Dodge, Assist, Special Attack, and Chain Attack Lv. +2 (odd Mindscape levels don't have written effect text — this is the actual in-game effect)",
+      "odd_level_skill_bump": true
+    },
+    "4": {
+      "title": "Balefire Horizon",
+      "desc": "When Pyrois triggers a Perfect Block with EX Special Attack: Sun's Halo, immediately gain shield equal to 8% of Max HP, lasting 10s. Repeated triggers reset the duration.\nPyrois deals 10% extra Daze while shielded.",
+      "odd_level_skill_bump": false
+    },
+    "5": {
+      "title": "Youthful Guardian",
+      "desc": "Basic Attack, Dodge, Assist, Special Attack, and Chain Attack Lv. +2 (odd Mindscape levels don't have written effect text — this is the actual in-game effect)",
+      "odd_level_skill_bump": true
+    },
+    "6": {
+      "title": "Morning Star at Dawn",
+      "desc": "Mindscape Effect Hidden",
+      "odd_level_skill_bump": false
+    }
+  },
+  "QingYi": {
+    "1": {
+      "title": "Insulation Breakdown",
+      "desc": "When Qingyi enters combat, Flash Connect Voltage is instantly restored to its maximum, and the accumulation rate is increased by 30%.\nWhen using her Basic Attack: Enchanted Moonlit Blossoms, if Flash Connect Voltage is at its maximum, the attack will reduce the DEF of the enemy it hits by 15%, and Qingyi's CRIT Rate against that enemy will increase by 20% for 15s.",
+      "odd_level_skill_bump": true
+    },
+    "2": {
+      "title": "Minimal Effort, Maximum Impact",
+      "desc": "The Stun DMG Multiplier increase provided by each stack of Subjugation in Core Passive: Eternal Seasons increases to 135% of its original value.\nWhen Qingyi's attack hits an enemy and the stacks of Subjugation she applies reaches its maximum stacks, her Daze dealt to the target increases by 15%.",
+      "odd_level_skill_bump": false
+    },
+    "3": {
+      "title": "Drink Hot Water",
+      "desc": "Basic Attack, Dodge, Assist, Special Attack, and Chain Attack Lv. +2 (odd Mindscape levels don't have written effect text — this is the actual in-game effect)",
+      "odd_level_skill_bump": true
+    },
+    "4": {
+      "title": "Stable Arc Barrier",
+      "desc": "Upon entering or exiting Flash Connect state, gain a shield equal to 10% of Qingyi's Max HP.\nIf a previous shield is still active when the shield effect refreshes, Qingyi generates 5 Energy. This Energy Generation effect can be triggered once every 10s.",
+      "odd_level_skill_bump": false
+    },
+    "5": {
+      "title": "Youthful Spirit",
+      "desc": "Basic Attack, Dodge, Assist, Special Attack, and Chain Attack Lv. +2 (odd Mindscape levels don't have written effect text — this is the actual in-game effect)",
+      "odd_level_skill_bump": true
+    },
+    "6": {
+      "title": "Eight Meridians",
+      "desc": "The Interrupt Level of Basic Attack: Enchanted Moonlit Blossoms is greatly increased, and the CRIT DMG is increased by an additional 100%.\nWhen Qingyi hits an enemy with her Basic Attack: Enchanted Moonlit Blossoms, the target's Attribute DMG RES is reduced by 20% for 15s.",
+      "odd_level_skill_bump": false
+    }
+  },
+  "Remielle": {
+    "1": {
+      "title": "Frivolous Oath",
+      "desc": "When Remie enters the battlefield, she gains the maximum number of Special [Void Glare] based on her own attributes. In Investigation Zone mode, this effect can trigger once every 180 seconds;\nWhen a Character triggers the [Luminize] effect, ignore the target's 50% All-Attribute RES;\nWhen activating [Assist: Feather Wheel Dance], gain 200 Decibels. This effect can trigger at most once every 18 seconds.",
+      "odd_level_skill_bump": true
+    },
+    "2": {
+      "title": "Cascading Clamor",
+      "desc": "Remie's [Refringence] increases to 2. When triggering a [Refringe] reaction, up to 2 [Lumen Buildup Points] will be consumed. When 2 [Lumen Buildup Points] are consumed, the [Mutation Coefficient] of this [Refringe] increases by 20%;\nAdditionally, while the character is in the [Phase Shift Flow] state, the frequency at which auto-activated Support Skills apply [Lumen Buildup Points] to enemies increases, and the number of [Lumen Buildup Points] applied per skill use also increases from 1 to 2.",
+      "odd_level_skill_bump": false
+    },
+    "3": {
+      "title": "Garden of Diverging Time",
+      "desc": "Basic Attack, Dodge, Assist, Special Attack, and Chain Attack Lv. +2 (odd Mindscape levels don't have written effect text — this is the actual in-game effect)",
+      "odd_level_skill_bump": true
+    },
+    "4": {
+      "title": "The Long Goodbye",
+      "desc": "When Remie triggers the [Luminize] effect, DMG Multiplier is additionally increased by 12%.",
+      "odd_level_skill_bump": false
+    },
+    "5": {
+      "title": "The Wayfarer Drinks Deep of Oblivion",
+      "desc": "Basic Attack, Dodge, Assist, Special Attack, and Chain Attack Lv. +2 (odd Mindscape levels don't have written effect text — this is the actual in-game effect)",
+      "odd_level_skill_bump": true
+    },
+    "6": {
+      "title": "Prophetic Feathers of a Thousand Wingbeats",
+      "desc": "When Remie uses [Basic Attack: Cascading Rainbow] and [Basic Attack: Falling Feather], she triggers the [Luminize] effect 2 times;\nIf the 4th hit of [Basic Attack] lands on a target, after the skill ends, Remie gains 3 special [Phantom Radiance]. The DMG dealt by special [Phantom Radiance] obtained this way is 25% of the special [Phantom Radiance] gained upon entering the battlefield;\nIn [Additional Ability], the number of [Anomaly] Characters required is reduced by 1.",
+      "odd_level_skill_bump": false
+    }
+  },
+  "Rina": {
+    "1": {
+      "title": "Dance Duet",
+      "desc": "After being sent out to launch an attack, Drusilla and Anastella stay in place for an additional 5.5s before returning to Rina.\nThe buff gained from Core Passive: Mini Destruction Partner by characters within 10m is increased to 130%.",
+      "odd_level_skill_bump": true
+    },
+    "2": {
+      "title": "Master's Paragon",
+      "desc": "Upon becoming the active character in combat, Rina's DMG increases by 15% for 12s. This effect can trigger once every 18s.",
+      "odd_level_skill_bump": false
+    },
+    "3": {
+      "title": "Head Maid's Specialty",
+      "desc": "Basic Attack, Dodge, Assist, Special Attack, and Chain Attack Lv. +2 (odd Mindscape levels don't have written effect text — this is the actual in-game effect)",
+      "odd_level_skill_bump": true
+    },
+    "4": {
+      "title": "Needle and Hammer",
+      "desc": "Rina's Energy Regen increases by 0.5/s when both Drusilla and Anastella are deployed.\nThe effect ends when Drusilla or Anastella returns to Rina.",
+      "odd_level_skill_bump": false
+    },
+    "5": {
+      "title": "Head Maid Perfectionist",
+      "desc": "Basic Attack, Dodge, Assist, Special Attack, and Chain Attack Lv. +2 (odd Mindscape levels don't have written effect text — this is the actual in-game effect)",
+      "odd_level_skill_bump": true
+    },
+    "6": {
+      "title": "Stormy Night's Fright",
+      "desc": "When an EX Special Attack, Chain Attack or Ultimate hits an enemy, the entire squad's Electric DMG is increased by 15% for 8s.",
+      "odd_level_skill_bump": false
+    }
+  },
+  "SPBilly": {
+    "1": {
+      "title": "Heroic Entrance",
+      "desc": "Core Passive: Knight's Resolve restores an additional 60 Adrenaline upon entering the battlefield.\nHitting an enemy with an EX Special Attack causes Starlight - Billy's DMG to ignore 18% Physical RES for 45s. Repeated triggers refresh the duration.",
+      "odd_level_skill_bump": true
+    },
+    "2": {
+      "title": "Wasteland Automaton",
+      "desc": "Increases the DMG dealt by Basic Attack: Full-Throttle Starlight, EX Special Attack: Cool Wheelie, and Ultimate: Starlight Knight Flying Kick by 50%.\nActivating EX Special Attack: Rocking Footwork, EX Special Attack: High-Traction Wheels, or hitting a Stunned enemy with Special Attack: Drive Suppression grants the Turbocharged effect:\nSpecial Attack: Drive Suppression consumes this effect to immediately follow up with EX Special Attack: Cool Wheelie, and increases that instance's CRIT DMG by 50%. Only 1 stack of Turbocharged can be held.",
+      "odd_level_skill_bump": false
+    },
+    "3": {
+      "title": "Knight's Chivalry",
+      "desc": "Basic Attack, Dodge, Assist, Special Attack, and Chain Attack Lv. +2 (odd Mindscape levels don't have written effect text — this is the actual in-game effect)",
+      "odd_level_skill_bump": true
+    },
+    "4": {
+      "title": "Flames of Justice",
+      "desc": "While in combat, each use of Special Attack: Drive Suppression increases Starlight - Billy's CRIT DMG by 8%, stacking up to 2 times, and lasting 45s. Repeated triggers reset the duration.\nIf HP is below 35% and Starlight - Billy is not the active character, he continuously recovers HP, up to 35%.",
+      "odd_level_skill_bump": false
+    },
+    "5": {
+      "title": "Radiant Armaments",
+      "desc": "Basic Attack, Dodge, Assist, Special Attack, and Chain Attack Lv. +2 (odd Mindscape levels don't have written effect text — this is the actual in-game effect)",
+      "odd_level_skill_bump": true
+    },
+    "6": {
+      "title": "Starlight Knight",
+      "desc": "Ultimate: Starlight Knight Flying Kick and Basic Attack: Full-Throttle Starlight's Sheer DMG increases by 18%.\nLanding the 4th hit of Basic Attack: Knight's Technique, EX Special Attack: Cool Wheelie, or Chain Attack: Knight's Swagger grants 1 stack of Brilliant Starlight, stacking up to 6 times, and gaining at most 1 stack per skill use.\nWhen using Ultimate: Starlight Knight Flying Kick or Basic Attack: Full-Throttle Starlight, consumes up to 2 stacks of Brilliant Starlight, with each stack consumed causing that skill's final hit to deal 100% Sheer Force as additional Physical DMG.",
+      "odd_level_skill_bump": false
+    }
+  },
+  "Seed": {
+    "1": {
+      "title": "\"Hibernation Period\"",
+      "desc": "When Seed's Steel Charge reaches 100, Basic Attack: Falling Petals - Downfall can be triggered, and the total Steel Charge consumed is reduced to 100.\nThe amount of Steel Charge required to gain one chance to quickly release Basic Attack: Falling Petals - Slaughter is reduced to 100. Accumulate an additional 40/20 Steel Charge when entering the battlefield/using Ultimate.\nIncreases Basic Attack: Falling Petals - Downfall CRIT DMG by 30%.",
+      "odd_level_skill_bump": true
+    },
+    "2": {
+      "title": "\"Light Absorption Technique\"",
+      "desc": "When Besiege is active for an Agent, that Agent's DMG ignores 20% of DEF.\nWhen activating EX Special Attack: Raining Iron Petals, after consuming a total of 60 Energy, Seed can continue consuming Energy to extend the duration of the skill until the button is released or a total of 120 Energy is consumed.\nFor every 5 Energy consumed by EX Special Attack: Raining Iron Petals, the following Basic Attack: Falling Petals - Slaughter's DMG increases by 5%.",
+      "odd_level_skill_bump": false
+    },
+    "3": {
+      "title": "\"A Story of Sprouting\"",
+      "desc": "Basic Attack, Dodge, Assist, Special Attack, and Chain Attack Lv. +2 (odd Mindscape levels don't have written effect text — this is the actual in-game effect)",
+      "odd_level_skill_bump": true
+    },
+    "4": {
+      "title": "\"Fragrant Tune\"",
+      "desc": "When Seed's Besiege status buff is active, her Decibel Generation Rate increases by 10%, and Ultimate DMG increases by 20%.",
+      "odd_level_skill_bump": false
+    },
+    "5": {
+      "title": "\"Time to Bloom\"",
+      "desc": "Basic Attack, Dodge, Assist, Special Attack, and Chain Attack Lv. +2 (odd Mindscape levels don't have written effect text — this is the actual in-game effect)",
+      "odd_level_skill_bump": true
+    },
+    "6": {
+      "title": "\"Theory of the Heart\"",
+      "desc": "Seed's CRIT DMG increases by 50%.\nWhen using Basic Attack: Falling Petals - Slaughter, fires 3 additional laser beams, each dealing 165% of ATK as DMG. This effect can trigger once every 3s.",
+      "odd_level_skill_bump": false
+    }
+  },
+  "Seth": {
+    "1": {
+      "title": "Heroism",
+      "desc": "The shield value provided by Shield of Firm Resolve and its maximum limit is increased by 30%.\nWhen Shield of Firm Resolve ends, the Anomaly Proficiency increase provided by Core Passive: Protector lasts an additional 10s.",
+      "odd_level_skill_bump": true
+    },
+    "2": {
+      "title": "Recklessness of Youth",
+      "desc": "Upon entering battle, Seth immediately gains 75% Resolve.\nHitting an enemy with Basic Attack: Lightning Strike - Electrified increases the move's accumulated Electric Anomaly Buildup by 35%.",
+      "odd_level_skill_bump": false
+    },
+    "3": {
+      "title": "Slow Reflexes",
+      "desc": "Basic Attack, Dodge, Assist, Special Attack, and Chain Attack Lv. +2 (odd Mindscape levels don't have written effect text — this is the actual in-game effect)",
+      "odd_level_skill_bump": true
+    },
+    "4": {
+      "title": "Core Aspiration",
+      "desc": "The Daze caused by Defensive Assist: Thundershield is increased by 25%.",
+      "odd_level_skill_bump": false
+    },
+    "5": {
+      "title": "Distant Admiration",
+      "desc": "Basic Attack, Dodge, Assist, Special Attack, and Chain Attack Lv. +2 (odd Mindscape levels don't have written effect text — this is the actual in-game effect)",
+      "odd_level_skill_bump": true
+    },
+    "6": {
+      "title": "Idealist",
+      "desc": "When Seth lands a Finishing Move on an enemy with Basic Attack: Lightning Strike - Electrified, it deals additional damage equal to 500% of his ATK. The attack is guaranteed to trigger a critical hit, and CRIT DMG is increased by 60%.",
+      "odd_level_skill_bump": false
+    }
+  },
+  "Sigrid": {
+    "1": {
+      "title": "A long, long time ago,",
+      "desc": "After the 3rd hit of [Sweeping Disarm], enter [Aerial Patrol Stance];\nGain 25% ATK bonus.",
+      "odd_level_skill_bump": true
+    },
+    "2": {
+      "title": "Act One of the Legendary",
+      "desc": "[Draw Shot] and [Holster Shot] deal Ice DMG that ignores 24% of the target's DEF;\nThe duration of the [Sky Patrol Stance] effect is extended;",
+      "odd_level_skill_bump": false
+    },
+    "3": {
+      "title": "Miracle Guardian",
+      "desc": "Basic Attack, Dodge, Assist, Special Attack, and Chain Attack Lv. +2 (odd Mindscape levels don't have written effect text — this is the actual in-game effect)",
+      "odd_level_skill_bump": true
+    },
+    "4": {
+      "title": "Hero Upgrading",
+      "desc": "Each time [Sky Patrol Gunstance] refreshes, your DMG dealt increases by 24% for 8s. Repeated triggers can extend the duration by 8s, up to a maximum of 40s.",
+      "odd_level_skill_bump": false
+    },
+    "5": {
+      "title": "Azure Sky Oath",
+      "desc": "Basic Attack, Dodge, Assist, Special Attack, and Chain Attack Lv. +2 (odd Mindscape levels don't have written effect text — this is the actual in-game effect)",
+      "odd_level_skill_bump": true
+    },
+    "6": {
+      "title": "Knight of the Skies",
+      "desc": "[Holster Stance] 1st/2nd/3rd hit on an enemy deals an additional 150%/150%/200% DMG.",
+      "odd_level_skill_bump": false
+    }
+  },
+  "SilverAnby": {
+    "1": {
+      "title": "Static Charge",
+      "desc": "When Soldier 0 - Anby uses an EX Special Attack to hit an enemy, it triggers the additional DMG from White Thunder 3 times. This effect does not consume any White Thunder stacks.",
+      "odd_level_skill_bump": true
+    },
+    "2": {
+      "title": "Fail-Safe Protocol",
+      "desc": "Soldier 0 - Anby's CRIT Rate increases by 12%. When she uses her Ultimate, she gains 6 stacks of Thunder's Cry (max 6 stacks). With Thunder's Cry, when using Special Attack: Azure Flash to hit an enemy with White Thunder, it will consume 1 stack of Thunder's Cry instead. Only 1 stack of Thunder's Cry will be consumed when a single use of a skill hits multiple enemies, and consuming Thunder's Cry will still activate the additional DMG from White Thunder.\nAfter activating potential, every 3 stacks of Thunder's Cry consumed, the next Special Attack: Azure Flash - Boundary will be activated faster.",
+      "odd_level_skill_bump": false
+    },
+    "3": {
+      "title": "Past Glory",
+      "desc": "Basic Attack, Dodge, Assist, Special Attack, and Chain Attack Lv. +2 (odd Mindscape levels don't have written effect text — this is the actual in-game effect)",
+      "odd_level_skill_bump": true
+    },
+    "4": {
+      "title": "Silver Reverb",
+      "desc": "When hitting an enemy marked with Silver Star, Soldier 0 - Anby ignores 12% of the target's Electric RES.",
+      "odd_level_skill_bump": false
+    },
+    "5": {
+      "title": "Director's Cut",
+      "desc": "Basic Attack, Dodge, Assist, Special Attack, and Chain Attack Lv. +2 (odd Mindscape levels don't have written effect text — this is the actual in-game effect)",
+      "odd_level_skill_bump": true
+    },
+    "6": {
+      "title": "Prequel Protagonist",
+      "desc": "Upon triggering 6 instances of White Thunder's additional DMG, an electromagnetic vortex will be generated, dealing 1,000% of Soldier 0 - Anby's ATK as Electric DMG against the target and surrounding enemies. This DMG is considered Aftershock DMG.",
+      "odd_level_skill_bump": false
+    }
+  },
+  "Summer": {
+    "1": {
+      "title": "\"Loneliness Corruption Symptoms\"",
+      "desc": "When Sunna enters the battlefield, she gains 15 Energy. In Investigation Zone Mode, this effect can trigger once every 180s. When Cat's Gaze triggers and damages an enemy, the target's DEF is reduced by 7% for 40s, stacking up to 3 times. The duration of each stack is calculated separately.",
+      "odd_level_skill_bump": true
+    },
+    "2": {
+      "title": "\"Feline Go-With-the-Flow\"",
+      "desc": "While Sunna is within any Ether Veil, all squad members gain 10% ATK and she obtains 1 Claw Sharpener every 10s.\nThe number of attacks required to trigger Cat's Gaze is reduced, and the DMG Multiplier on trigger is increased:\nWhen triggered by an Attack character, the DMG Multiplier is increased by 200%.\nWhen triggered by an Anomaly character, the DMG Multiplier is increased by 300%.",
+      "odd_level_skill_bump": false
+    },
+    "3": {
+      "title": "\"Transformation Apple\"",
+      "desc": "Basic Attack, Dodge, Assist, Special Attack, and Chain Attack Lv. +2 (odd Mindscape levels don't have written effect text — this is the actual in-game effect)",
+      "odd_level_skill_bump": true
+    },
+    "4": {
+      "title": "\"Delusion Investigation Team\"",
+      "desc": "When Sunna uses her Ultimate, all squad members deal 18% increased DMG for 60s.",
+      "odd_level_skill_bump": false
+    },
+    "5": {
+      "title": "\"Galaxy Tramway\"",
+      "desc": "Basic Attack, Dodge, Assist, Special Attack, and Chain Attack Lv. +2 (odd Mindscape levels don't have written effect text — this is the actual in-game effect)",
+      "odd_level_skill_bump": true
+    },
+    "6": {
+      "title": "\"Hollow Big Bang\"",
+      "desc": "When Sunna uses an EX Special Attack, she enters the Focused Creation! state for 8s.\nWhile in the Focused Creation! state, all attacks Sunna performs are guaranteed to CRIT, and her CRIT DMG increases by 0.03% of her initial ATK, up to a maximum of 105%.\nWhile in the Focused Creation! state, Sunna's Anti-Interrupt Level is increased, and DMG taken is reduced by 40%.\nWhile in the Focused Creation! state, Sunna can trigger Cat's Gaze, its DMG being calculated using Attack Agent rules. If Cat's Gaze is triggered while Sunna has a Claw Sharpener, the Claw Sharpener is immediately consumed, and Cat's Gaze is reapplied to the enemy.\nWhile in the Focused Creation! state, DMG dealt when any squad member triggers Cat's Gaze increases by 50%.",
+      "odd_level_skill_bump": false
+    }
+  },
+  "Trigger": {
+    "1": {
+      "title": "Sharpened Senses",
+      "desc": "The Stun DMG Multiplier applied through Core Passive: Soul-Searching Gaze is increased by an additional 20%.\nWhen activating Basic Attack: Harmonizing Shot, the cooldown is reduced to 2s.\nPurge gained upon hitting an enemy with the continuous fire or charged counter in Sniper Stance increases by 25%. Maximum Purge increases to 125.",
+      "odd_level_skill_bump": true
+    },
+    "2": {
+      "title": "\"Ether Vision\"",
+      "desc": "Upon using an Aftershock, Trigger gains 1 stack of Hunter's Gaze.\nWhen executing a Finishing Move in Sniper Stance, Trigger gains 2 stacks of Hunter's Gaze.\nEach stack of Hunter's Gaze increases all squad members' CRIT DMG by 6%, stacking up to 4 times, and lasting 10s. Repeated triggers reset the duration.",
+      "odd_level_skill_bump": false
+    },
+    "3": {
+      "title": "\"Homecoming\"",
+      "desc": "Basic Attack, Dodge, Assist, Special Attack, and Chain Attack Lv. +2 (odd Mindscape levels don't have written effect text — this is the actual in-game effect)",
+      "odd_level_skill_bump": true
+    },
+    "4": {
+      "title": "Concealment",
+      "desc": "When Trigger enters or extends Coordinated Support, while the state is active, the next time other squad members trigger Basic Attack: Harmonizing Shot or Basic Attack: Harmonizing Shot - Tartarus, it will trigger Disconnect upon hitting an enemy, dealing additional DMG equal to 200% of Trigger's ATK and inflict Daze equal to 120% of Trigger's Impact.\nThis skill has a relatively high Interrupt Level.",
+      "odd_level_skill_bump": false
+    },
+    "5": {
+      "title": "Locked In",
+      "desc": "Basic Attack, Dodge, Assist, Special Attack, and Chain Attack Lv. +2 (odd Mindscape levels don't have written effect text — this is the actual in-game effect)",
+      "odd_level_skill_bump": true
+    },
+    "6": {
+      "title": "Beyond the River of the Dead",
+      "desc": "Upon entering the battlefield, Trigger gains 5 Armor Break Rounds.\nFor every 25 Purge consumed, Trigger gains 1 additional Armor Break Round, up to a maximum of 5 rounds.\nWhile possessing Armor Break Rounds, when Trigger hits a target in Sniper Stance, 1 Armor Break Round is consumed to deal additional Electric DMG equal to 1,200% of Trigger's ATK. Armor Break Round DMG is additionally increased by 50%. This effect can trigger once every 0.2s.",
+      "odd_level_skill_bump": false
+    }
+  },
+  "Tsubaki": {
+    "1": {
+      "title": "Bird Hunter",
+      "desc": "When Nekomata hits an enemy from behind, she ignores 16% of her target's Physical RES.\nIf the enemy is Stunned, all Nekomata's attacks against them are considered back attacks.",
+      "odd_level_skill_bump": true
+    },
+    "2": {
+      "title": "Cat & Mouse",
+      "desc": "When there's only one enemy on the field and Nekomata is in combat, her Energy Generation Rate is increased by 25%.",
+      "odd_level_skill_bump": false
+    },
+    "3": {
+      "title": "Curious Left Tail",
+      "desc": "Basic Attack, Dodge, Assist, Special Attack, and Chain Attack Lv. +2 (odd Mindscape levels don't have written effect text — this is the actual in-game effect)",
+      "odd_level_skill_bump": true
+    },
+    "4": {
+      "title": "Sharpen Claws",
+      "desc": "When Nekomata uses her EX Special Attack, her CRIT Rate increases by 7% for 15s, stacking up to 2 times, with each stack's duration being calculated separately.",
+      "odd_level_skill_bump": false
+    },
+    "5": {
+      "title": "Lucky Right Tail",
+      "desc": "Basic Attack, Dodge, Assist, Special Attack, and Chain Attack Lv. +2 (odd Mindscape levels don't have written effect text — this is the actual in-game effect)",
+      "odd_level_skill_bump": true
+    },
+    "6": {
+      "title": "Predator Lineage",
+      "desc": "When Nekomata launches a Chain Attack or uses her Ultimate, her CRIT DMG increases by 18%, stacking up to 3 times. The effect expires when she's no longer in-combat. This effect gains maximum stacks immediately on defeating an enemy.",
+      "odd_level_skill_bump": false
+    }
+  },
+  "Unagi": {
+    "1": {
+      "title": "Frost Atop the Snow",
+      "desc": "While in Shimotsuki Stance, every 1 point of Fallen Frost consumed will allow Basic Attack: Shimotsuki to ignore 6% of DEF, stacking up to 6 times and lasting until Shimotsuki Stance ends.\nWhen the slash for charge level three of Basic Attack: Shimotsuki hits an enemy under Frostburn, it will immediately remove the Frostburn state and increase all squad members' Anomaly Buildup Rate by 20% for 10s.",
+      "odd_level_skill_bump": true
+    },
+    "2": {
+      "title": "Breath Technique",
+      "desc": "Basic Attack: Kazahana and Dodge Counter DMG increases by 30%.\nHoshimi Miyabi gains 1 point of Fallen Frost when the final move of the 5th hit of Basic Attack: Kazahana hits an enemy.\nUpon entering the battlefield, Hoshimi Miyabi immediately obtains 6 points of Fallen Frost and her CRIT Rate increases by 15%.",
+      "odd_level_skill_bump": false
+    },
+    "3": {
+      "title": "Martial Discipline",
+      "desc": "Basic Attack, Dodge, Assist, Special Attack, and Chain Attack Lv. +2 (odd Mindscape levels don't have written effect text — this is the actual in-game effect)",
+      "odd_level_skill_bump": true
+    },
+    "4": {
+      "title": "Rupture",
+      "desc": "Frostburn - Break DMG increases by 30%. Upon triggering Frostburn - Break, Hoshimi Miyabi generates 250 more Decibels.",
+      "odd_level_skill_bump": false
+    },
+    "5": {
+      "title": "Anniversary",
+      "desc": "Basic Attack, Dodge, Assist, Special Attack, and Chain Attack Lv. +2 (odd Mindscape levels don't have written effect text — this is the actual in-game effect)",
+      "odd_level_skill_bump": true
+    },
+    "6": {
+      "title": "Prodigious Talent",
+      "desc": "During Shimotsuki Stance, Hoshimi Miyabi obtains Polar, which increases Basic Attack: Shimotsuki DMG by 30%. After obtaining Polar, Hoshimi Miyabi will automatically draw her blade and unleash powerful slashes based on the current charge level upon consuming Fallen Frost. Before Fallen Frost is completely depleted, the draw and slashes will not interrupt charging under Shimotsuki Stance. Each occurrence of Shimotsuki Stance can perform up to 3 draws and slashes.",
+      "odd_level_skill_bump": false
+    }
+  },
+  "Velina": {
+    "1": {
+      "title": "Orderly Elegance",
+      "desc": "Basic Attack, Dodge, Assist, Special Attack, and Chain Attack Lv. +2 (odd Mindscape levels don't have written effect text — this is the actual in-game effect)",
+      "odd_level_skill_bump": true
+    },
+    "2": {
+      "title": "Saturation Project",
+      "desc": "When Velina triggers Windswept, she can also gain 1 point of Windbite. This effect can trigger once every 5s.\nAfter Sweeping Cyclone triggers the Chromatic Tint effect, it can accumulate the corresponding attribute's Anomaly Buildup. The buildup accumulated by this attack is excluded from Anomaly DMG calculations.\nThe DMG increase effects of Velina's Windswept and Vortex from Additional Ability: Tea Party Etiquette are further increased by 15%.",
+      "odd_level_skill_bump": false
+    },
+    "3": {
+      "title": "Conquest by Etiquette",
+      "desc": "Basic Attack, Dodge, Assist, Special Attack, and Chain Attack Lv. +2 (odd Mindscape levels don't have written effect text — this is the actual in-game effect)",
+      "odd_level_skill_bump": true
+    },
+    "4": {
+      "title": "Tea Party Tribunal",
+      "desc": "When Velina uses an EX Special Attack, her ATK increases by 15% for 40s. Repeated triggers reset the duration.",
+      "odd_level_skill_bump": false
+    },
+    "5": {
+      "title": "Death Witch",
+      "desc": "Basic Attack, Dodge, Assist, Special Attack, and Chain Attack Lv. +2 (odd Mindscape levels don't have written effect text — this is the actual in-game effect)",
+      "odd_level_skill_bump": true
+    },
+    "6": {
+      "title": "Chief Angel",
+      "desc": "When Velina consumes 2 points of Windbite to increase the DMG Multiplier of Vortex, she gains 1 point of Windbite. This effect can trigger once every 6s.\nWhen Velina hits an enemy suffering a Wind Attribute Anomaly, the Wind Attribute Anomaly Buildup she inflicts increases by 20%.\nWhen Velina inflicts Windswept on an enemy already affected by Windswept, the new Windswept's DMG increases based on the remaining duration of the previous. Each remaining second increases the DMG by 2.5%, up to a maximum increase of 40%.",
+      "odd_level_skill_bump": false
+    }
+  },
+  "Vivian": {
+    "1": {
+      "title": "\"Walking Into the Orchard in Spring\"",
+      "desc": "When a total of 4 Guard Feathers are consumed, gain 1 Flight Feather.\nAll Attribute Anomaly DMG and Disorder DMG received by targets under Vivian's Prophecy increases by 16%.",
+      "odd_level_skill_bump": true
+    },
+    "2": {
+      "title": "\"Stormy Night, Stormy Night\"",
+      "desc": "Vivian's Ether Anomaly Buildup Rate increases by 25%.\nThe benefits of Abloom from Anomaly Proficiency are raised to 130% of the original value, and 15% of the target's All-Attribute RES is ignored.",
+      "odd_level_skill_bump": false
+    },
+    "3": {
+      "title": "\"Another and the Same\"",
+      "desc": "Basic Attack, Dodge, Assist, Special Attack, and Chain Attack Lv. +2 (odd Mindscape levels don't have written effect text — this is the actual in-game effect)",
+      "odd_level_skill_bump": true
+    },
+    "4": {
+      "title": "\"The Wind Between the Reeds\"",
+      "desc": "Basic Attack: Fluttering Frock - Suspension and Basic Attack: Featherbloom will always CRIT on hit, and they will also increase Vivian's ATK by 12% for 12s. Repeated triggers reset the duration.\nWhen entering the battlefield, Vivian immediately gains 5 Guard Feathers.",
+      "odd_level_skill_bump": false
+    },
+    "5": {
+      "title": "\"Sonnet\"",
+      "desc": "Basic Attack, Dodge, Assist, Special Attack, and Chain Attack Lv. +2 (odd Mindscape levels don't have written effect text — this is the actual in-game effect)",
+      "odd_level_skill_bump": true
+    },
+    "6": {
+      "title": "\"Vivian\"",
+      "desc": "Vivian's Ether DMG increases by 40%.\nWhen triggering a Perfect Dodge during Basic Attack: Noblewoman - Waltz's dash, or using EX Special Attack: Violet Requiem, gain 1 additional Flight Feather.\nLaunching Basic Attack: Fluttering Frock - Suspension consumes all Guard Feathers, the downward attack's area of effect increases, and upon hit, triggers a special instance of Abloom. Each additional Guard Feather consumed will increase the proportion of additional Anomaly DMG dealt by that instance of Abloom, consuming a maximum of 5 Guard Feathers to increase the DMG up to a maximum of 5 times the original.",
+      "odd_level_skill_bump": false
+    }
+  },
+  "XiaoZhao": {
+    "1": {
+      "title": "Righteous Verdict",
+      "desc": "When Zhao switches out of being the active character, all squad members' DMG ignores 15% of the target's All-Attribute RES for 50s.",
+      "odd_level_skill_bump": true
+    },
+    "2": {
+      "title": "Krampus Senior",
+      "desc": "When Zhao recovers HP, her ATK increases by 20%, and other squad members' ATK increases by 15% for 50s. Repeated triggers reset the duration.",
+      "odd_level_skill_bump": false
+    },
+    "3": {
+      "title": "Frostveil Edge",
+      "desc": "Basic Attack, Dodge, Assist, Special Attack, and Chain Attack Lv. +2 (odd Mindscape levels don't have written effect text — this is the actual in-game effect)",
+      "odd_level_skill_bump": true
+    },
+    "4": {
+      "title": "Featherlight Footsteps",
+      "desc": "When Zhao activates an Ether Veil, she gains 250 Decibels.\nThe CRIT DMG of her Ultimate, Chain Attack, and Basic Attack: Final Verdict increase by 40%.",
+      "odd_level_skill_bump": false
+    },
+    "5": {
+      "title": "Fuzzy Listener",
+      "desc": "Basic Attack, Dodge, Assist, Special Attack, and Chain Attack Lv. +2 (odd Mindscape levels don't have written effect text — this is the actual in-game effect)",
+      "odd_level_skill_bump": true
+    },
+    "6": {
+      "title": "No Value Has Its Own Value",
+      "desc": "The CRIT Rate buff from Core Passive: Ideal Colleague increases to 125% of the original value.\nThe extra DMG gained from charging during Basic Attack: Final Verdict increases to 140% of the original value, and accumulated charge time is no longer consumed when attacking.",
+      "odd_level_skill_bump": false
+    }
+  },
+  "Yanagi": {
+    "1": {
+      "title": "Know Thy Self, Know Thy Enemy",
+      "desc": "When any squad member inflicts an Anomaly on an enemy, Yanagi gains 1 stack of Clarity, lasting 15s, stacking up to 3 times. Repeated triggers reset the duration. Upon being hit by an enemy attack, Yanagi consumes 1 stack of Clarity to gain invulnerability for 1s. When Yanagi has 1 or more stacks of Clarity, her Anomaly Proficiency increases by 80.",
+      "odd_level_skill_bump": true
+    },
+    "2": {
+      "title": "Outstanding Adaptability",
+      "desc": "During her EX Special Attack, the rapid thrust's Electric Anomaly Buildup increases by 20%. Holding down the Special Attack button after a rapid thrust hits an enemy will consume 10 additional Energy to launch another thrust. If Energy is insufficient or the button is released, the attack automatically follows up with the downward attack. When the downward attack hits an enemy suffering an Anomaly and triggers Polarity Disorder, the DMG multiplier increases to 20% of the original Disorder effect. Each additional thrust increases this multiplier by 15%, up to a maximum of 2 extra thrusts.",
+      "odd_level_skill_bump": false
+    },
+    "3": {
+      "title": "Tsukishiro Style Management",
+      "desc": "Basic Attack, Dodge, Assist, Special Attack, and Chain Attack Lv. +2 (odd Mindscape levels don't have written effect text — this is the actual in-game effect)",
+      "odd_level_skill_bump": true
+    },
+    "4": {
+      "title": "Chessmaster",
+      "desc": "When Yanagi inflicts Attribute Anomaly DMG on an enemy, they suffer the Exposed effect, lasting 15s. Attacks on enemies under the Expose effect will have 16% increased PEN Ratio.",
+      "odd_level_skill_bump": false
+    },
+    "5": {
+      "title": "\"Other Mother\"",
+      "desc": "Basic Attack, Dodge, Assist, Special Attack, and Chain Attack Lv. +2 (odd Mindscape levels don't have written effect text — this is the actual in-game effect)",
+      "odd_level_skill_bump": true
+    },
+    "6": {
+      "title": "Inhuman Blood",
+      "desc": "After a thrust attack during her EX Special Attack, the duration of the Shinrabanshou state increases to 30s. While the state is active, EX Special Attack DMG increases by 20%.\nThe maximum number of times the additional DMG multiplier increase effect for Polarity Disorder in Outstanding Adaptability can be triggered increases to 4, and the Energy cost for the first 4 additional thrust attacks is halved.",
+      "odd_level_skill_bump": false
+    }
+  },
+  "YiXuan": {
+    "1": {
+      "title": "Spiritual Path",
+      "desc": "Upon entering combat, CRIT Rate increases by 10% and immediately gain 120 Technique Points.In Investigation Zone Mode, this effect can only trigger once every 180s.\nWhen any squad member lands a hit on an enemy, Yixuan automatically summons an extra lightning strike, dealing DMG equal to 50% of her Sheer Force and restoring 5 additional Adrenaline. This can trigger once every 6s.",
+      "odd_level_skill_bump": true
+    },
+    "2": {
+      "title": "Ward Off Misfortune",
+      "desc": "When an Ultimate or EX Special Attack deals DMG, it ignores 15% of the target's Ether RES.\nTriggering Ultimate: Qingming Skyshade extends all enemies' Stunned state by 3s. In a single Stun state duration, enemies can only have this effect applied once, and it does not stack with similar effects.\nAdditionally, when using Ultimate: Endless Talisman Suppression, gain one stack of the Condensed Ink effect\n After Basic Attack: Qingming Eruption or EX Special Attack: Ashen Ink Becomes Shadows, press the Basic Attack button, or after EX Special Attack: Qingming Eruption - Break, press the Special Attack button to consume one stack of Condensed Ink and launch EX Special Attack: Endless Talisman Suppression - Break, dealing DMG up to 1,200% of Sheer Force.\nOnly one stack of Condensed Ink can be held at a time.",
+      "odd_level_skill_bump": false
+    },
+    "3": {
+      "title": "Cycle of Yin and Yang",
+      "desc": "Basic Attack, Dodge, Assist, Special Attack, and Chain Attack Lv. +2 (odd Mindscape levels don't have written effect text — this is the actual in-game effect)",
+      "odd_level_skill_bump": true
+    },
+    "4": {
+      "title": "The One Path of Mysticism",
+      "desc": "Activating an  Ultimate grants one stack of Tranquility, up to a max of 2 stacks.\nFor each stack of Tranquility, the next EX Special Attack: Cloud-Shaper DMG and EX Special Attack: Ashen Ink Becomes Shadows DMG increase by 30%.",
+      "odd_level_skill_bump": false
+    },
+    "5": {
+      "title": "Calm Sky Vigil",
+      "desc": "Basic Attack, Dodge, Assist, Special Attack, and Chain Attack Lv. +2 (odd Mindscape levels don't have written effect text — this is the actual in-game effect)",
+      "odd_level_skill_bump": true
+    },
+    "6": {
+      "title": "Swift Yet Still",
+      "desc": "After using Ultimate: Qingming Skyshade, gain a stack of the Regulated Breathing effect.\nWhile under this effect, you can ignore the Technique Point cost to launch Ultimate: Endless Talisman Suppression once. The Regulated Breathing effect ends after Ultimate: Endless Talisman Suppression is used. This effect can only be gained once every 30s.\nOnly one stack of Regulated Breathing can be held.\nAdditionally, while in the Meditation state, Yixuan's Sheer DMG is increased by 20%.",
+      "odd_level_skill_bump": false
+    }
+  },
+  "Yidhari": {
+    "1": {
+      "title": "The Past Lost Beneath the Abyss",
+      "desc": "The Adrenaline cost to activate Yidhari's EX Special Attack is reduced by 10.\nAfter using EX Special Attack: Frost Coil or EX Special Attack: Glacial Crush, keeping hold of the Basic Attack or Special Attack button consumes 35 Adrenaline to forgo healing and immediately chain into another EX Special Attack: Glacial Crush. The HP restored by this EX Special Attack: Glacial Crush is increased by 100% of the original value.\nYidhari's Basic Attacks and EX Special Attacks ignore 20% of targets' Ice RES.",
+      "odd_level_skill_bump": true
+    },
+    "2": {
+      "title": "Who Lingers Here, Lost in Thought?",
+      "desc": "Yidhari's CRIT DMG increases by 40%. Triggering Surging Cold or Crushing Pursuit grants Adrenaline regen of 0.5/s for up to 30s. Repeated triggers reset the duration.",
+      "odd_level_skill_bump": false
+    },
+    "3": {
+      "title": "A Story Without an Audience",
+      "desc": "Basic Attack, Dodge, Assist, Special Attack, and Chain Attack Lv. +2 (odd Mindscape levels don't have written effect text — this is the actual in-game effect)",
+      "odd_level_skill_bump": true
+    },
+    "4": {
+      "title": "Blooming in Silence",
+      "desc": "Yidhari gains 10% more Decibels when losing HP for Core Passive: Dreamscape Collection.\nWhile in Ether Veil: Wellspring, Yidhari's Max HP is further increased by 5%.",
+      "odd_level_skill_bump": false
+    },
+    "5": {
+      "title": "This Solace Is Real",
+      "desc": "Basic Attack, Dodge, Assist, Special Attack, and Chain Attack Lv. +2 (odd Mindscape levels don't have written effect text — this is the actual in-game effect)",
+      "odd_level_skill_bump": true
+    },
+    "6": {
+      "title": "At Last, a Peaceful Dream",
+      "desc": "After Yidhari spends Decibels to activate or extend Ether Veil: Wellspring, she gains Erudition for 30s.\nWhile Erudition is active, her Sheer DMG increases by 25%. Also, upon taking fatal DMG for the first time, her HP is reduced to at most 1, and for the next 5s, she cannot be defeated and will restore 25% HP over time.",
+      "odd_level_skill_bump": false
+    }
+  },
+  "Yuzuha": {
+    "1": {
+      "title": "Lucky Constitution",
+      "desc": "Yuzuha regains 30 Energy when she enters the battlefield. In Investigation Zone Mode, this effect can trigger at most once every 180s.\nEnemies in the Sweet Scare state have their All-Attribute RES reduced by 10%. The Attribute Anomaly DMG and Disorder DMG buff from her Additional Ability is increased to 130% of its original value.",
+      "odd_level_skill_bump": true
+    },
+    "2": {
+      "title": "Full of Colorful Company",
+      "desc": "When Yuzuha's EX Special Attack: Cavity Alert, EX Special Attack: Cavity Alert, Right Now!, or Ultimate: Surrender or Suffer the Mischief hits an enemy, all squad members' DMG increases by 15% and Anomaly Buildup Rate by 15%, lasting 40s and repeated triggers reset the duration. When a heavy attack hits an enemy that is not Stunned, it will trigger a forced Chain Attack. Chain Attacks triggered this way have reduced Interrupt Level and forced Chain Attacks can only occur once every 20s.\nWhenever another character enters through a Chain Attack, Yuzuha gains 1 Sugar Points.\nYuzuha's Basic Attack: Hard Candy Shot cooldown is reduced by 25%.",
+      "odd_level_skill_bump": false
+    },
+    "3": {
+      "title": "Fairytale of the Haunted City",
+      "desc": "Basic Attack, Dodge, Assist, Special Attack, and Chain Attack Lv. +2 (odd Mindscape levels don't have written effect text — this is the actual in-game effect)",
+      "odd_level_skill_bump": true
+    },
+    "4": {
+      "title": "Falling Magic",
+      "desc": "The DMG of Yuzuha's Assist Follow-Up: Stuffed Hard Candy Shot and Assist Follow-Up: We Have Cookies increases by 30%, Anomaly Buildup Rate by 20%, and triggers a Quick Assist when it hits an enemy.",
+      "odd_level_skill_bump": false
+    },
+    "5": {
+      "title": "Dreams of a Fading Winter",
+      "desc": "Basic Attack, Dodge, Assist, Special Attack, and Chain Attack Lv. +2 (odd Mindscape levels don't have written effect text — this is the actual in-game effect)",
+      "odd_level_skill_bump": true
+    },
+    "6": {
+      "title": "Put Down Roots",
+      "desc": "Gain 1 additional Sugar Points when successfully parrying an enemy attack using a Defensive Assist or Basic Attack: Tanuki Cloak. When using Assist Follow-Up: Stuffed Hard Candy Shot, hold <IconMap:Icon_Normal> to charge for up to 0.8 seconds. Releasing <IconMap:Icon_Normal> or reaching full charge fires an extra powerful shell at the enemy. For every 0.4s charged, Yuzuha consumes 1 Sugar Point to fire an additional powerful shell, each dealing 300% of her ATK as Physical DMG.\nIf any powerful shell from Assist Follow-Up: Stuffed Hard Candy Shot hits an enemy, all squad members' Disorder DMG Multiplier increases by 105% for 40s, and stacking up to 3 times, with each stack duration being calculated separately. In addition, if the powerful shell hits an enemy under Sweet Scare, it'll trigger 1 Basic Attack: Sugarburst Sparkles - Max attack.\nIf Yuzuha is attacked while charging, she will automatically dodge the attack and immediately unleash the max-charged attack.",
+      "odd_level_skill_bump": false
+    }
+  },
+  "Zhenzhen": {
+    "1": {
+      "title": "Dreambound Self",
+      "desc": "Upon entering the battlefield, gains 6 Qingming Sword Force. This effect can trigger once every 180s in Investigation Zone mode.\nThe Unity effect from Core Passive: Burning Clarity increases DMG dealt by an additional 10%, and they ignore 20% of the target's DEF.",
+      "odd_level_skill_bump": true
+    },
+    "2": {
+      "title": "Light & Shadow",
+      "desc": "The max stack count of Bearer increases to 6, and Culmination can stack up to 9 times.\nWhile in the Enlightened Mind state, each point of Qingming Sword Force consumed grants 1 stack of Culmination.\nEX Special Attack: Enlightened Mind - Soaring Light and Ultimate: Cleaving Heavens's DMG ignore 40% of the target's DEF.",
+      "odd_level_skill_bump": false
+    },
+    "3": {
+      "title": "Swordswoman",
+      "desc": "Basic Attack, Dodge, Assist, Special Attack, and Chain Attack Lv. +2 (odd Mindscape levels don't have written effect text — this is the actual in-game effect)",
+      "odd_level_skill_bump": true
+    },
+    "4": {
+      "title": "Together into the Dust",
+      "desc": "Upon entering the battlefield, gains 1,000 Decibels. In Investigation Zone mode, this effect can trigger once every 180s.\nThe Vulnerability bonus provided by Ether Veil: Verdict is increased to a maximum of 200%.",
+      "odd_level_skill_bump": false
+    },
+    "5": {
+      "title": "Guiding Glimmer",
+      "desc": "Basic Attack, Dodge, Assist, Special Attack, and Chain Attack Lv. +2 (odd Mindscape levels don't have written effect text — this is the actual in-game effect)",
+      "odd_level_skill_bump": true
+    },
+    "6": {
+      "title": "Lantern Wish",
+      "desc": "Upon entering the battlefield, gains 2 stacks of Lantern Wish.\nWhen entering the Enlightened Mind state, gains 1 stack of Lantern Wish, stacking up to 4 times.\nWith 3 stacks of Lantern Wish, EX Special Attack: Enlightened Mind - Return to Dust is replaced with Ultimate: Cleaving Heavens. When this Ultimate: Cleaving Heavens is activated, it consumes 3 stacks of Lantern Wish.\nThe last hit of Enlightened Mind - Return to Dust and Ultimate: Cleaving Heavens deal 1,500% of ATK as additional Physical DMG.",
+      "odd_level_skill_bump": false
+    }
+  },
+  "ZhuYuan": {
+    "1": {
+      "title": "Quick Reload",
+      "desc": "When Zhu Yuan activates a Chain Attack/Ultimate, she gains the Quick Reload effect.\nWhen Zhu Yuan has the Quick Reload effect and uses up all Enhanced Shotshells, the Quick Reload effect will be consumed to instantly gain 6/9 Enhanced Shotshells.",
+      "odd_level_skill_bump": true
+    },
+    "2": {
+      "title": "Ether Ember",
+      "desc": "In Suppressive Mode, Zhu Yuan's Anti-Interrupt level is increased and DMG taken reduced by 10%.\nWhen Zhu Yuan hits an enemy with Enhanced Shotshells, the target takes 10% more Ether DMG from Basic Attack: Please Do Not Resist and Dash Attack: Overwhelming Firepower, stacking up to 5 times and lasting for 5s.\nEach shot adds one stack of this effect, and repeated triggers reset the duration.",
+      "odd_level_skill_bump": false
+    },
+    "3": {
+      "title": "Public Security Special Training",
+      "desc": "Basic Attack, Dodge, Assist, Special Attack, and Chain Attack Lv. +2 (odd Mindscape levels don't have written effect text — this is the actual in-game effect)",
+      "odd_level_skill_bump": true
+    },
+    "4": {
+      "title": "Ether Perforation",
+      "desc": "When Zhu Yuan hits an enemy with Enhanced Shotshells, her Basic Attack: Please Do Not Resist and Dash Attack: Overwhelming Firepower ignore 25% of the target's Ether RES.",
+      "odd_level_skill_bump": false
+    },
+    "5": {
+      "title": "Special Ops Experience",
+      "desc": "Basic Attack, Dodge, Assist, Special Attack, and Chain Attack Lv. +2 (odd Mindscape levels don't have written effect text — this is the actual in-game effect)",
+      "odd_level_skill_bump": true
+    },
+    "6": {
+      "title": "Expanded Energy Pack III",
+      "desc": "When Zhu Yuan consumes a total of 12 Enhanced Shotshells, she receives the Ether Afterglow effect, and the Energy cost of the next EX Special Attack is reduced by 30.\nLaunching an EX Special Attack will consume Ether Afterglow and shoot an additional 4-bullet Ether Buckshot.\nEach extra bullet deals DMG equal to 220% of Zhu Yuan's ATK.",
+      "odd_level_skill_bump": false
+    }
+  }
+}
