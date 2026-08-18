@@ -1,0 +1,86 @@
+{
+  "_README": [
+    "Machine-readable Mindscape stat effects, keyed by avatar id then Mindscape level (1-6).",
+    "mindscapes.json only holds display text, so the numbers the calculator applies live here.",
+    "",
+    "  props        : {PropertyId: raw_value} using the same ids as avatars/equipments",
+    "                 (percent values are basis points: 1500 = 15.0%)",
+    "  unconditional: true  -> always counted, matches what the in-game stat sheet shows",
+    "                 false -> only counted with --with-conditional (needs a combat trigger)",
+    "  note         : plain-English reminder of the trigger / why props may be empty",
+    "",
+    "Empty props with a note means the effect is not a flat stat (damage multipliers,",
+    "RES ignore, team-wide buffs, stat-scaling conversions) and cannot be expressed here."
+  ],
+
+  "1091": {
+    "2": {
+      "props": { "20103": 1500 },
+      "unconditional": false,
+      "note": "CRIT Rate +15% upon entering the battlefield (Miyabi)"
+    },
+    "4": {
+      "props": {},
+      "unconditional": false,
+      "note": "Frostburn-Break DMG +30% and +250 Decibels - damage multiplier, not a stat"
+    },
+    "6": {
+      "props": {},
+      "unconditional": false,
+      "note": "Polar: Basic Attack: Shimotsuki DMG +30% - damage multiplier, not a stat"
+    }
+  },
+
+  "1371": {
+    "2": {
+      "props": {},
+      "unconditional": false,
+      "note": "Ultimate/EX Special ignores 15% Ether RES - damage-formula term, not a stat"
+    },
+    "4": {
+      "props": {},
+      "unconditional": false,
+      "note": "Tranquility stacks: EX Special DMG +30% per stack - damage multiplier"
+    },
+    "6": {
+      "props": {},
+      "unconditional": false,
+      "note": "Regulated Breathing: free Ultimate cast - resource effect, no stats"
+    }
+  },
+
+  "1431": {
+    "2": { "props": {}, "unconditional": false, "note": "Ye Shunguang M2 - fill in if it grants flat stats" },
+    "4": { "props": {}, "unconditional": false, "note": "Ye Shunguang M4 - fill in if it grants flat stats" },
+    "6": { "props": {}, "unconditional": false, "note": "Ye Shunguang M6 - fill in if it grants flat stats" }
+  },
+
+  "1581": {
+    "2": { "props": {}, "unconditional": false, "note": "Remielle M2 - fill in if it grants flat stats" },
+    "4": { "props": {}, "unconditional": false, "note": "Remielle M4 - fill in if it grants flat stats" },
+    "6": { "props": {}, "unconditional": false, "note": "Remielle M6 - fill in if it grants flat stats" }
+  },
+
+  "1421": {
+    "1": {
+      "props": {},
+      "unconditional": false,
+      "note": "All units deal +10% DMG to Depleted Qi enemies - team damage bonus, not a stat"
+    },
+    "2": {
+      "props": {},
+      "unconditional": false,
+      "note": "Energy recovery per Break Force consumed - resource effect, no stats"
+    },
+    "4": {
+      "props": {},
+      "unconditional": false,
+      "note": "Ultimate healing +25% - healing multiplier, not a stat"
+    },
+    "6": {
+      "props": {},
+      "unconditional": false,
+      "note": "Meridian Flow gains +6% of initial ATK, max Sheer Force 720 - scales off ATK, needs a formula hook not a flat prop"
+    }
+  }
+}
