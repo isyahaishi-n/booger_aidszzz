@@ -101,7 +101,16 @@ SKILL_INDEX_TO_NAME: dict[int, str] = {
     # 4: "Chain Attack",
     5: "Core Skill",
 }
-
+def effective_skill_level(base_level: int, mindscape: int) -> int:
+    """M3 adds +2, M5 adds another +2 on top (stacking).
+    M1/M2/M4/M6 don't bump skill levels — those are written-effect levels.
+    """
+    bump = 0
+    if mindscape >= 3:
+        bump += 2
+    if mindscape >= 5:
+        bump += 2
+    return base_level + bump
 CORE_SKILL_LETTERS = ["-", "A", "B", "C", "D", "E", "F"]
 
 RANK_LETTERS = {2: "B", 3: "A", 4: "S"}
@@ -483,13 +492,19 @@ def main() -> None:
         print_disc_details(avatar, equipments, el, loc)
 
         skills = sorted(avatar.get("SkillLevelList", []), key=lambda s: int(s["Index"]))
+        mindscape = int(avatar.get("TalentLevel", 0))
 
         if skills:
             print("  Skill Levels:")
             for skill in skills:
                 idx = int(skill["Index"])
                 label = SKILL_INDEX_TO_NAME.get(idx, f"Skill {idx}")
-                print(f"    {label:16}: {skill['Level']}")
+                base_lvl = int(skill["Level"])
+                eff_lvl = effective_skill_level(base_lvl, mindscape)
+                if eff_lvl != base_lvl:
+                    print(f"    {label:16}: {base_lvl} -> {eff_lvl} (M{mindscape} bump)")
+                else:
+                    print(f"    {label:16}: {base_lvl}")
         print()
 
         print("-- Layer breakdown --")
