@@ -2,6 +2,24 @@ python zzz_enka_stat_calc_multichar.py --api 1303558818.json --avatars avatars.j
 
 Add `--with-conditional` to also count Mindscape buffs that need a combat trigger.
 
+## Web viewer
+
+The same calculator is also available as a local web app (stdlib only, no npm deps):
+
+```
+python server.py            # http://localhost:8787
+python server.py 9000       # custom port
+```
+
+- Enter any in-game UID to fetch the live showcase from enka.network (proxied server-side),
+  or click **Load sample** to view the bundled `1303558818.json`.
+- Agent cards show computed final stats (identical math to the Python script),
+  W-Engine and drive-disc detail, mindscape nodes and skill levels.
+- Game data (`avatars.json`, `weapons.json`, `equipments.json`, locale, level tables)
+  is served from `/api/data`; Enka images are proxied via `/ui/zzz/...` and disk-cached
+  in `.imgcache/`.
+- `node test_calc.js` verifies the JS stat engine against the Python reference output.
+
 ## Output
 
 For every agent in the showcase the script prints:
