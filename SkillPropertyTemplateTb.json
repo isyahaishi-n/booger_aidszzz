@@ -1,0 +1,25 @@
+{
+  "MLOEFHJHCID": [
+    {
+      "DALBKGGEJEF": 1001,
+      "JDGMFLANFNL": "SkillDamageRate",
+      "BLPLOAHJCEI": 10000,
+      "GAEGFAIGDBF": "{0:0.#%}",
+      "ODPGEJOMDPF": 3
+    },
+    {
+      "DALBKGGEJEF": 1002,
+      "JDGMFLANFNL": "SkillStunRatio",
+      "BLPLOAHJCEI": 10000,
+      "GAEGFAIGDBF": "{0:0.#%}",
+      "ODPGEJOMDPF": 3
+    },
+    {
+      "DALBKGGEJEF": 1003,
+      "JDGMFLANFNL": "SkillSpRecovery",
+      "BLPLOAHJCEI": 10000,
+      "GAEGFAIGDBF": "{0:0}",
+      "ODPGEJOMDPF": 3
+    }
+  ]
+}
