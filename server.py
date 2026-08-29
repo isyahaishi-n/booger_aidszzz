@@ -17,6 +17,7 @@ import json
 import mimetypes
 import re
 import urllib.error
+import urllib.parse
 import urllib.request
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
@@ -159,8 +160,8 @@ class Handler(BaseHTTPRequestHandler):
                     self._send_json({"error": f"Could not reach enka.network: {e}"}, 502)
 
             elif path.startswith("/ui/zzz/"):
-                name = path[len("/ui/zzz/"):]
-                if not re.fullmatch(r"[\w.\-]+", name):
+                name = urllib.parse.unquote(path[len("/ui/zzz/"):])
+                if ".." in name or "/" in name or "\\" in name or not re.fullmatch(r"[\w.\-&(),+'! ]+", name):
                     self._send(403, b"Forbidden", "text/plain; charset=utf-8")
                     return
                 cache = CACHE_DIR / name
