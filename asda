@@ -9,14 +9,6 @@ from collections import defaultdict
 from pathlib import Path
 from typing import Any
 
-from skill_lookup import (
-    build_explicit_name_map,
-    build_skill_index,
-    compute_damage_output,
-    load_skill_template,
-    load_textmap,
-)
-
 PROP_ID_TO_NAME: dict[int, str] = {
     11101: "HpMax_Base", 11102: "HpMax_Ratio", 11103: "HpMax_Delta",
     12101: "Atk_Base", 12102: "Atk_Ratio", 12103: "Atk_Delta",
@@ -91,34 +83,16 @@ def find_row(rows: list[dict[str, int]], label: str, **match: int) -> dict[str, 
 
 
 # Skill slots as they appear in the API's SkillLevelList "Index" field.
-# SKILL_INDEX_TO_NAME: dict[int, str] = {
-#     0: "Basic Attack",
-#     1: "Dodge",
-#     2: "Assist",
-#     3: "Special Attack",
-#     # 4: "Chain Attack",
-#     5: "Core Skill",
-#     6: "Ultimate",
-# }
 SKILL_INDEX_TO_NAME: dict[int, str] = {
     0: "Basic Attack",
-    2: "Dodge",
-    6: "Assist",
-    1: "Special Attack",
-    3: "Chain Attack",
-    # 4: "Chain Attack",
+    1: "Dodge",
+    2: "Assist",
+    3: "Special Attack",
+    4: "Chain Attack",
     5: "Core Skill",
+    6: "Ultimate",
 }
-def effective_skill_level(base_level: int, mindscape: int) -> int:
-    """M3 adds +2, M5 adds another +2 on top (stacking).
-    M1/M2/M4/M6 don't bump skill levels — those are written-effect levels.
-    """
-    bump = 0
-    if mindscape >= 3:
-        bump += 2
-    if mindscape >= 5:
-        bump += 2
-    return base_level + bump
+
 CORE_SKILL_LETTERS = ["-", "A", "B", "C", "D", "E", "F"]
 
 RANK_LETTERS = {2: "B", 3: "A", 4: "S"}
@@ -150,6 +124,12 @@ PROP_DISPLAY: dict[int, tuple[str, bool]] = {
 
 # Disc slot -> the piece's in-game position label.
 DISC_SLOT_NAMES = {1: "1", 2: "2", 3: "3", 4: "4", 5: "5", 6: "6"}
+
+# Odd Mindscape levels (M1/M3/M5) each grant +2 to these skills. The API's
+# SkillLevelList already includes the bump, so we only use this to show the split.
+ODD_MINDSCAPE_BUMP_INDICES = {0, 1, 2, 3, 4}
+ODD_MINDSCAPE_BUMP_PER_LEVEL = 2
+
 
 
 def localize(loc: dict[str, str], key: str | None, fallback: str = "?") -> str:
@@ -200,6 +180,85 @@ def print_disc_details(
             total = sub["PropertyValue"] * rolls
             sub_text = format_prop(int(sub["PropertyId"]), total)
             print(f"          - {sub_text}  ({rolls} roll{'s' if rolls != 1 else ''})")
+
+
+def mindscape_key(excel: dict[str, Any]) -> str:
+    """avatars.json 'Avatar_Male_Size03_PanYinhu' -> mindscapes.json 'PanYinhu'."""
+    return str(excel.get("Name", "")).split("_")[-1]
+
+
+def print_mindscape_details(
+    avatar: dict[str, Any],
+    excel: dict[str, Any],
+    mindscapes: dict[str, Any],
+    mindscape_props: dict[str, Any],
+    include_conditional: bool,
+) -> None:
+    """List the unlocked Mindscape nodes and flag which ones affect the stat sheet."""
+    unlocked = int(avatar.get("TalentLevel", 0))
+    if unlocked <= 0:
+        return
+    nodes = mindscapes.get(mindscape_key(excel), {})
+    prop_rows = mindscape_props.get(str(avatar["Id"]), {})
+    print("  Mindscape Nodes:")
+    for lvl in range(1, unlocked + 1):
+        node = nodes.get(str(lvl), {})
+        title = node.get("title", "?")
+        if node.get("odd_level_skill_bump"):
+            tag = f"(skill Lv. +{ODD_MINDSCAPE_BUMP_PER_LEVEL})"
+        else:
+            row = prop_rows.get(str(lvl))
+            if row and row.get("props"):
+                counted = row.get("unconditional") or include_conditional
+                tag = "[in stats]" if counted else "[conditional - not in stats]"
+            else:
+                tag = "[not in stats]"
+        print(f"    M{lvl} {title}  {tag}")
+
+
+def make_mindscape_layer(
+    avatar: dict[str, Any],
+    mindscape_props: dict[str, Any],
+    include_conditional: bool = False,
+) -> Layer:
+    """Stat effects from unlocked Mindscape levels.
+
+    mindscapes.json is display text only, so the numbers come from the
+    hand-authored mindscape_props.json. Conditional effects (buffs that need a
+    combat trigger) are skipped by default so the sheet matches the in-game
+    stat panel; pass include_conditional=True to fold them in.
+    """
+    out = Layer()
+    prop_rows = mindscape_props.get(str(avatar["Id"]), {})
+    for lvl in range(1, int(avatar.get("TalentLevel", 0)) + 1):
+        row = prop_rows.get(str(lvl))
+        if not row:
+            continue
+        if not (row.get("unconditional") or include_conditional):
+            continue
+        for prop_id, value in row.get("props", {}).items():
+            out.add(property_name(int(prop_id)), float(value))
+    return out
+
+
+def print_skill_levels(avatar: dict[str, Any]) -> None:
+    """Show skill levels, splitting out the +2 per odd Mindscape level."""
+    skills = sorted(avatar.get("SkillLevelList", []), key=lambda s: int(s["Index"]))
+    if not skills:
+        return
+    unlocked = int(avatar.get("TalentLevel", 0))
+    odd_levels = [lvl for lvl in range(1, unlocked + 1) if lvl % 2 == 1]
+    bump = len(odd_levels) * ODD_MINDSCAPE_BUMP_PER_LEVEL
+    print("  Skill Levels:")
+    for skill in skills:
+        idx = int(skill["Index"])
+        label = SKILL_INDEX_TO_NAME.get(idx, f"Skill {idx}")
+        level = int(skill["Level"])
+        if bump and idx in ODD_MINDSCAPE_BUMP_INDICES:
+            mind_labels = "/".join(f"M{lvl}" for lvl in odd_levels)
+            print(f"    {label:16}: {level}  (base {level - bump} +{bump} from {mind_labels})")
+        else:
+            print(f"    {label:16}: {level}")
 
 
 
@@ -350,6 +409,7 @@ def final_stats(s: Layer) -> dict[str, float]:
         "HP": prop(s, "HpMax_Base")
         + math.ceil(prop(s, "HpMax_Base") * prop(s, "HpMax_Ratio") / 10000)
         + prop(s, "HpMax_Delta"),
+
         "ATK": prop(s, "Atk_Base")
         * (1 + prop(s, "Atk_Ratio") / 10000)
         + prop(s, "Atk_Delta"),
@@ -420,81 +480,37 @@ def final_stats(s: Layer) -> dict[str, float]:
             + prop(s, "SkipDefDamageRatio_Delta"),
     }
 
-def load_skill_data(base_dir: Path) -> tuple[Any, dict, dict]:
-    """Load skill multiplier tables for the damage-per-skill section.
-
-    Returns (skill_index, name_map, textmap). All three are shared, read-only
-    structures built once and reused for every avatar.
-    """
-    skill_template = load_skill_template(str(base_dir / "AvatarSkillTemplateTb.json"))
-    skill_index = build_skill_index(skill_template)
-    des_template = load_skill_template(str(base_dir / "AvatarSkillDesTemplateTb.json"))
-    name_map = build_explicit_name_map(des_template)
-    textmap = load_textmap(str(base_dir / "TextMap_ENTemplateTb.json"))
-    return skill_index, name_map, textmap
-
-
-# Enka SkillLevelList "Index" values that have damage multipliers in
-# AvatarSkillTemplateTb (Index == GLENCFMNKMF). 5 = Core Skill has no
-# multipliers there — its stat bonuses are already applied via CoreEnhancementProps.
-MULTIPLIER_SKILL_INDICES = (0, 1, 2, 3, 6)
-
-
-def print_skill_damage(
-    avatar: dict[str, Any],
-    avatar_id: int,
-    mindscape: int,
-    atk: float,
-    skill_index: Any,
-    name_map: dict,
-    textmap: dict,
-) -> None:
-    """Per-hit damage/daze multipliers at this agent's actual skill levels.
-
-    Uses the effective level (M3/M5 +2 bumps) and the final ATK computed
-    above. Hidden hits (not referenced by the in-game UI) are marked.
-    """
-    levels = {int(s["Index"]): int(s["Level"]) for s in avatar.get("SkillLevelList", [])}
-    print("-- Skill damage (at current skill level, raw = x ATK) --")
-    any_printed = False
-    for idx in MULTIPLIER_SKILL_INDICES:
-        base_lvl = levels.get(idx)
-        if base_lvl is None:
-            continue
-        eff_lvl = effective_skill_level(base_lvl, mindscape)
-        label = SKILL_INDEX_TO_NAME.get(idx, f"Skill {idx}")
-        rows = compute_damage_output(
-            skill_index, avatar_id=avatar_id, skill_type=idx, level=eff_lvl,
-            atk=atk, name_map=name_map, textmap=textmap,
-        )
-        if not rows:
-            continue
-        any_printed = True
-        bump = f" (M{mindscape}: {base_lvl}->{eff_lvl})" if eff_lvl != base_lvl else ""
-        print(f"  {label} Lv.{eff_lvl}{bump}:")
-        for r in rows:
-            name = r["name"] if r["name"] else f"hit {r['hit_id']}"
-            hidden = "  [hidden]" if r["is_hidden"] else ""
-            print(
-                f"    {name}: DMG {r['damage_pct']:.1f}%"
-                f" ({r['raw_damage']:.0f})  Daze {r['daze_pct']:.1f}%{hidden}"
-            )
-    if not any_printed:
-        print("  (no multiplier rows for this agent)")
-
-
 def main() -> None:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--api", default="1303558818.json", help="Enka showcase payload")
+    parser.add_argument("--avatars", default="avatars.json", help="Agent metadata")
+    parser.add_argument(
+        "--with-conditional",
+        action="store_true",
+        help="Also count Mindscape effects that need a combat trigger (default: off, matches the in-game stat sheet)",
+    )
+    args = parser.parse_args()
+
     base_dir = Path(__file__).resolve().parent
-    api = load_json(base_dir / "1303558818.json")
+    api = load_json(base_dir / args.api)
+
     showcase = api["PlayerInfo"]["ShowcaseDetail"]
     avatars_list = showcase.get("AvatarList", [])
 
     weapons = load_json(base_dir / "weapons.json")
     equipments = load_json(base_dir / "equipments.json")
-    avatars = load_json(base_dir / "avatars.json")
+    avatars = load_json(base_dir / args.avatars)
 
     locale_path = base_dir / "locale_en.json"
     loc: dict[str, str] = load_json(locale_path) if locale_path.exists() else {}
+
+    mindscapes_path = base_dir / "mindscapes.json"
+    mindscapes: dict[str, Any] = load_json(mindscapes_path) if mindscapes_path.exists() else {}
+
+    mprops_path = base_dir / "mindscape_props.json"
+    mindscape_props: dict[str, Any] = load_json(mprops_path) if mprops_path.exists() else {}
+    mindscape_props.pop("_README", None)
+
 
 
     # Full growth tables (all rarities / levels / break levels) instead of the
@@ -503,7 +519,6 @@ def main() -> None:
     ws = load_template_table(base_dir / "WeaponStarTemplateTb.json", WEAPON_STAR_FIELDS)
     el = load_template_table(base_dir / "EquipmentLevelTemplateTb.json", EQUIPMENT_LEVEL_FIELDS)
 
-    skill_index, name_map, textmap = load_skill_data(base_dir)
 
     for avatar in avatars_list:
         avatar_id = int(avatar["Id"])
@@ -515,7 +530,9 @@ def main() -> None:
         state = StatState()
         state.add("Character", make_character_layer(agent))
         state.add("Core", make_core_layer(agent))
+        state.add("Mindscape", make_mindscape_layer(avatar, mindscape_props, args.with_conditional))
         state.add("W-Engine", make_weapon_layer(avatar, weapons, wl, ws))
+
         state.add("Drive Discs", make_disc_layer(avatar, equipments, el))
         state.add("Set Bonuses", make_set_layer(avatar, equipments))
         apply_corrections(agent, state)
@@ -561,22 +578,10 @@ def main() -> None:
             print(f"  Drive Discs: {sets}")
 
         print_disc_details(avatar, equipments, el, loc)
-
-        skills = sorted(avatar.get("SkillLevelList", []), key=lambda s: int(s["Index"]))
-        mindscape = int(avatar.get("TalentLevel", 0))
-
-        if skills:
-            print("  Skill Levels:")
-            for skill in skills:
-                idx = int(skill["Index"])
-                label = SKILL_INDEX_TO_NAME.get(idx, f"Skill {idx}")
-                base_lvl = int(skill["Level"])
-                eff_lvl = effective_skill_level(base_lvl, mindscape)
-                if eff_lvl != base_lvl:
-                    print(f"    {label:16}: {base_lvl} -> {eff_lvl} (M{mindscape} bump)")
-                else:
-                    print(f"    {label:16}: {base_lvl}")
+        print_mindscape_details(avatar, excel, mindscapes, mindscape_props, args.with_conditional)
+        print_skill_levels(avatar)
         print()
+
 
         print("-- Layer breakdown --")
 
@@ -603,13 +608,6 @@ def main() -> None:
                 print(f"{name:22}: {value:g}")
             else:
                 print(f"{name:22}: {math.floor(value):g}")
-
-        print_skill_damage(
-            avatar, avatar_id, mindscape=int(avatar.get("TalentLevel", 0)),
-            atk=stats["ATK"], skill_index=skill_index,
-            name_map=name_map, textmap=textmap,
-        )
-        print()
 
 
 if __name__ == "__main__":
