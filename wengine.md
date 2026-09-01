@@ -37,7 +37,10 @@ Sumber data passive (semua lokal):
 - `WeaponTalentTemplateTb.json` — 475 rows, field:
   `COEEBFOBGND` = weapon id (match key di `weapons.json`),
   `APAEMLCPFID` = level talent (1-5 = phase/mod S1-S5),
-  `POLEJGCKKFI` = title key, `CLCDDKNHEMN` = desc key,
+  `CLCDDKNHEMN` = title key, `POLEJGCKKFI` = desc key
+  (CORRECTED 2026-08-31: versi awal dokumen ini menukar keduanya;
+  kebenaran dari isi file — CLCDDKNHEMN berisi `...Title_...`,
+  POLEJGCKKFI berisi `...Des_...`),
   `NFKHOOCEDEH` = list ID teks parameter.
 - Teks via TextMap (`Weapon_TalentDes_*`).
 - Level passive yang aktif ditentukan phase weapon dari API dump

@@ -21,6 +21,17 @@ cuma daftar kerjaan aktif, bukan dokumentasi temuan.
 
 ## 🟢 Selesai (jangan dikerjain ulang)
 
+- [x] **Regenerasi `wengine_passive_mapped.json` dari teks mentah** (2026-08-31):
+      file lama (schema v1) punya effects fabricated — contoh Fusion
+      Compiler (14118) dikasih "crit_rate 10%" yang dicopy dari weapon
+      lain; teks aslinya cuma ATK +12..24% & AP +25..50. Generator baru
+      `wengine_passive_gen.py`: semua angka diekstrak mekanis dari
+      `Weapon_TalentDes_*` phase 1-5 (TextMap + ENOverwrite merge),
+      di-align antar phase via skeleton, tiap effect bawa `evidence_p1`
+      + `raw_texts` p1-p5 (auditable). Audit invariant: setiap nilai
+      curve HARUS muncul di teks phase-nya (anti-fabrication) — 95/95
+      weapon PASS, 0 needs_review, 0 unparsed. Field title/desc key di
+      `wengine.md` sebelumnya kebalik — sudah dikoreksi.
 - [x] **Wire skill multipliers ke `zzz_enka_stat_calc_multichar.py`**
       (2026-08-30): section baru `-- Skill damage --` per avatar —
       nama EN per hit (explicit mapping + TextMap + Overwrite merge),
