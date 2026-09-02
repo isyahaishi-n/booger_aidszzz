@@ -1,3 +1,5 @@
+python zzz_enka_stat_calc_multichar.py 1303558818.json --export   →  loadouts.json
+python damage_calc.py                                              →  kalibrasi auto dari loadouts
 # ZZZ Skill Data — Laporan Dekode Field Obfuscated
 
 Laporan lengkap hasil reverse-engineering field-field obfuscated (nama acak) pada dump

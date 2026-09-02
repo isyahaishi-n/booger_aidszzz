@@ -5,6 +5,7 @@ from __future__ import annotations
 import argparse
 import json
 import math
+import sys
 from collections import defaultdict
 from pathlib import Path
 from typing import Any
@@ -271,7 +272,10 @@ def make_core_layer(agent: dict[str, Any]) -> Layer:
 
 
 def make_weapon_layer(api_agent: dict[str, Any], weapons: dict[str, Any], weapon_level_rows, weapon_star_rows) -> Layer:
-    w = api_agent["Weapon"]
+    """Empty layer when no W-Engine is equipped (WeaponUid == 0 / missing)."""
+    w = api_agent.get("Weapon")
+    if not w or not int(w.get("Id", 0)):
+        return Layer()
     weapon_id = int(w["Id"])
     data = weapons[str(weapon_id)]
     rarity = int(data["Rarity"])
@@ -483,9 +487,170 @@ def print_skill_damage(
         print("  (no multiplier rows for this agent)")
 
 
+# Stat panel yang satuan internalnya basis points (x10000 di layer,
+# final_stats kelihatan x100) tapi display game & damage_calc pakai %.
+PCT_PANEL_STATS = {
+    "CRIT Rate", "CRIT DMG", "PEN Ratio", "Physical DMG", "Fire DMG",
+    "Ice DMG", "Electric DMG", "Ether DMG", "Wind DMG", "Sheer DMG",
+}
+
+
+def compute_avatar_snapshot(
+    avatar: dict[str, Any],
+    avatar_id: int,
+    avatars: Any,
+    weapons: dict[str, Any],
+    equipments: dict[str, Any],
+    weapon_level_rows,
+    weapon_star_rows,
+    equipment_level_rows,
+    skill_index: Any,
+    name_map: dict,
+    textmap: dict,
+    loc: dict[str, str],
+) -> dict[str, Any]:
+    """Hitung semua yang damage_calc.py butuh dari satu avatar Enka.
+
+    Return snapshot: identitas, loadout (weapon id/phase, set 4pc names,
+    mindscape), stat panel final, dan daftar hit skill (damage_pct per
+    skill type & level efektif) — tanpa print apa pun.
+    """
+    agent = get_agent_data(
+        avatar_id=avatar_id, level=int(avatar["Level"]),
+        promotion=int(avatar["PromotionLevel"]), core=int(avatar["CoreSkillEnhancement"]),
+        avatars=avatars,
+    )
+    state = StatState()
+    state.add("Character", make_character_layer(agent))
+    state.add("Core", make_core_layer(agent))
+    state.add("W-Engine", make_weapon_layer(avatar, weapons, weapon_level_rows, weapon_star_rows))
+    state.add("Drive Discs", make_disc_layer(avatar, equipments, equipment_level_rows))
+    state.add("Set Bonuses", make_set_layer(avatar, equipments))
+    apply_corrections(agent, state)
+
+    stats = final_stats(state.summed())
+
+    excel = avatars[str(avatar_id)]
+    mindscape = int(avatar.get("TalentLevel", 0))
+    weapon_api = avatar.get("Weapon") or {}
+
+    # Set 4pc aktif (count >= 4) — nama set, bukan suit id.
+    suit_counts: defaultdict[int, int] = defaultdict(int)
+    for equip in avatar.get("EquippedList", []):
+        suit_counts[int(equipments["Items"][str(equip["Equipment"]["Id"])]["SuitId"])] += 1
+    set4_names = [
+        localize(loc, equipments["Suits"][str(sid)].get("Name"), str(sid))
+        for sid, count in sorted(suit_counts.items()) if count >= 4
+    ]
+
+    # Skill hits: per skill index yang punya multiplier, level efektif (M3/M5 bump).
+    levels = {int(s["Index"]): int(s["Level"]) for s in avatar.get("SkillLevelList", [])}
+    skills = {}
+    for idx in MULTIPLIER_SKILL_INDICES:
+        base_lvl = levels.get(idx)
+        if base_lvl is None:
+            continue
+        eff_lvl = effective_skill_level(base_lvl, mindscape)
+        rows = compute_damage_output(
+            skill_index, avatar_id=avatar_id, skill_type=idx, level=eff_lvl,
+            atk=stats["ATK"], name_map=name_map, textmap=textmap,
+        )
+        if not rows:
+            continue
+        skills[str(idx)] = {
+            "label": SKILL_INDEX_TO_NAME.get(idx, f"Skill {idx}"),
+            "level": eff_lvl,
+            "hits": [
+                {
+                    "hit_id": r["hit_id"],
+                    "name": r["name"] or f"hit {r['hit_id']}",
+                    "damage_pct": r["damage_pct"],
+                    "daze_pct": r["daze_pct"],
+                    "is_hidden": r["is_hidden"],
+                }
+                for r in rows
+            ],
+        }
+
+    return {
+        "avatar_id": avatar_id,
+        "name": localize(loc, excel.get("Name"), str(avatar_id)),
+        "element": (excel.get("ElementTypes") or ["?"])[-1],
+        "profession": excel.get("ProfessionType", "?"),
+        "level": int(avatar["Level"]),
+        "mindscape": mindscape,
+        "core": int(avatar["CoreSkillEnhancement"]),
+        "weapon": {
+            "id": int(weapon_api.get("Id", 0) or 0),
+            "level": int(weapon_api.get("Level", 0) or 0),
+            "phase": int(weapon_api.get("UpgradeLevel", 1) or 1),
+        },
+        "set4pc": set4_names,
+        # Stats persen dikonversi basis-points -> persen (5140 -> 51.4) supaya
+        # langsung kompatibel sama formula damage_calc yang expect satuan %.
+        "stats": {
+            k: (float(v) / 100.0 if k in PCT_PANEL_STATS else float(v))
+            for k, v in stats.items()
+        },
+        "skills": skills,
+    }
+
+
+def export_loadouts(profile: str, out_path: str | None = None) -> str:
+    """Export semua avatar di profile Enka -> loadouts JSON buat damage_calc.
+
+    Struktur: {"avatars": [snapshot, ...], "panel_flat": {avatar_id: stats}}
+    (panel_flat duplikat stats per id biar damage_calc gampang lookup).
+    """
+    base_dir = Path(__file__).resolve().parent
+    api = load_json(base_dir / profile)
+    showcase = api["PlayerInfo"]["ShowcaseDetail"]
+    avatars_list = showcase.get("AvatarList", [])
+
+    weapons = load_json(base_dir / "weapons.json")
+    equipments = load_json(base_dir / "equipments.json")
+    avatars = load_json(base_dir / "avatars.json")
+    locale_path = base_dir / "locale_en.json"
+    loc: dict[str, str] = load_json(locale_path) if locale_path.exists() else {}
+
+    wl = load_template_table(base_dir / "WeaponLevelTemplateTb.json", WEAPON_LEVEL_FIELDS)
+    ws = load_template_table(base_dir / "WeaponStarTemplateTb.json", WEAPON_STAR_FIELDS)
+    el = load_template_table(base_dir / "EquipmentLevelTemplateTb.json", EQUIPMENT_LEVEL_FIELDS)
+    skill_index, name_map, textmap = load_skill_data(base_dir)
+
+    snapshots = []
+    for avatar in avatars_list:
+        snapshots.append(compute_avatar_snapshot(
+            avatar, int(avatar["Id"]), avatars, weapons, equipments,
+            wl, ws, el, skill_index, name_map, textmap, loc,
+        ))
+
+    payload = {
+        "source_profile": profile,
+        "avatars": snapshots,
+        "panel_flat": {str(s["avatar_id"]): s["stats"] for s in snapshots},
+    }
+    out_path = out_path or str(base_dir / "loadouts.json")
+    with open(out_path, "w", encoding="utf-8") as f:
+        json.dump(payload, f, ensure_ascii=False, indent=2)
+    return out_path
+
+
 def main() -> None:
     base_dir = Path(__file__).resolve().parent
-    api = load_json(base_dir / "1303558818.json")
+    parser = argparse.ArgumentParser(description="ZZZ stat calculator dari dump Enka")
+    parser.add_argument("profile", nargs="?", default="1.json",
+                        help="file JSON profile Enka (default: 1.json)")
+    parser.add_argument("--export", action="store_true",
+                        help="export loadouts.json buat damage_calc.py (tanpa print detail)")
+    args = parser.parse_args()
+
+    if args.export:
+        out = export_loadouts(args.profile)
+        print(f"exported: {out}")
+        return
+
+    api = load_json(base_dir / args.profile)
     showcase = api["PlayerInfo"]["ShowcaseDetail"]
     avatars_list = showcase.get("AvatarList", [])
 
@@ -529,11 +694,6 @@ def main() -> None:
         rank = {2: "B", 3: "A", 4: "S"}.get(int(excel.get("Rarity", 0)), "?")
         element = "/".join(excel.get("ElementTypes", [])[-1:]) or "?"
 
-        weapon_api = avatar["Weapon"]
-        weapon_meta = weapons[str(weapon_api["Id"])]
-        weapon_name = localize(loc, weapon_meta.get("ItemName"), str(weapon_api["Id"]))
-        weapon_rank = {2: "B", 3: "A", 4: "S"}.get(int(weapon_meta.get("Rarity", 0)), "?")
-
         core_level = int(avatar["CoreSkillEnhancement"])
         core_letter = CORE_SKILL_LETTERS[core_level] if core_level < len(CORE_SKILL_LETTERS) else str(core_level)
 
@@ -544,11 +704,20 @@ def main() -> None:
             f"  |  Mindscape M{avatar['TalentLevel']}"
             f"  |  Core Skill {core_letter} ({core_level})"
         )
-        print(
-            f"  W-Engine: {weapon_name} [{weapon_rank}-rank]"
-            f"  Lv.{weapon_api['Level']}  Phase {weapon_api['UpgradeLevel']}"
-            f"  (Mod {weapon_api['BreakLevel']})"
-        )
+
+        weapon_api = avatar.get("Weapon")
+        if weapon_api and int(weapon_api.get("Id", 0)):
+            weapon_meta = weapons[str(weapon_api["Id"])]
+            weapon_name = localize(loc, weapon_meta.get("ItemName"), str(weapon_api["Id"]))
+            weapon_rank = {2: "B", 3: "A", 4: "S"}.get(int(weapon_meta.get("Rarity", 0)), "?")
+            print(
+                f"  W-Engine: {weapon_name} [{weapon_rank}-rank]"
+                f"  Lv.{weapon_api['Level']}  Phase {weapon_api['UpgradeLevel']}"
+                f"  (Mod {weapon_api['BreakLevel']})"
+                # break level itu bukan overclock/refinement
+            )
+        else:
+            print("  W-Engine: (tidak ada / tidak dipasang)")
 
         suit_counts: defaultdict[int, int] = defaultdict(int)
         for equip in avatar.get("EquippedList", []):
@@ -613,4 +782,8 @@ def main() -> None:
 
 
 if __name__ == "__main__":
+    # Nama skill bisa mengandung karakter non-cp1252 (mis. U+2010) —
+    # console Windows default-nya cp1252 dan bakal UnicodeEncodeError.
+    if sys.stdout.encoding and sys.stdout.encoding.lower() not in ("utf-8", "utf8"):
+        sys.stdout.reconfigure(encoding="utf-8", errors="replace")
     main()

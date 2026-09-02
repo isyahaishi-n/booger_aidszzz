@@ -723,6 +723,11 @@ def compute_final_damage(
 # Kalibrasi ke ground truth (Miyabi vs Tyrfing L60) — full otomatis
 # ---------------------------------------------------------------------------
 
+def load_loadouts(path: str = "loadouts.json") -> dict:
+    """loadouts.json hasil export zzz_enka_stat_calc_multichar.py --export."""
+    return load_json(path)
+
+
 def run_calibration() -> bool:
     print("=== Kalibrasi Miyabi vs Tyrfing L60 (ground truth 1086/2961) ===")
     print()
@@ -734,27 +739,47 @@ def run_calibration() -> bool:
     print(f"[1] Mapped files: {len(wengines)} W-Engine, {len(sets)} set, "
           f"{len(mindscapes)} avatar")
 
-    # [2] Skill multiplier via skill_lookup (bukan hardcode)
-    import skill_lookup as sl
-    index = sl.build_skill_index(sl.load_skill_template("AvatarSkillTemplateTb.json"))
-    hits = sl.get_skill_multipliers(index, avatar_id=1091, skill_type=0, level=12)
-    hit1 = hits[0]
-    print(f"[2] Skill mult: Miyabi Basic Attack Lv.12 hit {hit1['hit_id']} "
-          f"= {hit1['damage_pct']}% (Kazahana hit-1, Physical)")
+    # [1b] Stat panel & skill mult dari loadouts.json (export stat calc)
+    try:
+        loadouts = load_loadouts()
+        miya = next(a for a in loadouts["avatars"] if a["avatar_id"] == 1091)
+        panel = miya["stats"]
+        basic = miya["skills"]["0"]
+        hit1 = basic["hits"][0]
+        skill_mult = hit1["damage_pct"]
+        attacker_level = int(miya["level"])
+        weapon_id = miya["weapon"]["id"]
+        weapon_phase = miya["weapon"]["phase"]
+        set4pc_names = miya["set4pc"]
+        mindscape_rank = int(miya["mindscape"])
+        print(f"[1b] loadouts.json: '{miya['name']}' ATK panel {panel['ATK']:.2f}, "
+              f"Basic Lv.{basic['level']} hit {hit1['name']} = {skill_mult}%")
+    except FileNotFoundError:
+        print("[1b] loadouts.json nggak ada — fallback hardcode "
+              "(jalanin: python zzz_enka_stat_calc_multichar.py 1303558818.json --export)")
+        panel = {"ATK": 2715.64, "CRIT Rate": 51.4, "CRIT DMG": 142.8,
+                 "PEN Ratio": 24.0, "PEN": 18, "Ice DMG": 30.0}
+        skill_mult = 54.4
+        attacker_level = 60
+        weapon_id = 14118
+        weapon_phase = 1
+        set4pc_names = ["Branch & Blade Song"]
+        mindscape_rank = 0
 
     # [3] Build toggle list dari 3 sumber
     toggles = []
-    toggles += build_wengine_toggles(wengines, weapon_id=14118, phase=1)
-    toggles += build_set4pc_toggles(sets, "Branch & Blade Song")
-    toggles += build_mindscape_toggles(mindscapes, avatar_id=1091, mindscape_rank=0)
-    print(f"[3] Toggle list: {len(toggles)} entry "
-          f"(Fusion Compiler S1 + B&BS 4pc + Miyabi M0)")
+    toggles += build_wengine_toggles(wengines, weapon_id=weapon_id, phase=weapon_phase)
+    for set_name in set4pc_names:
+        if set_name in sets:
+            toggles += build_set4pc_toggles(sets, set_name)
+    toggles += build_mindscape_toggles(mindscapes, avatar_id=1091, mindscape_rank=mindscape_rank)
+    print(f"[3] Toggle list: {len(toggles)} entry")
     print_toggle_table(toggles)
 
     # [4] Threshold eval — deterministik dari stat panel (AM 116 >= 115)
-    panel = {"anomaly_mastery": 116}
-    print(f"[4] evaluate_thresholds(panel={panel}):")
-    for entry, note in evaluate_thresholds(toggles, panel):
+    panel_snake = {"anomaly_mastery": panel.get("Anomaly Mastery", 0.0)}
+    print(f"[4] evaluate_thresholds(panel={panel_snake}):")
+    for entry, note in evaluate_thresholds(toggles, panel_snake):
         print(f"    {entry.stat} {entry.value:g}: {note}")
     print()
 
@@ -781,17 +806,18 @@ def run_calibration() -> bool:
                  "Ether": -0.20, "Wind": 0.0},
     )
     result = compute_final_damage(
-        atk_panel=2715.64,          # stat panel Miyabi (zzz_enka_stat_calc)
-        skill_mult_pct=hit1["damage_pct"],
-        crit_dmg_panel_pct=142.8,
+        atk_panel=panel["ATK"],
+        skill_mult_pct=skill_mult,
+        crit_dmg_panel_pct=panel["CRIT DMG"],
         enemy=enemy,
         element="Physical",
         skill_type="Basic Attack",
-        crit_rate_panel_pct=51.4,
-        pen_ratio_pct=24.0,
-        pen_flat=18,
+        crit_rate_panel_pct=panel["CRIT Rate"],
+        pen_ratio_pct=panel["PEN Ratio"],
+        pen_flat=panel["PEN"],
+        dmg_bonus_panel_pct=panel.get("Physical DMG", 0.0),
         mods=mods,
-        attacker_level=60,
+        attacker_level=attacker_level,
         level_factor_curve=level_curve,
     )
 
