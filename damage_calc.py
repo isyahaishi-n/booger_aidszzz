@@ -324,6 +324,10 @@ def build_wengine_toggles(mapped: dict, weapon_id: int, phase: int = 1) -> list:
     tersedia (passive nggak turun saat refine, cuma naik). Value diambil
     dari values_p1_to_p5[phase-1].
     """
+    if not weapon_id:
+        # Sentinel "no wengine equipped" (export dari profile tanpa equip).
+        # Disc & set 4pc udah guard-by-construction; di sini tinggal skip lookup.
+        return []
     w = mapped.get(weapon_id)
     if w is None:
         raise KeyError(f"weapon id {weapon_id} nggak ada di wengine_passive_mapped.json")
@@ -768,6 +772,8 @@ def run_calibration() -> bool:
 
     # [3] Build toggle list dari 3 sumber
     toggles = []
+    if not weapon_id:
+        print(f"[3] No wengine equipped (weapon_id={weapon_id}) — skip wengine toggles")
     toggles += build_wengine_toggles(wengines, weapon_id=weapon_id, phase=weapon_phase)
     for set_name in set4pc_names:
         if set_name in sets:
