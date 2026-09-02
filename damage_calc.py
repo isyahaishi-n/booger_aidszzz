@@ -30,7 +30,7 @@ Pipeline (lihat TODO_agent.md):
 Formula (wiki ZZZ Damage page + wengine.md, tervalidasi manual 99.9%):
     ATK_combat = ATK_panel * (1 + Bonus%_cond) + Flat_cond
     DEF_eff    = DEF_enemy * (1 - PENratio%) * Π(1 - DEFignore_i%) - PEN_flat
-    DEFmult    = 794 / (max(DEF_eff, 0) + 794)          [attacker L60+]
+    DEFmult    = LevelFactor(attacker_level) / (max(DEF_eff, 0) + LevelFactor(attacker_level))
     RESmult    = 1 - (RES * Π(1 - RESignore_i%) - RESshred%)
     NonCrit    = ATK_combat * skill_mult% * (1 + DMG%_bonus) * DEFmult * RESmult
     Crit       = NonCrit * (1 + CRIT_DMG_combat%)
@@ -594,16 +594,55 @@ class EnemyStats:
     res_pct: dict = field(default_factory=dict)
 
 
-def compute_def_mult(enemy_def: float, pen_ratio_pct: float = 0.0,
-                     pen_flat: float = 0.0, def_ignore_pcts=()) -> float:
-    """DEFmult = 794 / (max(DEF*(1-PENratio)*Π(1-ignore_i) - PEN, 0) + 794)
-    Konstanta 794 spesifik utk attacker level 60+.
+def load_level_factor_curve(path: str = "LevelCurveTemplateTb.json") -> dict:
+    """Load the canonical attacker Level Factor curve.
+
+    In the supplied LevelCurveTemplateTb dump, row Id=1000 is a curve whose
+    values are exactly 2x the Wiki Level Factor table (e.g. L1=100, L60=1588).
+    Therefore LevelFactor(level) = curve_1000[level-1] / 2.
     """
+    data = load_json(path)
+    rows = data.get("MLOEFHJHCID", [])
+    row = next((r for r in rows if r.get("DALBKGGEJEF") == 1000), None)
+    if row is None:
+        raise KeyError("LevelCurveTemplateTb: curve Id 1000 not found")
+    values = row.get("JMIKNDKIMPH", [])
+    if not values:
+        raise ValueError("LevelCurveTemplateTb: curve Id 1000 has no values")
+    return {level: value / 2.0 for level, value in enumerate(values, start=1)}
+
+
+def get_level_factor(attacker_level: int, level_curve: dict | None = None) -> float:
+    """Return the ZZZ DEF Level Factor for an attacker level (1-based).
+
+    The game/wiki caps the displayed Level Factor at 794 from level 60 onward;
+    the supplied curve itself is already plateaued, so levels above its length
+    reuse the last value rather than silently changing the formula.
+    """
+    if attacker_level < 1:
+        raise ValueError(f"attacker_level must be >= 1, got {attacker_level}")
+    curve = level_curve if level_curve is not None else load_level_factor_curve()
+    if not curve:
+        raise ValueError("empty level factor curve")
+    max_level = max(curve)
+    return curve[min(attacker_level, max_level)]
+
+
+def compute_def_mult(enemy_def: float, pen_ratio_pct: float = 0.0,
+                     pen_flat: float = 0.0, def_ignore_pcts=(),
+                     attacker_level: int = 60, level_factor_curve: dict | None = None) -> float:
+    """DEFmult = LF / (max(DEF*(1-PENratio)*Π(1-ignore_i) - PEN, 0) + LF).
+
+    ``LF`` is the attacker's Level Factor from LevelCurveTemplateTb.
+    Backward compatibility is preserved: omitting ``attacker_level`` uses 60,
+    whose Level Factor is exactly 794 in the supplied curve.
+    """
+    level_factor = get_level_factor(attacker_level, level_factor_curve)
     effective = enemy_def * (1 - pen_ratio_pct / 100)
     for ig in def_ignore_pcts:
         effective *= (1 - ig / 100)
     effective = max(effective - pen_flat, 0)
-    return 794 / (effective + 794)
+    return level_factor / (effective + level_factor)
 
 
 def compute_res_mult(res_pct: float, res_ignore_pcts=(),
@@ -630,6 +669,8 @@ def compute_final_damage(
     pen_ratio_pct: float = 0.0,
     pen_flat: float = 0.0,
     mods: CombatModifiers = None,
+    attacker_level: int = 60,
+    level_factor_curve: dict | None = None,
 ) -> dict:
     """Formula lengkap: stat panel + combat modifiers -> non-crit & crit.
     `dmg_bonus_panel_pct` = elemental DMG bonus dari stat panel yang cocok
@@ -647,6 +688,8 @@ def compute_final_damage(
         pen_ratio_pct + mods.pen_ratio_bonus_pct,
         pen_flat + mods.pen_flat_bonus,
         mods.def_ignore_pcts,
+        attacker_level=attacker_level,
+        level_factor_curve=level_factor_curve,
     )
     res_mult = compute_res_mult(
         enemy.res_pct.get(element, 0.0),
@@ -722,9 +765,18 @@ def run_calibration() -> bool:
         print("    " + line)
     print()
 
+    # [5b] Level Factor lookup sanity
+    level_curve = load_level_factor_curve()
+    print("[5b] Level Factor sanity:")
+    print(f"    L1  = {get_level_factor(1, level_curve):g}")
+    print(f"    L59 = {get_level_factor(59, level_curve):g}")
+    print(f"    L60 = {get_level_factor(60, level_curve):g}  (expected 794)")
+    print(f"    L80 = {get_level_factor(80, level_curve):g}  (curve plateau)")
+    assert get_level_factor(60, level_curve) == 794.0
+
     # [6] compute_final_damage vs ground truth
     enemy = EnemyStats(
-        def_val=572,  # DEF Tyrfing L60 (hardcode sementara — lihat TODO dead-end monster table)
+        def_val=571.68,  # DEF Tyrfing L60 (hardcode sementara — lihat TODO dead-end monster table)
         res_pct={"Physical": 0.0, "Fire": 0.0, "Ice": -0.20, "Electric": 0.0,
                  "Ether": -0.20, "Wind": 0.0},
     )
@@ -739,6 +791,8 @@ def run_calibration() -> bool:
         pen_ratio_pct=24.0,
         pen_flat=18,
         mods=mods,
+        attacker_level=60,
+        level_factor_curve=level_curve,
     )
 
     print("[6] Hasil vs ground truth:")
