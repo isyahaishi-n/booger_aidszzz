@@ -508,6 +508,11 @@ class CombatModifiers:
     def_ignore_pcts: list = field(default_factory=list)  # sumber independent
     res_ignore_pcts: list = field(default_factory=list)  # sumber independent
     res_shred_pct: float = 0.0
+    # DMG Taken Modifier — efek yang nambah/ngurangin damage yang DITERIMA musuh:
+    # dmg_taken_pct (mis. +35% dari efek "enemies take 35% more DMG"),
+    # dmg_reduction_pct (mis. musuh punya damage reduction).
+    dmg_taken_pct: float = 0.0
+    dmg_reduction_pct: float = 0.0
     extra: dict = field(default_factory=dict)
 
     def describe(self) -> str:
@@ -522,6 +527,8 @@ class CombatModifiers:
             ("PEN Ratio%+", self.pen_ratio_bonus_pct),
             ("PEN flat+", self.pen_flat_bonus),
             ("RES shred%", self.res_shred_pct),
+            ("DMG taken%", self.dmg_taken_pct),
+            ("DMG reduction%", self.dmg_reduction_pct),
         ]
         for name, v in simple:
             if v:
@@ -573,6 +580,10 @@ def aggregate_modifiers(toggles: list, skill_type: str = None,
             mods.res_ignore_pcts.append(v)
         elif t.stat == "res_shred_pct":
             mods.res_shred_pct += v
+        elif t.stat == "dmg_taken_pct":
+            mods.dmg_taken_pct += v
+        elif t.stat == "dmg_reduction_pct":
+            mods.dmg_reduction_pct += v
         else:
             mods.extra[t.stat] = mods.extra.get(t.stat, 0.0) + v
     return mods
@@ -596,6 +607,10 @@ class EnemyStats:
     def_val: float
     # {"Physical": 0.0, "Ice": -0.20, ...} -- persen sebagai fraksi
     res_pct: dict = field(default_factory=dict)
+    # Bonus damage yang diterima musuh saat STUN (fraksi, mis. 0.50 = +50%).
+    # Dari MonsterSub LHPKLCOJKCN / StunDamageTakenRatio (Tyrfing 5000 -> 0.5,
+    # The Defector 2500 -> 0.25). Boss umumnya lebih rendah.
+    stun_taken_pct: float = 0.0
 
 
 def load_level_factor_curve(path: str = "LevelCurveTemplateTb.json") -> dict:
@@ -675,10 +690,17 @@ def compute_final_damage(
     mods: CombatModifiers = None,
     attacker_level: int = 60,
     level_factor_curve: dict | None = None,
+    enemy_stunned: bool = False,
 ) -> dict:
     """Formula lengkap: stat panel + combat modifiers -> non-crit & crit.
     `dmg_bonus_panel_pct` = elemental DMG bonus dari stat panel yang cocok
     dengan `element` (mis. Ice DMG +30% utk hit Ice) — caller yang milih.
+
+    `enemy_stunned=True` mengaktifkan Stun Modifier (dmg * (1 +
+    enemy.stun_taken_pct)) — nilai StunDamageTakenRatio musuh, mis.
+    +50% Tyrfing/kebanyakan elite, +25% The Defector.
+    DMG Taken Modifier: (1 + dmg_taken%) / (1 - dmg_reduction%) — slot
+    stat `dmg_taken_pct` / `dmg_reduction_pct` di CombatModifiers.
     """
     mods = mods or CombatModifiers()
 
@@ -700,9 +722,15 @@ def compute_final_damage(
         mods.res_ignore_pcts,
         mods.res_shred_pct,
     )
+    # Stun Modifier — hanya kalau musuh lagi stun
+    stun_mult = (1 + enemy.stun_taken_pct) if enemy_stunned else 1.0
+    # DMG Taken Modifier — efek nambah/ngurangin damage yang diterima musuh
+    dmg_taken_mult = ((1 + mods.dmg_taken_pct / 100)
+                      / (1 - mods.dmg_reduction_pct / 100))
 
     non_crit = (atk_combat * (skill_mult / 100)
-                * (1 + dmg_bonus / 100) * def_mult * res_mult)
+                * (1 + dmg_bonus / 100) * def_mult * res_mult
+                * stun_mult * dmg_taken_mult)
     crit = non_crit * (1 + crit_dmg_combat / 100)
 
     crit_rate_combat = min(max(crit_rate_panel_pct + mods.crit_rate_bonus_pct_cond, 0.0), 100.0)
@@ -715,6 +743,8 @@ def compute_final_damage(
         "dmg_bonus_pct": dmg_bonus,
         "def_mult": def_mult,
         "res_mult": res_mult,
+        "stun_mult": stun_mult,
+        "dmg_taken_mult": dmg_taken_mult,
         "crit_rate_combat_pct": crit_rate_combat,
         "crit_dmg_combat_pct": crit_dmg_combat,
         "non_crit": non_crit,

@@ -227,6 +227,47 @@ Mendapatkan level skill karakter dari data Enka (`SkillLevelList`):
 `Index` ↔ `GLENCFMNKMF` (SkillType), lalu cari row `AvatarSkillTemplateTb`
 sesuai urutan sub-skill dan terapkan formula di atas.
 
+### Pipeline lengkap: `run.py` (UID Enka -> stat panel -> damage)
+
+`run.py` nyambungin seluruh pipeline dalam satu perintah: fetch data player
+dari enka.network, hitung stat panel tiap karakter showcase, lalu damage
+tiap hit skill vs musuh pilihan.
+
+```bash
+python run.py <uid>                          # musuh default: Tyrfing Lv.60
+python run.py <uid> --enemy Haytor            # 207 monster tersedia by name
+python run.py <uid> --enemy "The Defector" --enemy-level 60
+python run.py <uid> --stunned                 # aktifkan Stun Modifier
+python run.py <uid> --list-enemies            # daftar nama musuh
+```
+
+Stat musuh (DEF/HP/RES per elemen/StunDmgTaken) dibaca dari data Monster
+asli via `monster_data.py` (TextMap + MonsterConfig + MonsterSub +
+LevelCurve; field mapping terverifikasi terhadap
+Genshin-Optimizer/zzz-hakushin-data, 635/643 row exact — detail mapping
+field di docstring `monster_data.py`).
+
+**PENTING — jalanin dari root folder repo.** `run.py` butuh banyak file
+JSON pendukung di folder yang sama (`weapons.json`, `equipments.json`,
+`avatars.json`, `wengine_passive_mapped.json`, `drive_disc_mapped.json`,
+`mindscape_mapped.json`, `locale_en.json`, plus tabel template
+`*TemplateTb.json`) — semuanya sudah ada di repo, tapi hanya ke-load
+benar kalau current directory = root repo:
+
+```bash
+cd /path/ke/booger_aidszzz
+python run.py 1303558818
+```
+
+Catatan output:
+- Hit dengan `damage 0%` tapi daze besar (mis. *Defensive Assist:
+  Drifting Petals*) ditandai `(daze-only)` — memang 0 damage di data
+  skill asli, daze-only by design.
+- Karakter showcase tanpa weapon/gear tidak crash; kalau tidak ada
+  skill data pun, muncul pesan jelas.
+- `--stunned` mengalikan damage dengan (1 + StunDamageTakenRatio musuh)
+  — mis. Tyrfing +50%, The Defector +25%.
+
 ---
 
 ## 5. Sumber Verifikasi

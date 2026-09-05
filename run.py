@@ -1,0 +1,257 @@
+"""
+run.py — pipeline lengkap: UID -> fetch Enka -> stat panel -> damage per skill.
+
+Nyambungin 3 komponen yang sebelumnya terpisah (harus dijalanin manual satu-
+satu lewat file):
+    1. Fetch Enka (baru, logic dari fetch.py lama)
+    2. zzz_enka_stat_calc_multichar.py -- compute_avatar_snapshot() (reuse,
+       import langsung, bukan subprocess/file)
+    3. damage_calc.py -- build_*_toggles() + compute_final_damage() (reuse)
+
+Slot musuh (get_enemy_stats) sekarang baca dari data Monster asli via
+monster_data.MonsterDB (TextMap + MonsterConfig + MonsterSub + LevelCurve),
+field mapping verified terhadap Genshin-Optimizer/zzz-hakushin-data
+(635/643 row exact; lihat docstring monster_data.py).
+
+Usage:
+    python run.py <uid> [--enemy "Tyrfing"] [--enemy-level 60] [--stunned]
+"""
+
+import argparse
+import json
+import sys
+import time
+import urllib.error
+import urllib.request
+from pathlib import Path
+
+import zzz_enka_stat_calc_multichar as calc
+import damage_calc as dc
+import monster_data
+
+
+# ---------------------------------------------------------------------------
+# 1. Fetch Enka
+# ---------------------------------------------------------------------------
+
+ENKA_BASE_URL = "https://enka.network/api/zzz/uid/{uid}/"
+HEADERS = {"User-Agent": "ZZZDamageCalc/1.0 (contact: your_email_or_discord)"}
+
+
+def fetch_player_data(uid: str, retries: int = 3, delay: float = 2.0) -> dict:
+    url = ENKA_BASE_URL.format(uid=uid)
+    req = urllib.request.Request(url, headers=HEADERS)
+    for attempt in range(1, retries + 1):
+        try:
+            with urllib.request.urlopen(req, timeout=10) as resp:
+                return json.loads(resp.read().decode("utf-8"))
+        except urllib.error.HTTPError as e:
+            if e.code == 424:
+                raise RuntimeError(
+                    f"UID {uid}: showcase unavailable (HTTP 424). Player harus buka "
+                    "halaman detail karakter in-game dulu + showcase enabled."
+                )
+            elif e.code == 404:
+                raise RuntimeError(f"UID {uid}: nggak ketemu (HTTP 404). Cek lagi UID-nya.")
+            elif e.code == 429:
+                if attempt < retries:
+                    time.sleep(delay)
+                    continue
+                raise RuntimeError("Rate limited (HTTP 429). Coba lagi nanti.")
+            else:
+                raise RuntimeError(f"HTTP error {e.code}: {e.reason}")
+        except urllib.error.URLError as e:
+            raise RuntimeError(f"Network error: {e.reason}")
+    raise RuntimeError("Gagal fetch setelah retry.")
+
+
+# ---------------------------------------------------------------------------
+# 2. Slot musuh — data Monster asli via monster_data.MonsterDB
+# ---------------------------------------------------------------------------
+#
+# Field mapping MonsterSubTemplateTb sudah verified independen (korelasi 622
+# monster dengan zzz-hakushin-data, 635/643 exact — detail di
+# monster_data.py). Signature get_enemy_stats tetap sama seperti desain awal:
+# (enemy_key) -> dc.EnemyStats; caller tidak perlu berubah.
+
+_MONSTER_DB: monster_data.MonsterDB | None = None
+
+
+def _get_monster_db() -> monster_data.MonsterDB:
+    global _MONSTER_DB
+    if _MONSTER_DB is None:
+        _MONSTER_DB = monster_data.MonsterDB(Path(__file__).resolve().parent)
+    return _MONSTER_DB
+
+
+def get_enemy_stats(enemy_key: str, level: int = 60) -> dc.EnemyStats:
+    """Slot musuh. Resolve nama -> stat dari data Monster asli.
+
+    Raise LookupError (pesan jelas + saran nama) kalau nama tidak ada.
+    Caller (compute_all_damage / main) tidak perlu berubah.
+    """
+    db = _get_monster_db()
+    m = db.resolve(enemy_key, level=level)
+    return dc.EnemyStats(
+        def_val=m["def_val"],
+        res_pct=m["res_pct"],
+        stun_taken_pct=m["stun_taken_pct"],
+    )
+
+
+# ---------------------------------------------------------------------------
+# 3. Gabungin stat panel + toggle -> damage per skill
+# ---------------------------------------------------------------------------
+
+def compute_all_damage(snapshot: dict, enemy: dc.EnemyStats,
+                        wengines: dict, sets: dict, mindscapes: dict,
+                        enemy_stunned: bool = False) -> list:
+    """Untuk satu avatar snapshot (dari compute_avatar_snapshot), hitung
+    damage tiap hit non-hidden di semua skill, pakai toggle conditional
+    yang otomatis ke-enable (unconditional + threshold yang lolos).
+    """
+    stats = snapshot["stats"]
+    weapon = snapshot["weapon"]
+
+    toggles = []
+    if weapon.get("id"):
+        toggles += dc.build_wengine_toggles(wengines, weapon_id=weapon["id"], phase=weapon.get("phase", 1))
+    for set_name in snapshot.get("set4pc", []):
+        toggles += dc.build_set4pc_toggles(sets, set_name=set_name)
+    toggles += dc.build_mindscape_toggles(mindscapes, avatar_id=snapshot["avatar_id"],
+                                           mindscape_rank=snapshot.get("mindscape", 0))
+    dc.evaluate_thresholds(toggles, panel=stats)  # mutates toggles in-place (t.enabled)
+
+    results = []
+    for skill_idx, skill_data in snapshot.get("skills", {}).items():
+        mods = dc.aggregate_modifiers(toggles, skill_type=skill_data["label"])
+        for hit in skill_data["hits"]:
+            if hit["is_hidden"]:
+                continue
+            r = dc.compute_final_damage(
+                atk_panel=stats["ATK"],
+                skill_mult_pct=hit["damage_pct"],
+                crit_dmg_panel_pct=stats.get("CRIT DMG", 0.0),
+                enemy=enemy,
+                element=snapshot.get("element", "Physical"),
+                pen_ratio_pct=stats.get("PEN Ratio", 0.0),
+                pen_flat=stats.get("PEN", 0.0),
+                mods=mods,
+                enemy_stunned=enemy_stunned,
+            )
+            results.append({
+                "skill_label": skill_data["label"],
+                "hit_name": hit["name"],
+                "damage_pct": hit["damage_pct"],
+                "daze_pct": hit.get("daze_pct", 0.0),
+                "non_crit": r["non_crit"],
+                "crit": r["crit"],
+            })
+    return results
+
+
+# ---------------------------------------------------------------------------
+# main
+# ---------------------------------------------------------------------------
+
+def main():
+    parser = argparse.ArgumentParser(description="UID -> stat panel -> damage per skill")
+    parser.add_argument("uid", help="UID Enka")
+    parser.add_argument("--enemy", default="Tyrfing",
+                        help="Nama musuh dari data Monster (default: Tyrfing). "
+                             "Case-insensitive, mis. 'Haytor', 'The Defector'.")
+    parser.add_argument("--enemy-level", type=int, default=60,
+                        help="Level musuh buat scaling DEF/HP (default: 60)")
+    parser.add_argument("--stunned", action="store_true",
+                        help="Musuh dalam kondisi stun (aktifkan Stun Modifier: "
+                             "damage x (1 + StunDamageTaken musuh))")
+    parser.add_argument("--list-enemies", action="store_true",
+                        help="Tampilkan daftar nama musuh yang tersedia lalu keluar")
+    args = parser.parse_args()
+
+    base_dir = Path(__file__).resolve().parent
+
+    if args.list_enemies:
+        db = monster_data.MonsterDB(base_dir)
+        names = db.list_names()
+        print(f"{len(names)} musuh tersedia:")
+        for n in names:
+            print(f"  {n}")
+        return
+
+    print(f"[1] Fetching UID {args.uid} dari Enka...")
+    try:
+        api = fetch_player_data(args.uid)
+    except RuntimeError as e:
+        sys.exit(f"Error: {e}")
+    showcase = api["PlayerInfo"]["ShowcaseDetail"]
+    avatars_list = showcase.get("AvatarList", [])
+    if not avatars_list:
+        sys.exit(f"UID {args.uid}: showcase kosong (0 karakter). "
+                 "Player harus set karakter di showcase dulu.")
+    print(f"    {len(avatars_list)} karakter di-showcase.")
+
+    print("[2] Load data pendukung...")
+    weapons = calc.load_json(base_dir / "weapons.json")
+    equipments = calc.load_json(base_dir / "equipments.json")
+    avatars = calc.load_json(base_dir / "avatars.json")
+    locale_path = base_dir / "locale_en.json"
+    loc = calc.load_json(locale_path) if locale_path.exists() else {}
+    wl = calc.load_template_table(base_dir / "WeaponLevelTemplateTb.json", calc.WEAPON_LEVEL_FIELDS)
+    ws = calc.load_template_table(base_dir / "WeaponStarTemplateTb.json", calc.WEAPON_STAR_FIELDS)
+    el = calc.load_template_table(base_dir / "EquipmentLevelTemplateTb.json", calc.EQUIPMENT_LEVEL_FIELDS)
+    skill_index, name_map, textmap = calc.load_skill_data(base_dir)
+
+    wengines = dc.load_wengine_passives(str(base_dir / "wengine_passive_mapped.json"))
+    sets = dc.load_drive_disc_sets(str(base_dir / "drive_disc_mapped.json"))
+    mindscapes = dc.load_mindscapes(str(base_dir / "mindscape_mapped.json"))
+
+    try:
+        enemy = get_enemy_stats(args.enemy, level=args.enemy_level)
+    except (ValueError, LookupError) as e:
+        sys.exit(f"Error: {e}")
+    db = _get_monster_db()
+    m = db.resolve(args.enemy, level=args.enemy_level)
+    weak = ", ".join(f"{e} {v*100:+.0f}%" for e, v in m["res_pct"].items() if v)
+    print(f"    Musuh: {m['name']} Lv.{m['level']} (DEF={enemy.def_val:.2f}, "
+          f"HP={m['hp_val']:.0f}, StunDmgTaken +{m['stun_taken_pct']*100:.0f}%)")
+    if weak:
+        print(f"    RES: {weak}")
+
+    for avatar in avatars_list:
+        avatar_id = int(avatar["Id"])
+        snapshot = calc.compute_avatar_snapshot(
+            avatar, avatar_id, avatars, weapons, equipments, wl, ws, el,
+            skill_index, name_map, textmap, loc,
+        )
+
+        print()
+        print("=" * 62)
+        print(f"{snapshot['name']}  Lv.{snapshot['level']}  "
+              f"[{snapshot['element']} {snapshot['profession']}]  M{snapshot['mindscape']}")
+        stats = snapshot["stats"]
+        print(f"  ATK {stats['ATK']:.0f} | CRIT Rate {stats.get('CRIT Rate', 0):.1f}% | "
+              f"CRIT DMG {stats.get('CRIT DMG', 0):.1f}%")
+
+        damage_rows = compute_all_damage(snapshot, enemy, wengines, sets, mindscapes,
+                                         enemy_stunned=args.stunned)
+        if not damage_rows:
+            print("  (nggak ada weapon/skill data buat dihitung -- karakter tanpa gear?)")
+            continue
+
+        stun_note = " [STUNNED]" if args.stunned else ""
+        print(f"  -- Damage vs {m['name']} Lv.{m['level']}{stun_note} --")
+        for r in damage_rows:
+            # Daze-only hit (damage base 0, daze > 0 di skill data asli):
+            # tampilkan sebagai daze, bukan damage 0.0 yang menyesatkan.
+            if r["damage_pct"] <= 0 and r.get("daze_pct", 0) > 0:
+                print(f"    {r['skill_label']:20s} {r['hit_name']:35s} "
+                      f"(daze-only)  daze {r['daze_pct']:7.1f}%")
+            else:
+                print(f"    {r['skill_label']:20s} {r['hit_name']:35s} "
+                      f"{r['damage_pct']:7.1f}%  ->  non-crit {r['non_crit']:8.1f}  "
+                      f"crit {r['crit']:8.1f}")
+
+
+if __name__ == "__main__":
+    main()
