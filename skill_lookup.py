@@ -256,7 +256,99 @@ def compute_damage_output(index: dict, avatar_id: int, skill_type: int, level: i
     return results
 
 
+def classify_hidden_hits(skill_template: dict = None, des_template: dict = None,
+                         avatars: dict = None) -> list:
+    """Klasifikasi struktural semua hidden hits playable (lihat hidden_hits_report.md).
+
+    Return list of dict: {avatar_id, hit_id, skill_type, dmg_base, dmg_growth,
+    daze_base, daze_growth, category, dupe_of}.
+    Kategori:
+      - fixed_pct_proc    : growth=0, dmg>0  -> proc mechanic (angka konstan,
+                            scaling stat non-ATK umumnya: Sheer Force/AP/boar ATK)
+      - dupe_no_daze_proc : damage curve identik hit visible tapi daze 0
+                            (pola "special instance ... does not cause Daze")
+      - daze_only_variant : dmg=0, daze>0
+      - dupe_variant      : damage curve identik hit visible (varian enhance)
+      - unique_hidden     : lainnya (varian enhanced / combo extension)
+    """
+    if skill_template is None:
+        skill_template = load_skill_template("AvatarSkillTemplateTb.json")
+    if des_template is None:
+        des_template = load_skill_template("AvatarSkillDesTemplateTb.json")
+    if avatars is None:
+        with open("avatars.json", "r", encoding="utf-8") as f:
+            avatars = json.load(f)
+    playable = set(int(k) for k in avatars.keys())
+
+    refed = set()
+    for row in des_template["MLOEFHJHCID"]:
+        if row.get("PDJMFJOFNEF") != 1:
+            continue
+        dk = row.get("DLADMENPFPD") or ""
+        if dk.endswith("_Title") and not row.get("KLPLBBJABBL"):
+            continue
+        refed.update(int(x[0]) for x in _SKILL_REF_PATTERN.findall(row.get("KLPLBBJABBL") or ""))
+
+    by_char_type = defaultdict(list)
+    for r in skill_template["MLOEFHJHCID"]:
+        by_char_type[(int(str(r["DALBKGGEJEF"])[:4]), r["GLENCFMNKMF"])].append(r)
+
+    out = []
+    for r in skill_template["MLOEFHJHCID"]:
+        hid = r["DALBKGGEJEF"]
+        aid = int(str(hid)[:4])
+        if aid not in playable or hid in refed:
+            continue
+        db, dg, dzb, dzg = (r["IKAABAIDFAO"], r["DGHHKAHHIPM"],
+                            r["OMFJHOLBIKA"], r["KICLLNBEAEN"])
+        if db == 0 and dzb == 0 and dg == 0 and dzg == 0:
+            continue  # placeholder kosong, bukan hit
+        sibs = [v for v in by_char_type[(aid, r["GLENCFMNKMF"])] if v["DALBKGGEJEF"] in refed]
+        dupe = next((v for v in sibs
+                     if v["IKAABAIDFAO"] == db and v["DGHHKAHHIPM"] == dg
+                     and (db, dg) != (0, 0)), None)
+        if db == 0 and dzb > 0:
+            cat, dup = "daze_only_variant", None
+        elif dupe is not None and dzb == 0:
+            cat, dup = "dupe_no_daze_proc", dupe["DALBKGGEJEF"]
+        elif dg == 0 and db > 0:
+            cat, dup = "fixed_pct_proc", None
+        elif dupe is not None:
+            cat, dup = "dupe_variant", dupe["DALBKGGEJEF"]
+        else:
+            cat, dup = "unique_hidden", None
+        out.append({
+            "avatar_id": aid, "hit_id": hid, "skill_type": r["GLENCFMNKMF"],
+            "dmg_base_pct": db / 100, "dmg_growth_pct": dg / 100,
+            "daze_base_pct": dzb / 100, "daze_growth_pct": dzg / 100,
+            "category": cat, "dupe_of": dup,
+        })
+    return sorted(out, key=lambda x: (x["avatar_id"], x["hit_id"]))
+
+
 def main():
+    import argparse
+    parser = argparse.ArgumentParser(description="skill lookup tests / hidden hit classification")
+    parser.add_argument("--classify-hidden", action="store_true",
+                        help="Klasifikasi struktural semua hidden hits playable")
+    args = parser.parse_args()
+
+    if args.classify_hidden:
+        rows = classify_hidden_hits()
+        counts = defaultdict(int)
+        for r in rows:
+            counts[r["category"]] += 1
+        print(f"Total hidden hits: {len(rows)} di {len(set(r['avatar_id'] for r in rows))} karakter")
+        for cat, n in sorted(counts.items()):
+            print(f"  {cat}: {n}")
+        print()
+        for r in rows:
+            dup = f" (dupe of visible {r['dupe_of']})" if r["dupe_of"] else ""
+            print(f"  {r['avatar_id']} type {r['skill_type']}: hit {r['hit_id']} "
+                  f"dmg {r['dmg_base_pct']:g}% gr {r['dmg_growth_pct']:g}% "
+                  f"daze {r['daze_base_pct']:g}% -> {r['category']}{dup}")
+        return
+
     skill_template = load_skill_template("AvatarSkillTemplateTb.json")
     index = build_skill_index(skill_template)
     des_template = load_skill_template("AvatarSkillDesTemplateTb.json")
