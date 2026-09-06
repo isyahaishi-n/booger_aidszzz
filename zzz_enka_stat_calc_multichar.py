@@ -224,10 +224,12 @@ class StatState:
         out = Layer()
         for _, layer in self.layers:
             for key, value in layer.props.items():
-                if key.startswith("SpRecover_"):
-                    out.add(key, float(value))
-                else:
-                    out.add(key, math.floor(value))
+                # NOTE 2026-09-06 (strip-test v2/v3/v4 vs ground truth Enka
+                # 1303558818v2-v4): game TIDAK floor per-layer stat. Base ATK
+                # 880.6952 (Miyabi bare) match GT exact; flooring per-layer
+                # bikin damage underestimate 1 unit (278 vs 279 dst).
+                # Sebelumnya: out.add(key, math.floor(value)).
+                out.add(key, float(value))
         return out
 
 

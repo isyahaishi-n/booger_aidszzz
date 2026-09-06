@@ -96,9 +96,17 @@ catatan metodologi #7.
       Catatan implementasi: proc fixed TIDAK selalu skala ATK (boar
       ATK / Sheer Force / Anomaly Proficiency) — kalau mau ditampilkan
       sebagai proc opsional, perlu stat basis + toggle manual.
-- [ ] Residual kalibrasi sisa (non-crit 0.064%) — TERKONFIRMASI bukan
-      dari DEF (DEF asli 571.68 memberi residual identik). Sumber:
-      flooring chain ATK panel Miyabi. Dalam toleransi 0.5%, ROI rendah.
+- [x] ~~Residual kalibrasi 0.064%~~ — **SOLVED 2026-09-06 via strip-test
+      user** (`1303558818v2`–`v4`: bare/disc-only/wengine-only vs Tyrfing
+      L60, 8 angka GT): (1) game TIDAK floor stat per-layer — v3 bare
+      membuktikan ATK 880.6952 exact (bukan 880); `StatState.summed()`
+      diperbaiki (hapus `math.floor` per layer), panel 2715.64 → 2716.69,
+      **residual 0.064% → 0.025%** (selisih 0.27 dari GT 1086); (2)
+      formula DEF/PEN tervalidasi di 3 titik PEN berbeda (0/0, 0/18,
+      24/0); (3) passive W-Engine S1 +12% tervalidasi (v4); (4) display
+      damage = round(raw) — 7/8 titik D exact; (5) sisa off-by-one (full
+      D2 1184 vs 1183, v4 C2 1075 anomali) = noise sample, bukan bias
+      sistematis. Kalibrasi PASS. Detail: `wengine.md` "STRIP-TEST".
 
 ## Catatan metodologi (jangan dilanggar)
 
