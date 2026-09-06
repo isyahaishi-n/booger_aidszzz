@@ -43,6 +43,7 @@ Catatan penting tentang "6 field -2000" yang dulu bikin bingung:
 """
 
 import json
+import urllib.request
 from pathlib import Path
 
 ELEMENTS = ("Physical", "Fire", "Ice", "Electric", "Ether", "Wind")
@@ -85,6 +86,20 @@ CONFIG_LINK_FIELD = "EBIKJFJOKGP"  # -> config id (hakushin MonsterInfo key)
 DEF_CURVE_ID = 1000  # 2x wiki Level Factor (794*2=1588 di L60)
 HP_CURVE_ID = 1002   # HP growth (L60 = 4604 basis 100)
 
+# CDN asset image monster card (WebP). Diverifikasi 2026-09-06:
+# Tyrfing (Monster_ClaymoreGrey), Haytor (Monster_Hayyot), Mandrake,
+# Isolde -> semua 200 OK. Pola: /assets/zzz/{codename}.webp.
+# Coverage (HEAD-check 207 monster, 2026-09-06): 148 direct OK + 19
+# varian resolved via suffix-strip (varian share card base, mis.
+# Monster_AhrimanRed -> Monster_Ahriman) = 167/207 (81%). Sisanya 40
+# mob kecil yang memang tidak punya boss card di CDN manapun — frontend
+# pakai fallback element icon utk kasus itu (icon_url = None).
+NANOKA_ASSET_BASE = "https://static.nanoka.cc/assets/zzz/"
+
+# Suffix varian yang share card dengan base-nya (dicoba berurut).
+_CARD_SUFFIXES = ("RedPro", "GreyPro", "Red", "Grey", "Pro", "Infested",
+                  "Upgrade", "Elite", "HC")
+
 
 def _load_table(path):
     with open(path, "r", encoding="utf-8") as f:
@@ -121,8 +136,9 @@ class MonsterDB:
         upgrade_pairs = _load_table(str(base / "MonsterUpgradeTemplateTb.json"))
         self._upgraded_sub_ids = {r["FIMGJKPCKFO"] for r in upgrade_pairs}
 
-        # name (lowercase) -> [config ids]
+        # name (lowercase) -> [config ids], plus config id -> codename
         self._by_name = {}
+        self._codename_by_cfg = {}
         for r in self.config_rows:
             if r.get("NDJJEKDIHNN") != "Monster":
                 continue
@@ -132,6 +148,7 @@ class MonsterDB:
             if not display:
                 continue
             self._by_name.setdefault(display.lower(), []).append(r["DALBKGGEJEF"])
+            self._codename_by_cfg[r["DALBKGGEJEF"]] = codename
 
         # config id -> sub rows (via CONFIG_LINK_FIELD)
         self._subs_by_cfg = {}
@@ -139,6 +156,9 @@ class MonsterDB:
             cfg = r.get(CONFIG_LINK_FIELD)
             if cfg:
                 self._subs_by_cfg.setdefault(cfg, []).append(r)
+
+        # cache icon slug resolution (biar gak nge-probe CDN berulang)
+        self._icon_slug_cache = {}
 
     def list_names(self):
         """Semua nama monster yang bisa dipakai (yang punya sub row)."""
@@ -171,6 +191,34 @@ class MonsterDB:
                 return pool[0]
         raise LookupError("tidak ada MonsterSub row untuk config ids ini")
 
+    def resolve_icon_slug(self, codename: str) -> str | None:
+        """Cari nama file card yang tersedia di CDN nanoka utk codename.
+
+        Chain: codename langsung -> strip suffix varian (Red/Pro/Grey/...).
+        Hasil di-cache per instance (biar resolve() gak nge-probe berulang).
+        Return slug (mis. 'Monster_Ahriman') atau None kalau gak ada.
+        """
+        if codename in self._icon_slug_cache:
+            return self._icon_slug_cache[codename]
+        slug = None
+        base = codename
+        stem = base[len("Monster_"):] if base.startswith("Monster_") else base
+        candidates = [base] + [base[: -len(s)] for s in _CARD_SUFFIXES
+                                if stem.endswith(s) and len(stem) > len(s)]
+        for cand in candidates:
+            url = NANOKA_ASSET_BASE + cand + ".webp"
+            req = urllib.request.Request(url, method="HEAD",
+                                         headers={"User-Agent": "ZZZDamageCalc/1.0"})
+            try:
+                with urllib.request.urlopen(req, timeout=15) as resp:
+                    if resp.status == 200:
+                        slug = cand
+                        break
+            except Exception:
+                continue
+        self._icon_slug_cache[codename] = slug
+        return slug
+
     def resolve(self, name, level=60):
         """Nama monster (case-insensitive) + level -> dict stat lengkap.
 
@@ -192,10 +240,17 @@ class MonsterDB:
         hp_lv = curve_value(self.curves, HP_CURVE_ID, level) / 100.0
 
         res_pct = {e: row[DAMAGE_RES_FIELDS[e]] / 10000.0 for e in ELEMENTS}
+        codename = self._codename_by_cfg[config_ids[0]]
+        icon_slug = self.resolve_icon_slug(codename)
         return {
             "name": name,
             "level": level,
             "sub_id": row[SUB_KEY_FIELD],
+            "codename": codename,
+            # Boss card image (frontend): nanoka CDN WebP by codename filename,
+            # fallback suffix-strip utk varian (share card base). None = tidak
+            # ada card di CDN (mob kecil) -> frontend render element icon.
+            "icon_url": (NANOKA_ASSET_BASE + icon_slug + ".webp") if icon_slug else None,
             "def_val": row[DEF_FIELD] * def_lv,
             "hp_val": row[HP_FIELD] * hp_lv,
             "res_pct": res_pct,
@@ -211,6 +266,7 @@ def main():
     level = int(sys.argv[2]) if len(sys.argv) > 2 else 60
     m = db.resolve(name, level)
     print(f"{m['name']} Lv.{m['level']} (sub {m['sub_id']})")
+    print(f"  icon: {m['icon_url']}")
     print(f"  DEF: {m['def_val']:.2f}   HP: {m['hp_val']:.1f}")
     print(f"  StunDMG taken: +{m['stun_taken_pct']*100:.0f}%")
     print("  RES:", {e: f"{v*100:+.0f}%" for e, v in m["res_pct"].items() if v})
