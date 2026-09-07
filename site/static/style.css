@@ -756,3 +756,256 @@ main {
   .stats { grid-template-columns: 1fr 1fr; }
   .mindscape-grid { grid-template-columns: 1fr; }
 }
+/* ============================================================
+   Damage calculation section
+   ============================================================ */
+
+.calc-section {
+  position: relative;
+  margin: 28px auto 40px;
+  max-width: 1060px;
+  padding: 22px 24px 26px;
+  background: linear-gradient(180deg, var(--panel-2), var(--panel));
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.calc-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.calc-head h2 {
+  margin: 0;
+  font-size: 20px;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+}
+
+/* ---- enemy picker ---- */
+
+.calc-target { margin-bottom: 16px; }
+
+.enemy-picker {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  position: relative;
+}
+
+.enemy-label {
+  font-size: 12px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--muted);
+}
+
+.enemy-search {
+  width: 260px;
+  padding: 9px 12px;
+  font: inherit;
+  color: var(--text);
+  background: var(--bg-soft);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  outline: none;
+}
+
+.enemy-search:focus { border-color: var(--accent); }
+
+.enemy-level {
+  width: 72px;
+  padding: 9px 10px;
+  font: inherit;
+  color: var(--text);
+  background: var(--bg-soft);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  outline: none;
+}
+
+.enemy-level:focus { border-color: var(--accent); }
+
+.enemy-drop {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 60px;
+  width: 420px;
+  max-height: 320px;
+  overflow-y: auto;
+  z-index: 40;
+  background: var(--panel-2);
+  border: 1px solid var(--line-bright);
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+}
+
+.enemy-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+.enemy-row:hover { background: rgba(255, 210, 77, .08); }
+
+.enemy-icon {
+  width: 44px;
+  height: 44px;
+  object-fit: cover;
+  border-radius: 6px;
+  border: 1px solid var(--line);
+  flex: none;
+}
+
+.enemy-icon-ph {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--muted);
+  font-size: 18px;
+  background: var(--bg-soft);
+}
+
+.enemy-row-name { flex: 1; min-width: 0; }
+.enemy-row-name .nm { font-weight: 700; font-size: 14px; }
+.enemy-row-name .meta { font-size: 11px; color: var(--muted); }
+
+.enemy-rarity { color: var(--accent); font-size: 11px; flex: none; }
+
+/* ---- enemy result strip ---- */
+
+.calc-enemy-strip {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 14px;
+  margin-bottom: 14px;
+  background: var(--bg-soft);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+
+.enemy-portrait {
+  width: 72px;
+  height: 72px;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 1px solid var(--line-bright);
+  flex: none;
+}
+
+.enemy-info .nm { font-weight: 800; font-size: 16px; }
+.enemy-info .nm .lvl { color: var(--muted); font-weight: 600; }
+.enemy-info .meta { font-size: 12px; color: var(--muted); margin-top: 3px; }
+
+/* ---- buffs ---- */
+
+.calc-buffs {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 14px;
+  font-size: 12px;
+}
+
+.buff-label {
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.buff-chip {
+  padding: 4px 10px;
+  background: rgba(65, 242, 166, .08);
+  border: 1px solid rgba(65, 242, 166, .3);
+  border-radius: 999px;
+  color: var(--ok);
+}
+
+.buff-chip b { color: var(--text); }
+
+/* ---- damage table ---- */
+
+.calc-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13.5px;
+}
+
+.calc-table th {
+  position: sticky;
+  top: 0;
+  padding: 9px 10px;
+  text-align: left;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--muted);
+  background: var(--panel-2);
+  border-bottom: 2px solid var(--line-bright);
+}
+
+.calc-table td {
+  padding: 8px 10px;
+  border-bottom: 1px solid var(--line);
+  vertical-align: top;
+}
+
+.calc-table .num { text-align: right; font-variant-numeric: tabular-nums; }
+.calc-table th.num { text-align: right; }
+.calc-table .crit { color: var(--accent); font-weight: 700; }
+
+.calc-table tr.daze-row td { color: var(--muted); font-style: italic; }
+
+.calc-loading {
+  padding: 30px;
+  text-align: center;
+  color: var(--muted);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-size: 12px;
+}
+
+.calc-empty {
+  padding: 26px;
+  text-align: center;
+  color: var(--muted);
+  border: 1px dashed var(--line-bright);
+  border-radius: 8px;
+}
+
+/* ---- card calc button ---- */
+
+.calc-btn {
+  display: block;
+  width: 100%;
+  margin-top: 12px;
+  padding: 8px 10px;
+  font: inherit;
+  font-size: 12px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--accent);
+  background: transparent;
+  border: 1px solid rgba(255, 210, 77, .45);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background .12s, color .12s;
+}
+
+.calc-btn:hover {
+  background: rgba(255, 210, 77, .12);
+  color: var(--accent-soft);
+}

@@ -1,0 +1,1922 @@
+{
+ "Monster_NotoriousDeadEndButcher": {
+  "rank": "MainStoryBoss",
+  "size": "Large",
+  "faction": "Ether",
+  "rarity": 4
+ },
+ "Monster_NotoriousDeadEndButcher_TurnBased": {
+  "rank": "Boss",
+  "size": "Large",
+  "faction": "Ether",
+  "rarity": 4
+ },
+ "Monster_MiasmaDubiousHero": {
+  "rank": "Boss",
+  "size": "Middle",
+  "faction": "Bios",
+  "rarity": 3
+ },
+ "Monster_TarasqueMixer": {
+  "rank": null,
+  "size": "Middle",
+  "faction": "Ether",
+  "rarity": 2
+ },
+ "Monster_LampasBlackVeil": {
+  "rank": "MainStoryBoss",
+  "size": "Middle",
+  "faction": "Ether",
+  "rarity": 4
+ },
+ "Monster_LampasBlackVeil_MusicActivity": {
+  "rank": "MainStoryBoss",
+  "size": "Middle",
+  "faction": "Ether",
+  "rarity": 3
+ },
+ "Monster_AhrimanPro_Bookemon": {
+  "rank": null,
+  "size": "Small",
+  "faction": "Ether",
+  "rarity": 1
+ },
+ "Monster_GuardianMech": {
+  "rank": "Boss",
+  "size": "Large",
+  "faction": "Mech",
+  "rarity": 3
+ },
+ "Monster_SecurityUnitLAAndroid": {
+  "rank": null,
+  "size": "Middle",
+  "faction": "Mech",
+  "rarity": 2
+ },
+ "Monster_LAAndroid_TurnBased": {
+  "rank": "Elite",
+  "size": "Middle",
+  "faction": "Mech",
+  "rarity": 1
+ },
+ "Monster_PlatinumBangboo": {
+  "rank": null,
+  "size": "Small",
+  "faction": "Mech",
+  "rarity": 1
+ },
+ "Monster_Vesper": {
+  "rank": "MainStoryBoss",
+  "size": "Large",
+  "faction": "Ether",
+  "rarity": 4
+ },
+ "Monster_ThugPyromaniac": {
+  "rank": "LittleMonster",
+  "size": "Small",
+  "faction": "Bios",
+  "rarity": 1
+ },
+ "Monster_CovenantGuardian": {
+  "rank": "Boss",
+  "size": "Middle",
+  "faction": "Ether",
+  "rarity": 3
+ },
+ "Monster_Minion": {
+  "rank": "LittleMonster",
+  "size": "Small",
+  "faction": "Ether",
+  "rarity": 1
+ },
+ "Monster_Nassellaria": {
+  "rank": "LittleMonster",
+  "size": "Small",
+  "faction": "Ether",
+  "rarity": 1
+ },
+ "Monster_WanderingHunter_Chasing": {
+  "rank": "MainStoryBoss",
+  "size": "Middle",
+  "faction": "Ether",
+  "rarity": 1
+ },
+ "Monster_Nassellaria_TurnBased": {
+  "rank": null,
+  "size": "Small",
+  "faction": "Ether",
+  "rarity": 1
+ },
+ "Monster_Guardian": {
+  "rank": null,
+  "size": "Large",
+  "faction": "Mech",
+  "rarity": 2
+ },
+ "Monster_Fossor": {
+  "rank": "LittleMonster",
+  "size": "Small",
+  "faction": "Ether",
+  "rarity": 1
+ },
+ "Monster_ThugBulkyEnforcerVest": {
+  "rank": null,
+  "size": "Middle",
+  "faction": "Bios",
+  "rarity": 2
+ },
+ "Monster_ThugBulkyEnforcer_TurnBased": {
+  "rank": "Elite",
+  "size": "Middle",
+  "faction": "Bios",
+  "rarity": 2
+ },
+ "Monster_RangeSoldier": {
+  "rank": "LittleMonster",
+  "size": "Small",
+  "faction": "Bios",
+  "rarity": 1
+ },
+ "Monster_LightJaeger": {
+  "rank": "LittleMonster",
+  "size": "Small",
+  "faction": "Bios",
+  "rarity": 1
+ },
+ "Monster_TacticalAssaultGunner": {
+  "rank": "Boss",
+  "size": "Middle",
+  "faction": "Bios",
+  "rarity": 3
+ },
+ "Monster_TacticalAssaultGunner_TurnBased": {
+  "rank": "Boss",
+  "size": "Middle",
+  "faction": "Bios",
+  "rarity": 3
+ },
+ "Monster_MaterialHandlerPurple": {
+  "rank": "Boss",
+  "size": "Gigantic",
+  "faction": "Mech",
+  "rarity": 3
+ },
+ "Monster_ViciousStriker": {
+  "rank": "LittleMonster",
+  "size": "Small",
+  "faction": "Ether",
+  "rarity": 1
+ },
+ "Monster_ViciousStriker_MusicActivity": {
+  "rank": "LittleMonster",
+  "size": "Small",
+  "faction": "Ether",
+  "rarity": 1
+ },
+ "Monster_SordidusRed": {
+  "rank": "LittleMonster",
+  "size": "Small",
+  "faction": "Ether",
+  "rarity": 1
+ },
+ "Monster_Arbiter": {
+  "rank": null,
+  "size": "Middle",
+  "faction": "Ether",
+  "rarity": 2
+ },
+ "Monster_SpecterRed": {
+  "rank": "LittleMonster",
+  "size": "Small",
+  "faction": "Ether",
+  "rarity": 1
+ },
+ "Monster_GolemGreyPro_Bookemon": {
+  "rank": null,
+  "size": "Small",
+  "faction": "Ether",
+  "rarity": 1
+ },
+ "Monster_RuthlessFiend": {
+  "rank": null,
+  "size": "Large",
+  "faction": "Ether",
+  "rarity": 2
+ },
+ "Monster_Mutant": {
+  "rank": "MainStoryBoss",
+  "size": "Large",
+  "faction": "Ether",
+  "rarity": 4
+ },
+ "Monster_HatiGrey": {
+  "rank": null,
+  "size": "Middle",
+  "faction": "Ether",
+  "rarity": 2
+ },
+ "Monster_HatiGrey_Mini": {
+  "rank": null,
+  "size": "Small",
+  "faction": "Ether",
+  "rarity": 2
+ },
+ "Monster_MorsSlime": {
+  "rank": null,
+  "size": "Small",
+  "faction": "Ether",
+  "rarity": 2
+ },
+ "Monster_AhrimanRed": {
+  "rank": "LittleMonster",
+  "size": "Small",
+  "faction": "Ether",
+  "rarity": 1
+ },
+ "Monster_HeavyJaegerCam": {
+  "rank": "LittleMonster",
+  "size": "Small",
+  "faction": "Bios",
+  "rarity": 1
+ },
+ "Monster_Huskron_Bookemon": {
+  "rank": null,
+  "size": "Small",
+  "faction": "Ether",
+  "rarity": 1
+ },
+ "Monster_DurahanGrey_Bookemon": {
+  "rank": null,
+  "size": "Middle",
+  "faction": "Ether",
+  "rarity": 2
+ },
+ "Monster_Bodyguard": {
+  "rank": "LittleMonster",
+  "size": "Small",
+  "faction": "Bios",
+  "rarity": 1
+ },
+ "Monster_Bruiser": {
+  "rank": "LittleMonster",
+  "size": "Small",
+  "faction": "Bios",
+  "rarity": 1
+ },
+ "Monster_Sharpshooter": {
+  "rank": "LittleMonster",
+  "size": "Small",
+  "faction": "Bios",
+  "rarity": 1
+ },
+ "Monster_Bodyguard_TurnBased": {
+  "rank": null,
+  "size": "Small",
+  "faction": "Bios",
+  "rarity": 1
+ },
+ "Monster_MiasmaSpider": {
+  "rank": "LittleMonster",
+  "size": "Small",
+  "faction": "Ether",
+  "rarity": 1
+ },
+ "Monster_LAAndroid": {
+  "rank": null,
+  "size": "Middle",
+  "faction": "Mech",
+  "rarity": 2
+ },
+ "Monster_ThugBulkyAbuserVest": {
+  "rank": null,
+  "size": "Middle",
+  "faction": "Bios",
+  "rarity": 2
+ },
+ "Monster_WickedWrath": {
+  "rank": null,
+  "size": "Middle",
+  "faction": "Ether",
+  "rarity": 2
+ },
+ "Monster_Sapper": {
+  "rank": "LittleMonster",
+  "size": "Small",
+  "faction": "Mech",
+  "rarity": 1
+ },
+ "Monster_MiasmaTerrorBird": {
+  "rank": "Boss",
+  "size": "Large",
+  "faction": "Ether",
+  "rarity": 3
+ },
+ "Monster_HatiRed": {
+  "rank": null,
+  "size": "Middle",
+  "faction": "Ether",
+  "rarity": 2
+ },
+ "Monster_GiantGrey": {
+  "rank": null,
+  "size": "Large",
+  "faction": "Ether",
+  "rarity": 2
+ },
+ "Monster_Sentinel": {
+  "rank": "Boss",
+  "size": "Large",
+  "faction": "Ether",
+  "rarity": 3
+ },
+ "Monster_BellumSlime": {
+  "rank": null,
+  "size": "Middle",
+  "faction": "Ether",
+  "rarity": 2
+ },
+ "Monster_Palicus": {
+  "rank": "Boss",
+  "size": "Middle",
+  "faction": "Ether",
+  "rarity": 3
+ },
+ "Monster_Palicus_Clone": {
+  "rank": "Boss",
+  "size": "Middle",
+  "faction": "Ether",
+  "rarity": 3
+ },
+ "Monster_HeavyJaeger": {
+  "rank": "LittleMonster",
+  "size": "Small",
+  "faction": "Bios",
+  "rarity": 1
+ },
+ "Monster_FossorRed": {
+  "rank": "LittleMonster",
+  "size": "Small",
+  "faction": "Ether",
+  "rarity": 1
+ },
+ "Monster_ClaymoreGrey_Bookemon": {
+  "rank": null,
+  "size": "Small",
+  "faction": "Ether",
+  "rarity": 1
+ },
+ "Monster_GirReborn": {
+  "rank": "MainStoryBoss",
+  "size": "Large",
+  "faction": "Ether",
+  "rarity": 4
+ },
+ "Monster_GirReborn_AirCombat": {
+  "rank": "Boss",
+  "size": "Large",
+  "faction": "Ether",
+  "rarity": 4
+ },
+ "Monster_SacrificeBringer": {
+  "rank": "MainStoryBoss",
+  "size": "Large",
+  "faction": "Ether",
+  "rarity": 4
+ },
+ "Monster_SacrificeBringerHand": {
+  "rank": "MainStoryBoss",
+  "size": "Large",
+  "faction": "Ether",
+  "rarity": 4
+ },
+ "Monster_SacrificeBringer_MusicActivity": {
+  "rank": "MainStoryBoss",
+  "size": "Large",
+  "faction": "Ether",
+  "rarity": 4
+ },
+ "Monster_Sordidus": {
+  "rank": "LittleMonster",
+  "size": "Small",
+  "faction": "Ether",
+  "rarity": 1
+ },
+ "Monster_Hitchspiker": {
+  "rank": "LittleMonster",
+  "size": "Small",
+  "faction": "Ether",
+  "rarity": 1
+ },
+ "Monster_LightJaegerCam": {
+  "rank": "LittleMonster",
+  "size": "Small",
+  "faction": "Bios",
+  "rarity": 1
+ },
+ "Monster_Girtablu_HC": {
+  "rank": "MainStoryBoss",
+  "size": "Large",
+  "faction": "Ether",
+  "rarity": 4
+ },
+ "Monster_PorcelumeTerrorBird": {
+  "rank": "Boss",
+  "size": "Large",
+  "faction": "Mech",
+  "rarity": 3
+ },
+ "Monster_WingedChelonethid": {
+  "rank": "Boss",
+  "size": "Large",
+  "faction": "Ether",
+  "rarity": 3
+ },
+ "Monster_Pulchra": {
+  "rank": null,
+  "size": "Small",
+  "faction": "Bios",
+  "rarity": 2
+ },
+ "Monster_HeavyStrikerBoss": {
+  "rank": "Boss",
+  "size": "Middle",
+  "faction": "Mech",
+  "rarity": 3
+ },
+ "Monster_MaterialHandlerRed": {
+  "rank": "Boss",
+  "size": "Gigantic",
+  "faction": "Mech",
+  "rarity": 3
+ },
+ "Monster_GrenadierJaeger": {
+  "rank": "LittleMonster",
+  "size": "Small",
+  "faction": "Bios",
+  "rarity": 1
+ },
+ "Monster_MiasmaHeavyStriker": {
+  "rank": null,
+  "size": "Middle",
+  "faction": "Ether",
+  "rarity": 2
+ },
+ "Monster_IonizedPugnus": {
+  "rank": null,
+  "size": "Large",
+  "faction": "Ether",
+  "rarity": 2
+ },
+ "Monster_MiasmaSpawn": {
+  "rank": "LittleMonster",
+  "size": "Small",
+  "faction": "Ether",
+  "rarity": 1
+ },
+ "Monster_BeholderEngine": {
+  "rank": "LittleMonster",
+  "size": "Small",
+  "faction": "Ether",
+  "rarity": 1
+ },
+ "Monster_BeholderEngine_TurnBased": {
+  "rank": null,
+  "size": "Small",
+  "faction": "Mech",
+  "rarity": 1
+ },
+ "Monster_Cottus": {
+  "rank": "MainStoryBoss",
+  "size": "Large",
+  "faction": "Ether",
+  "rarity": 4
+ },
+ "Monster_Cottus_PerformTest": {
+  "rank": "Boss",
+  "size": "Large",
+  "faction": "Ether",
+  "rarity": 4
+ },
+ "Monster_Geppetto": {
+  "rank": "Boss",
+  "size": "Gigantic",
+  "faction": "Ether",
+  "rarity": 4
+ },
+ "Monster_ThugRaider": {
+  "rank": "LittleMonster",
+  "size": "Small",
+  "faction": "Bios",
+  "rarity": 1
+ },
+ "Monster_MeleeJaeger": {
+  "rank": "LittleMonster",
+  "size": "Small",
+  "faction": "Bios",
+  "rarity": 1
+ },
+ "Monster_GoldenBomb_Bookemon": {
+  "rank": null,
+  "size": "Small",
+  "faction": "Mech",
+  "rarity": 1
+ },
+ "Monster_CyclopsGrey_Bookemon": {
+  "rank": null,
+  "size": "Small",
+  "faction": "Ether",
+  "rarity": 1
+ },
+ "Monster_LightfootRover": {
+  "rank": null,
+  "size": "Middle",
+  "faction": "Mech",
+  "rarity": 2
+ },
+ "Monster_Nineveh": {
+  "rank": "Boss",
+  "size": "Gigantic",
+  "faction": "Bios",
+  "rarity": 4
+ },
+ "Monster_Specter": {
+  "rank": "LittleMonster",
+  "size": "Small",
+  "faction": "Ether",
+  "rarity": 1
+ },
+ "Monster_Mors": {
+  "rank": null,
+  "size": "Small",
+  "faction": "Bios",
+  "rarity": 2
+ },
+ "Monster_PulchraSlime": {
+  "rank": null,
+  "size": "Small",
+  "faction": "Ether",
+  "rarity": 2
+ },
+ "Monster_ThugPoacherVest": {
+  "rank": "LittleMonster",
+  "size": "Small",
+  "faction": "Bios",
+  "rarity": 1
+ },
+ "Monster_Norano": {
+  "rank": "Boss",
+  "size": "Small",
+  "faction": "Bios",
+  "rarity": 3
+ },
+ "Monster_Norano_HC": {
+  "rank": "Boss",
+  "size": "Small",
+  "faction": "Bios",
+  "rarity": 3
+ },
+ "Monster_PileDriverRed": {
+  "rank": "Boss",
+  "size": "Gigantic",
+  "faction": "Mech",
+  "rarity": 3
+ },
+ "Monster_CyclopsRed": {
+  "rank": "LittleMonster",
+  "size": "Small",
+  "faction": "Ether",
+  "rarity": 1
+ },
+ "Monster_SecurityUnitPatroller": {
+  "rank": "LittleMonster",
+  "size": "Small",
+  "faction": "Mech",
+  "rarity": 1
+ },
+ "Monster_Patroller_TurnBased": {
+  "rank": null,
+  "size": "Small",
+  "faction": "Mech",
+  "rarity": 1
+ },
+ "Monster_PatrollerPro_TurnBased": {
+  "rank": null,
+  "size": "Small",
+  "faction": "Mech",
+  "rarity": 1
+ },
+ "Monster_Shatterbug": {
+  "rank": "LittleMonster",
+  "size": "Small",
+  "faction": "Ether",
+  "rarity": 1
+ },
+ "Monster_Vessel_HC": {
+  "rank": "MainStoryBoss",
+  "size": "Middle",
+  "faction": "Ether",
+  "rarity": 4
+ },
+ "Monster_HatiArmoredGrey": {
+  "rank": null,
+  "size": "Middle",
+  "faction": "Ether",
+  "rarity": 2
+ },
+ "Monster_GraymaneCenturion": {
+  "rank": "MainStoryBoss",
+  "size": "Middle",
+  "faction": "Bios",
+  "rarity": 4
+ },
+ "Monster_HymnistWar": {
+  "rank": "LittleMonster",
+  "size": "Small",
+  "faction": "Bios",
+  "rarity": 1
+ },
+ "Monster_DurahanBoss": {
+  "rank": "Boss",
+  "size": "Middle",
+  "faction": "Ether",
+  "rarity": 3
+ },
+ "Monster_DurahanGreyPro_Bookemon": {
+  "rank": null,
+  "size": "Middle",
+  "faction": "Ether",
+  "rarity": 2
+ },
+ "Monster_GoblinMetro": {
+  "rank": null,
+  "size": "Middle",
+  "faction": "Ether",
+  "rarity": 2
+ },
+ "Monster_GraymaneCenturion_Cloned": {
+  "rank": "MainStoryBoss",
+  "size": "Middle",
+  "faction": "Bios",
+  "rarity": 4
+ },
+ "Monster_GolemGrey": {
+  "rank": "LittleMonster",
+  "size": "Small",
+  "faction": "Ether",
+  "rarity": 1
+ },
+ "Monster_MandrakeRed": {
+  "rank": "LittleMonster",
+  "size": "Middle",
+  "faction": "Ether",
+  "rarity": 1
+ },
+ "Monster_ArlauneRed": {
+  "rank": null,
+  "size": "Middle",
+  "faction": "Ether",
+  "rarity": 2
+ },
+ "Monster_SecurityUnitSoldier_MeleeSoldier_MusicActivity": {
+  "rank": "LittleMonster",
+  "size": "Small",
+  "faction": "Bios",
+  "rarity": 1
+ },
+ "Monster_SecurityUnitSoldier_MeleeSoldier": {
+  "rank": "LittleMonster",
+  "size": "Small",
+  "faction": "Bios",
+  "rarity": 1
+ },
+ "Monster_SecurityUnitSoldier_HeavySoldier": {
+  "rank": "LittleMonster",
+  "size": "Small",
+  "faction": "Bios",
+  "rarity": 1
+ },
+ "Monster_ViciousStrikerPro_Bookemon": {
+  "rank": null,
+  "size": "Small",
+  "faction": "Ether",
+  "rarity": 1
+ },
+ "Monster_Girtablu": {
+  "rank": "MainStoryBoss",
+  "size": "Large",
+  "faction": "Ether",
+  "rarity": 4
+ },
+ "Monster_GrenadierJaegerCam": {
+  "rank": "LittleMonster",
+  "size": "Small",
+  "faction": "Bios",
+  "rarity": 1
+ },
+ "Monster_PileDriverPurple": {
+  "rank": "Boss",
+  "size": "Gigantic",
+  "faction": "Mech",
+  "rarity": 3
+ },
+ "Monster_TyrantPompey": {
+  "rank": "MainStoryBoss",
+  "size": "Middle",
+  "faction": "Ether",
+  "rarity": 4
+ },
+ "Monster_Mandrake": {
+  "rank": "LittleMonster",
+  "size": "Middle",
+  "faction": "Ether",
+  "rarity": 1
+ },
+ "Monster_BoringMachineRed": {
+  "rank": "Boss",
+  "size": "Gigantic",
+  "faction": "Mech",
+  "rarity": 3
+ },
+ "Monster_HatiArmoredRed": {
+  "rank": null,
+  "size": "Middle",
+  "faction": "Ether",
+  "rarity": 2
+ },
+ "Monster_DeathXIIIGrey": {
+  "rank": null,
+  "size": "Middle",
+  "faction": "Ether",
+  "rarity": 2
+ },
+ "Monster_Stalker": {
+  "rank": null,
+  "size": "Middle",
+  "faction": "Ether",
+  "rarity": 2
+ },
+ "Monster_Stalker_Boss_Faker": {
+  "rank": null,
+  "size": "Middle",
+  "faction": "Ether",
+  "rarity": 2
+ },
+ "Monster_JaneDoeSlime": {
+  "rank": "Boss",
+  "size": "Small",
+  "faction": "Ether",
+  "rarity": 3
+ },
+ "Monster_WingedAvarus": {
+  "rank": "Boss",
+  "size": "Large",
+  "faction": "Ether",
+  "rarity": 3
+ },
+ "Monster_Satyrus_Bookemon": {
+  "rank": null,
+  "size": "Small",
+  "faction": "Ether",
+  "rarity": 1
+ },
+ "Monster_MazingerGoldenBomb": {
+  "rank": "Boss",
+  "size": "Large",
+  "faction": "Mech",
+  "rarity": 3
+ },
+ "Monster_Coop_FireBall": {
+  "rank": "Boss",
+  "size": null,
+  "faction": null,
+  "rarity": 3
+ },
+ "Monster_Coop_FireBall_Boss": {
+  "rank": "Boss",
+  "size": null,
+  "faction": null,
+  "rarity": 3
+ },
+ "Monster_Coop_FireBall_Tutorial": {
+  "rank": "Boss",
+  "size": null,
+  "faction": null,
+  "rarity": 3
+ },
+ "Monster_ZeroMazingerGoldenBomb": {
+  "rank": "Boss",
+  "size": "Large",
+  "faction": "Mech",
+  "rarity": 3
+ },
+ "Monster_HeavySoldier": {
+  "rank": "LittleMonster",
+  "size": "Small",
+  "faction": "Bios",
+  "rarity": 1
+ },
+ "Monster_ArlauneGreyPro_Bookemon": {
+  "rank": null,
+  "size": "Middle",
+  "faction": "Ether",
+  "rarity": 2
+ },
+ "Monster_HereticHunter": {
+  "rank": "Boss",
+  "size": "Middle",
+  "faction": "Ether",
+  "rarity": 3
+ },
+ "Monster_ViciousStriker_Bookemon": {
+  "rank": null,
+  "size": "Small",
+  "faction": "Ether",
+  "rarity": 1
+ },
+ "Monster_SpiderGreyPro_Bookemon": {
+  "rank": null,
+  "size": "Small",
+  "faction": "Ether",
+  "rarity": 1
+ },
+ "Monster_TerrorBird": {
+  "rank": "Boss",
+  "size": "Large",
+  "faction": "Mech",
+  "rarity": 3
+ },
+ "Monster_TerrorBird_TurnBased": {
+  "rank": "Boss",
+  "size": "Large",
+  "faction": "Mech",
+  "rarity": 3
+ },
+ "Monster_ThugBulkyEnforcerBoss": {
+  "rank": "Boss",
+  "size": "Middle",
+  "faction": "Bios",
+  "rarity": 3
+ },
+ "Monster_PileDriver": {
+  "rank": "Boss",
+  "size": "Gigantic",
+  "faction": "Mech",
+  "rarity": 3
+ },
+ "Monster_BangbooBattleMecha_Blued": {
+  "rank": null,
+  "size": "Middle",
+  "faction": "Mech",
+  "rarity": 2
+ },
+ "Monster_BangbooBattleMecha_Blued_Boss": {
+  "rank": null,
+  "size": "Middle",
+  "faction": "Mech",
+  "rarity": 2
+ },
+ "Monster_RagingGuy": {
+  "rank": null,
+  "size": "Middle",
+  "faction": "Mech",
+  "rarity": 2
+ },
+ "Monster_DubiousHero_Bookemon": {
+  "rank": "Boss",
+  "size": "Middle",
+  "faction": "Ether",
+  "rarity": 3
+ },
+ "Monster_BlackMazingerGoldenBomb": {
+  "rank": "Boss",
+  "size": "Large",
+  "faction": "Mech",
+  "rarity": 3
+ },
+ "Monster_MiasmaIsoldeSlime": {
+  "rank": "Boss",
+  "size": "Small",
+  "faction": "Ether",
+  "rarity": 3
+ },
+ "Monster_HeavyStrikerBossCam": {
+  "rank": "Boss",
+  "size": "Middle",
+  "faction": "Mech",
+  "rarity": 3
+ },
+ "Monster_FlameCantor": {
+  "rank": null,
+  "size": "Middle",
+  "faction": "Bios",
+  "rarity": 2
+ },
+ "Monster_Pure": {
+  "rank": "MainStoryBoss",
+  "size": "Middle",
+  "faction": "Ether",
+  "rarity": 4
+ },
+ "Monster_HeavyFirePower": {
+  "rank": null,
+  "size": "Middle",
+  "faction": "Bios",
+  "rarity": 2
+ },
+ "Monster_TyphonDestroyer": {
+  "rank": "Boss",
+  "size": "Large",
+  "faction": "Mech",
+  "rarity": 3
+ },
+ "Monster_TyphonDestroyer_MusicActivity": {
+  "rank": "Boss",
+  "size": "Large",
+  "faction": "Mech",
+  "rarity": 3
+ },
+ "Monster_Hayyot": {
+  "rank": "Boss",
+  "size": "Middle",
+  "faction": "Ether",
+  "rarity": 3
+ },
+ "Monster_Hayyot_Summon": {
+  "rank": "Boss",
+  "size": "Middle",
+  "faction": "Ether",
+  "rarity": 3
+ },
+ "Monster_MiasmaNoranoSlime": {
+  "rank": "Boss",
+  "size": "Small",
+  "faction": "Ether",
+  "rarity": 3
+ },
+ "Monster_SpiderGrey_Bookemon": {
+  "rank": null,
+  "size": "Small",
+  "faction": "Ether",
+  "rarity": 1
+ },
+ "Monster_CyclopsGrey": {
+  "rank": "LittleMonster",
+  "size": "Small",
+  "faction": "Ether",
+  "rarity": 1
+ },
+ "Monster_CyclopsGrey_TurnBased": {
+  "rank": null,
+  "size": "Small",
+  "faction": "Ether",
+  "rarity": 1
+ },
+ "Monster_CyclopsRed_TurnBased": {
+  "rank": null,
+  "size": "Small",
+  "faction": "Ether",
+  "rarity": 1
+ },
+ "Device_Prop_TurnBased_BallAddSp": {
+  "rank": null,
+  "size": null,
+  "faction": null,
+  "rarity": 1
+ },
+ "Device_Prop_TurnBased_BallAddHp": {
+  "rank": null,
+  "size": null,
+  "faction": null,
+  "rarity": 1
+ },
+ "Device_Prop_TurnBased_BallCure": {
+  "rank": null,
+  "size": null,
+  "faction": null,
+  "rarity": 1
+ },
+ "Device_Prop_TurnBased_BallShield": {
+  "rank": null,
+  "size": null,
+  "faction": null,
+  "rarity": 1
+ },
+ "Device_Prop_TurnBased_BallFireBomb": {
+  "rank": null,
+  "size": null,
+  "faction": null,
+  "rarity": 1
+ },
+ "Device_Prop_TurnBased_BallElectricBomb": {
+  "rank": null,
+  "size": null,
+  "faction": null,
+  "rarity": 1
+ },
+ "Device_Prop_TurnBased_BallPoisonBomb": {
+  "rank": null,
+  "size": null,
+  "faction": null,
+  "rarity": 1
+ },
+ "Device_Prop_TurnBased_BallExtraTurn": {
+  "rank": null,
+  "size": null,
+  "faction": null,
+  "rarity": 1
+ },
+ "Monster_Sapper_Blued": {
+  "rank": "LittleMonster",
+  "size": "Small",
+  "faction": "Mech",
+  "rarity": 1
+ },
+ "Monster_GreedyGunner": {
+  "rank": "LittleMonster",
+  "size": "Small",
+  "faction": "Ether",
+  "rarity": 1
+ },
+ "Monster_Sobek": {
+  "rank": "Boss",
+  "size": "Middle",
+  "faction": "Ether",
+  "rarity": 4
+ },
+ "Monster_MiasmaWickedWrath": {
+  "rank": null,
+  "size": "Middle",
+  "faction": "Ether",
+  "rarity": 2
+ },
+ "Monster_FlameCantor_Bookemon": {
+  "rank": null,
+  "size": "Middle",
+  "faction": "Ether",
+  "rarity": 2
+ },
+ "Monster_SatyrusRed": {
+  "rank": "LittleMonster",
+  "size": "Small",
+  "faction": "Ether",
+  "rarity": 1
+ },
+ "Monster_StrikeJaeger": {
+  "rank": "LittleMonster",
+  "size": "Small",
+  "faction": "Bios",
+  "rarity": 1
+ },
+ "Monster_GuardianCam": {
+  "rank": null,
+  "size": "Large",
+  "faction": "Mech",
+  "rarity": 2
+ },
+ "Monster_Bellum": {
+  "rank": null,
+  "size": "Middle",
+  "faction": "Bios",
+  "rarity": 2
+ },
+ "Monster_SatyrusPro_Bookemon": {
+  "rank": null,
+  "size": "Small",
+  "faction": "Ether",
+  "rarity": 1
+ },
+ "Monster_Stalker_Boss": {
+  "rank": "Boss",
+  "size": "Middle",
+  "faction": "Ether",
+  "rarity": 3
+ },
+ "Monster_Cyrtoidea": {
+  "rank": "LittleMonster",
+  "size": "Small",
+  "faction": "Ether",
+  "rarity": 1
+ },
+ "Monster_MiasmaWalkerGuardJaeger": {
+  "rank": "LittleMonster",
+  "size": "Small",
+  "faction": "Ether",
+  "rarity": 1
+ },
+ "Monster_JaneDoe": {
+  "rank": "Boss",
+  "size": "Small",
+  "faction": "Bios",
+  "rarity": 3
+ },
+ "Monster_LightfootRoverCam": {
+  "rank": null,
+  "size": "Middle",
+  "faction": "Mech",
+  "rarity": 2
+ },
+ "Monster_HeavyFirePowerCam": {
+  "rank": null,
+  "size": "Middle",
+  "faction": "Bios",
+  "rarity": 2
+ },
+ "Monster_ThugAssaulter": {
+  "rank": "LittleMonster",
+  "size": "Small",
+  "faction": "Bios",
+  "rarity": 1
+ },
+ "Monster_ThugAssaulterVest": {
+  "rank": "LittleMonster",
+  "size": "Small",
+  "faction": "Bios",
+  "rarity": 1
+ },
+ "Monster_MiasmaJaneDoeSlime": {
+  "rank": "Boss",
+  "size": "Small",
+  "faction": "Ether",
+  "rarity": 3
+ },
+ "Monster_MiasmaTrinox_MusicActivity": {
+  "rank": null,
+  "size": "Middle",
+  "faction": "Ether",
+  "rarity": 2
+ },
+ "Monster_MiasmaTrinox": {
+  "rank": null,
+  "size": "Middle",
+  "faction": "Ether",
+  "rarity": 2
+ },
+ "Monster_WanderingHunter": {
+  "rank": "MainStoryBoss",
+  "size": "Middle",
+  "faction": "Ether",
+  "rarity": 4
+ },
+ "Monster_NamelessOne": {
+  "rank": "MainStoryBoss",
+  "size": "Middle",
+  "faction": "Ether",
+  "rarity": 4
+ },
+ "Monster_Pure_Summon": {
+  "rank": "MainStoryBoss",
+  "size": "Middle",
+  "faction": "Ether",
+  "rarity": 4
+ },
+ "Monster_MiasmaFrenziedManiac_MusicActivity": {
+  "rank": null,
+  "size": "Middle",
+  "faction": "Ether",
+  "rarity": 2
+ },
+ "Monster_LampasBlackVeil_MusicActivity_Clone": {
+  "rank": null,
+  "size": "Middle",
+  "faction": "Ether",
+  "rarity": 2
+ },
+ "Monster_MentorMevorakh_MusicActivity_Clone": {
+  "rank": null,
+  "size": "Middle",
+  "faction": "Bios",
+  "rarity": 2
+ },
+ "Monster_SacrificeBringer_MusicActivity_Clone": {
+  "rank": null,
+  "size": "Large",
+  "faction": "Ether",
+  "rarity": 2
+ },
+ "Monster_MiasmaFrenziedManiac": {
+  "rank": null,
+  "size": "Middle",
+  "faction": "Ether",
+  "rarity": 2
+ },
+ "Monster_Anglercrab": {
+  "rank": "Boss",
+  "size": "Middle",
+  "faction": "Ether",
+  "rarity": 2
+ },
+ "Monster_CyclopsGreyPro_Bookemon": {
+  "rank": null,
+  "size": "Small",
+  "faction": "Ether",
+  "rarity": 1
+ },
+ "Monster_Arcavor": {
+  "rank": "LittleMonster",
+  "size": "Small",
+  "faction": "Ether",
+  "rarity": 1
+ },
+ "Monster_DeathXIIIBoss": {
+  "rank": "Boss",
+  "size": "Middle",
+  "faction": "Ether",
+  "rarity": 3
+ },
+ "Monster_DurahanEnergy": {
+  "rank": null,
+  "size": "Middle",
+  "faction": "Ether",
+  "rarity": 2
+ },
+ "Monster_HeavyStrikerCam": {
+  "rank": null,
+  "size": "Middle",
+  "faction": "Mech",
+  "rarity": 2
+ },
+ "Monster_ClaymoreGrey": {
+  "rank": "LittleMonster",
+  "size": "Small",
+  "faction": "Ether",
+  "rarity": 1
+ },
+ "Monster_ClaymoreGrey_TurnBased": {
+  "rank": null,
+  "size": "Small",
+  "faction": "Ether",
+  "rarity": 1
+ },
+ "Monster_ClaymoreRed_TurnBased": {
+  "rank": null,
+  "size": "Small",
+  "faction": "Ether",
+  "rarity": 1
+ },
+ "Monster_InnerKnight": {
+  "rank": "Boss",
+  "size": "Small",
+  "faction": "Bios",
+  "rarity": 3
+ },
+ "Monster_InnerKnight_HC": {
+  "rank": "Boss",
+  "size": "Small",
+  "faction": "Bios",
+  "rarity": 3
+ },
+ "Monster_Ahriman_Bookemon": {
+  "rank": null,
+  "size": "Small",
+  "faction": "Ether",
+  "rarity": 1
+ },
+ "Monster_ThugRaiderVest": {
+  "rank": "LittleMonster",
+  "size": "Small",
+  "faction": "Bios",
+  "rarity": 1
+ },
+ "Monster_HatiArmoredBoss": {
+  "rank": "Boss",
+  "size": "Middle",
+  "faction": "Ether",
+  "rarity": 3
+ },
+ "Monster_MiasmaThracian": {
+  "rank": "Boss",
+  "size": "Middle",
+  "faction": "Ether",
+  "rarity": 3
+ },
+ "Monster_GoblinRed": {
+  "rank": null,
+  "size": "Middle",
+  "faction": "Ether",
+  "rarity": 2
+ },
+ "Monster_Awakener": {
+  "rank": "MainStoryBoss",
+  "size": "Small",
+  "faction": "Bios",
+  "rarity": 4
+ },
+ "Monster_GoblinGrey": {
+  "rank": null,
+  "size": "Middle",
+  "faction": "Ether",
+  "rarity": 2
+ },
+ "Monster_NinevehBee": {
+  "rank": "LittleMonster",
+  "size": "Small",
+  "faction": "Ether",
+  "rarity": 1
+ },
+ "Monster_EvolvedBee": {
+  "rank": "LittleMonster",
+  "size": "Small",
+  "faction": "Ether",
+  "rarity": 1
+ },
+ "Monster_NinevehBee_AirCombat": {
+  "rank": "LittleMonster",
+  "size": "Small",
+  "faction": "Ether",
+  "rarity": 1
+ },
+ "Monster_MiasmaLightfootRover": {
+  "rank": null,
+  "size": "Middle",
+  "faction": "Ether",
+  "rarity": 2
+ },
+ "Monster_CottusGrey": {
+  "rank": "MainStoryBoss",
+  "size": "Large",
+  "faction": "Ether",
+  "rarity": 4
+ },
+ "Monster_FrenziedManiac": {
+  "rank": null,
+  "size": "Middle",
+  "faction": "Ether",
+  "rarity": 2
+ },
+ "Monster_FrenziedManiac_TurnBased": {
+  "rank": "Elite",
+  "size": "Middle",
+  "faction": "Ether",
+  "rarity": 2
+ },
+ "Monster_FrenziedManiacPro_TurnBased": {
+  "rank": "Elite",
+  "size": "Middle",
+  "faction": "Ether",
+  "rarity": 2
+ },
+ "Monster_Predator": {
+  "rank": null,
+  "size": "Middle",
+  "faction": "Ether",
+  "rarity": 2
+ },
+ "Monster_ThugPyromaniacVest": {
+  "rank": "LittleMonster",
+  "size": "Small",
+  "faction": "Bios",
+  "rarity": 1
+ },
+ "Monster_BoringMachinePurple": {
+  "rank": "Boss",
+  "size": "Gigantic",
+  "faction": "Mech",
+  "rarity": 3
+ },
+ "Monster_ThugPoacher": {
+  "rank": "LittleMonster",
+  "size": "Small",
+  "faction": "Bios",
+  "rarity": 1
+ },
+ "Monster_UAV_Ground": {
+  "rank": "LittleMonster",
+  "size": "Small",
+  "faction": "Bios",
+  "rarity": 1
+ },
+ "Monster_UAV_Air": {
+  "rank": "LittleMonster",
+  "size": "Small",
+  "faction": "Bios",
+  "rarity": 1
+ },
+ "Monster_IsoldetheDefiler": {
+  "rank": "MainStoryBoss",
+  "size": "Middle",
+  "faction": "Ether",
+  "rarity": 4
+ },
+ "Monster_Ahriman": {
+  "rank": "LittleMonster",
+  "size": "Small",
+  "faction": "Ether",
+  "rarity": 1
+ },
+ "Monster_HeavyStriker": {
+  "rank": null,
+  "size": "Middle",
+  "faction": "Mech",
+  "rarity": 2
+ },
+ "Monster_HeavyStriker_TurnBased": {
+  "rank": "Elite",
+  "size": "Middle",
+  "faction": "Mech",
+  "rarity": 2
+ },
+ "Monster_HeavyStrikerPro_TurnBased": {
+  "rank": "Elite",
+  "size": "Middle",
+  "faction": "Mech",
+  "rarity": 2
+ },
+ "Monster_DurahanRed": {
+  "rank": null,
+  "size": "Middle",
+  "faction": "Ether",
+  "rarity": 2
+ },
+ "Monster_FlameCantor_TurnBased": {
+  "rank": "Elite",
+  "size": "Middle",
+  "faction": "Bios",
+  "rarity": 2
+ },
+ "Monster_FlameDreamer_TurnBased": {
+  "rank": "Elite",
+  "size": "Middle",
+  "faction": "Bios",
+  "rarity": 2
+ },
+ "Monster_Isolde": {
+  "rank": "Boss",
+  "size": "Small",
+  "faction": "Bios",
+  "rarity": 3
+ },
+ "Monster_BangbooPatrolMecha_Blued": {
+  "rank": "LittleMonster",
+  "size": "Small",
+  "faction": "Mech",
+  "rarity": 1
+ },
+ "Monster_Hacker": {
+  "rank": "LittleMonster",
+  "size": "Small",
+  "faction": "Ether",
+  "rarity": 1
+ },
+ "Monster_Avarus": {
+  "rank": "Boss",
+  "size": "Large",
+  "faction": "Ether",
+  "rarity": 3
+ },
+ "Monster_Thracian": {
+  "rank": "Boss",
+  "size": "Middle",
+  "faction": "Ether",
+  "rarity": 3
+ },
+ "Monster_Thracian_TurnBased": {
+  "rank": "Boss",
+  "size": "Middle",
+  "faction": "Ether",
+  "rarity": 3
+ },
+ "Monster_IsoldeSlime": {
+  "rank": "Boss",
+  "size": "Small",
+  "faction": "Ether",
+  "rarity": 3
+ },
+ "Monster_MaterialHandler": {
+  "rank": "Boss",
+  "size": "Gigantic",
+  "faction": "Mech",
+  "rarity": 3
+ },
+ "Monster_BangbooBattleMecha": {
+  "rank": null,
+  "size": "Middle",
+  "faction": "Mech",
+  "rarity": 2
+ },
+ "Monster_Chelonethid": {
+  "rank": "Boss",
+  "size": "Large",
+  "faction": "Ether",
+  "rarity": 3
+ },
+ "Monster_SymbioticEtherealSinner": {
+  "rank": "Boss",
+  "size": "Large",
+  "faction": "Ether",
+  "rarity": 3
+ },
+ "Monster_HugoVladSlime": {
+  "rank": "Boss",
+  "size": "Small",
+  "faction": "Ether",
+  "rarity": 3
+ },
+ "Monster_EyeEngine": {
+  "rank": "LittleMonster",
+  "size": "Small",
+  "faction": "Ether",
+  "rarity": 1
+ },
+ "Monster_SpiderGrey": {
+  "rank": "LittleMonster",
+  "size": "Small",
+  "faction": "Ether",
+  "rarity": 1
+ },
+ "Monster_Chelonethid_MiasmaSpider": {
+  "rank": "LittleMonster",
+  "size": "Small",
+  "faction": "Ether",
+  "rarity": 1
+ },
+ "Monster_WingedChelonethid_Spider": {
+  "rank": "LittleMonster",
+  "size": "Small",
+  "faction": "Ether",
+  "rarity": 1
+ },
+ "Monster_ObsoleteAndroid": {
+  "rank": "MainStoryBoss",
+  "size": "Small",
+  "faction": "Bios",
+  "rarity": 3
+ },
+ "Monster_Tepes": {
+  "rank": "Boss",
+  "size": "Large",
+  "faction": "Ether",
+  "rarity": 3
+ },
+ "Monster_MeleeJaegerCam": {
+  "rank": "LittleMonster",
+  "size": "Small",
+  "faction": "Bios",
+  "rarity": 1
+ },
+ "Monster_DurahanGrey": {
+  "rank": null,
+  "size": "Middle",
+  "faction": "Ether",
+  "rarity": 2
+ },
+ "Monster_DurahanGrey_TurnBased": {
+  "rank": "Elite",
+  "size": "Middle",
+  "faction": "Ether",
+  "rarity": 2
+ },
+ "Monster_DurahanRed_TurnBased": {
+  "rank": "Elite",
+  "size": "Middle",
+  "faction": "Ether",
+  "rarity": 2
+ },
+ "Monster_LampasGreyVeil": {
+  "rank": "MainStoryBoss",
+  "size": "Middle",
+  "faction": "Ether",
+  "rarity": 4
+ },
+ "Monster_MetalGorilla": {
+  "rank": "Boss",
+  "size": "Large",
+  "faction": "Mech",
+  "rarity": 3
+ },
+ "Monster_MetalGorilla_TurnBased": {
+  "rank": "Boss",
+  "size": "Large",
+  "faction": "Mech",
+  "rarity": 3
+ },
+ "Monster_DubiousHero": {
+  "rank": "Boss",
+  "size": "Middle",
+  "faction": "Bios",
+  "rarity": 3
+ },
+ "Monster_Coop_DubiousHero": {
+  "rank": "Boss",
+  "size": "Middle",
+  "faction": "Bios",
+  "rarity": 3
+ },
+ "Monster_DubiousHero_TurnBased": {
+  "rank": "Boss",
+  "size": "Middle",
+  "faction": "Bios",
+  "rarity": 3
+ },
+ "Monster_MiasmaHugoVladSlime": {
+  "rank": "Boss",
+  "size": "Small",
+  "faction": "Ether",
+  "rarity": 3
+ },
+ "Monster_DurahanBlackBoss": {
+  "rank": "Boss",
+  "size": "Middle",
+  "faction": "Ether",
+  "rarity": 2
+ },
+ "Monster_ClaymoreRed": {
+  "rank": "LittleMonster",
+  "size": "Small",
+  "faction": "Ether",
+  "rarity": 1
+ },
+ "Monster_GiantRed": {
+  "rank": null,
+  "size": "Large",
+  "faction": "Ether",
+  "rarity": 2
+ },
+ "Monster_HugoVlad": {
+  "rank": "Boss",
+  "size": "Small",
+  "faction": "Bios",
+  "rarity": 3
+ },
+ "Monster_Harvester_Bookemon": {
+  "rank": "Boss",
+  "size": "Middle",
+  "faction": "Ether",
+  "rarity": 3
+ },
+ "Monster_AlpecaInfested": {
+  "rank": "LittleMonster",
+  "size": "Small",
+  "faction": "Ether",
+  "rarity": 1
+ },
+ "Monster_InnerKnight_Slime": {
+  "rank": "Boss",
+  "size": "Small",
+  "faction": "Ether",
+  "rarity": 3
+ },
+ "Monster_MetalGorillaCam": {
+  "rank": "Boss",
+  "size": "Large",
+  "faction": "Mech",
+  "rarity": 3
+ },
+ "Monster_MeleeSoldier": {
+  "rank": "LittleMonster",
+  "size": "Small",
+  "faction": "Bios",
+  "rarity": 1
+ },
+ "Monster_DeathXIIIRed": {
+  "rank": null,
+  "size": "Middle",
+  "faction": "Ether",
+  "rarity": 2
+ },
+ "Monster_HatiRedBoss": {
+  "rank": "Boss",
+  "size": "Middle",
+  "faction": "Ether",
+  "rarity": 3
+ },
+ "Monster_ArlauneGrey_Bookemon": {
+  "rank": null,
+  "size": "Middle",
+  "faction": "Ether",
+  "rarity": 2
+ },
+ "Monster_GoblinMetroRed": {
+  "rank": null,
+  "size": "Middle",
+  "faction": "Ether",
+  "rarity": 2
+ },
+ "Monster_GolemRed": {
+  "rank": "LittleMonster",
+  "size": "Small",
+  "faction": "Ether",
+  "rarity": 1
+ },
+ "Monster_GolemRed_MusicActivity": {
+  "rank": "LittleMonster",
+  "size": "Small",
+  "faction": "Ether",
+  "rarity": 1
+ },
+ "Monster_SpiderRed": {
+  "rank": "LittleMonster",
+  "size": "Small",
+  "faction": "Ether",
+  "rarity": 1
+ },
+ "Monster_NoranoSlime": {
+  "rank": "Boss",
+  "size": "Small",
+  "faction": "Ether",
+  "rarity": 3
+ },
+ "Monster_Gloomaron": {
+  "rank": "LittleMonster",
+  "size": "Middle",
+  "faction": "Ether",
+  "rarity": 2
+ },
+ "Monster_BangbooPatrolMecha": {
+  "rank": "LittleMonster",
+  "size": "Small",
+  "faction": "Mech",
+  "rarity": 1
+ },
+ "Monster_ClaymoreGreyPro_Bookemon": {
+  "rank": null,
+  "size": "Small",
+  "faction": "Ether",
+  "rarity": 1
+ },
+ "Monster_ThugBulkyAbuser": {
+  "rank": null,
+  "size": "Middle",
+  "faction": "Bios",
+  "rarity": 2
+ },
+ "Monster_ThugBulkyAbuser_MusicActivity": {
+  "rank": null,
+  "size": "Middle",
+  "faction": "Bios",
+  "rarity": 2
+ },
+ "Monster_Banyrek": {
+  "rank": null,
+  "size": "Middle",
+  "faction": "Ether",
+  "rarity": 2
+ },
+ "Monster_Chelonethid_Summon": {
+  "rank": "Boss",
+  "size": "Large",
+  "faction": "Ether",
+  "rarity": 2
+ },
+ "Monster_WingedChelonethid_Summon": {
+  "rank": "Boss",
+  "size": "Large",
+  "faction": "Ether",
+  "rarity": 2
+ },
+ "Monster_ComplexCorrupted": {
+  "rank": "MainStoryBoss",
+  "size": "Gigantic",
+  "faction": "Ether",
+  "rarity": 4
+ },
+ "Monster_Satyrus": {
+  "rank": "LittleMonster",
+  "size": "Small",
+  "faction": "Ether",
+  "rarity": 1
+ },
+ "Monster_Satyrus_MusicActivity": {
+  "rank": "LittleMonster",
+  "size": "Small",
+  "faction": "Ether",
+  "rarity": 1
+ },
+ "Monster_NotoriousPompey": {
+  "rank": "MainStoryBoss",
+  "size": "Middle",
+  "faction": "Ether",
+  "rarity": 4
+ },
+ "Monster_GoldenBomb": {
+  "rank": null,
+  "size": "Small",
+  "faction": "Mech",
+  "rarity": 1
+ },
+ "Monster_HymnistWar_TurnBased": {
+  "rank": null,
+  "size": "Small",
+  "faction": "Bios",
+  "rarity": 1
+ },
+ "Monster_MentorMevorakh_MusicActivity": {
+  "rank": "MainStoryBoss",
+  "size": "Middle",
+  "faction": "Bios",
+  "rarity": 4
+ },
+ "Monster_MentorMevorakh": {
+  "rank": "MainStoryBoss",
+  "size": "Middle",
+  "faction": "Bios",
+  "rarity": 4
+ },
+ "Monster_ArlauneGrey": {
+  "rank": null,
+  "size": "Middle",
+  "faction": "Ether",
+  "rarity": 2
+ },
+ "Monster_MiasmaWalkerGrenadierJaeger": {
+  "rank": "LittleMonster",
+  "size": "Small",
+  "faction": "Ether",
+  "rarity": 1
+ },
+ "Monster_TyrfingInfested": {
+  "rank": "LittleMonster",
+  "size": "Small",
+  "faction": "Ether",
+  "rarity": 1
+ },
+ "Monster_NotoriousMarionette": {
+  "rank": "MainStoryBoss",
+  "size": "Middle",
+  "faction": "Ether",
+  "rarity": 4
+ },
+ "Monster_NotoriousMarionette_Summon": {
+  "rank": "MainStoryBoss",
+  "size": "Middle",
+  "faction": "Ether",
+  "rarity": 4
+ },
+ "Monster_ThugBulkyEnforcer": {
+  "rank": null,
+  "size": "Middle",
+  "faction": "Bios",
+  "rarity": 2
+ },
+ "Monster_StrikeJaegerCam": {
+  "rank": "LittleMonster",
+  "size": "Small",
+  "faction": "Bios",
+  "rarity": 1
+ },
+ "Monster_MoltTarasqueMixer": {
+  "rank": null,
+  "size": "Middle",
+  "faction": "Ether",
+  "rarity": 2
+ },
+ "Monster_BoringMachine": {
+  "rank": "Boss",
+  "size": "Gigantic",
+  "faction": "Mech",
+  "rarity": 3
+ },
+ "Monster_Vessel": {
+  "rank": "MainStoryBoss",
+  "size": "Middle",
+  "faction": "Ether",
+  "rarity": 4
+ },
+ "Monster_Vessel_Test": {
+  "rank": "MainStoryBoss",
+  "size": "Middle",
+  "faction": "Ether",
+  "rarity": 4
+ },
+ "Monster_DeathXIIIEnergy": {
+  "rank": null,
+  "size": "Middle",
+  "faction": "Ether",
+  "rarity": 2
+ },
+ "Monster_Huskron": {
+  "rank": "LittleMonster",
+  "size": "Small",
+  "faction": "Ether",
+  "rarity": 1
+ },
+ "Monster_MonsterTest02": {
+  "rank": "LittleMonster",
+  "size": "Small",
+  "faction": "Ether",
+  "rarity": 1
+ },
+ "Monster_MonsterTest01": {
+  "rank": "LittleMonster",
+  "size": "Small",
+  "faction": "Ether",
+  "rarity": 1
+ },
+ "Monster_GolemGrey_Bookemon": {
+  "rank": null,
+  "size": "Small",
+  "faction": "Ether",
+  "rarity": 1
+ },
+ "Monster_Harvester": {
+  "rank": "Boss",
+  "size": "Middle",
+  "faction": "Mech",
+  "rarity": 3
+ },
+ "Monster_GiantEnergy": {
+  "rank": null,
+  "size": "Large",
+  "faction": "Ether",
+  "rarity": 2
+ }
+}

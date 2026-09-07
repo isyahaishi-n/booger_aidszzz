@@ -96,6 +96,240 @@ const el = (tag, cls, html) => {
 const ESC_CODES = { "&": 38, "<": 60, ">": 62, '"': 34, "'": 39 };
 const esc = (s) => String(s).replace(/[&<>"']/g, (c) => "&#" + ESC_CODES[c] + ";");
 
+const fmtNum = (n) => Math.round(n).toLocaleString("en-US");
+
+/* ===================== damage calculation section ===================== */
+
+const CALC = {
+  monsters: [],            // cached /api/monsters
+  current: null,           // {avatarId, name}
+  enemy: { name: "Tyrfing", level: 60, stunned: false },
+};
+
+function monsterIconUrl(mon) {
+  if (!mon.icon_url) return null;
+  const slug = mon.icon_url.split("/").pop();
+  return `/img/monster/${encodeURIComponent(slug)}`;
+}
+
+async function loadMonsterList() {
+  if (CALC.monsters.length) return CALC.monsters;
+  const res = await fetch("/api/monsters");
+  if (!res.ok) throw new Error("Failed to load monster list");
+  const data = await res.json();
+  CALC.monsters = data.monsters || [];
+  return CALC.monsters;
+}
+
+function renderCalcTarget() {
+  const box = $("#calc-target");
+  box.innerHTML = "";
+
+  // enemy picker
+  const wrap = el("div", "enemy-picker");
+  wrap.appendChild(el("span", "enemy-label", "Enemy"));
+
+  const search = el("input", "enemy-search");
+  search.type = "search";
+  search.placeholder = "Search monster…";
+  search.value = CALC.enemy.name;
+  wrap.appendChild(search);
+
+  const lvl = el("input", "enemy-level");
+  lvl.type = "number";
+  lvl.min = 1; lvl.max = 80;
+  lvl.value = CALC.enemy.level;
+  wrap.appendChild(el("span", "enemy-label", "Lv."));
+  wrap.appendChild(lvl);
+
+  const stunBtn = el("button", "btn" + (CALC.enemy.stunned ? "" : " btn-ghost"));
+  stunBtn.textContent = CALC.enemy.stunned ? "Stunned ✓" : "Stunned";
+  stunBtn.title = "Stun Modifier: damage × (1 + StunDamageTakenRatio)";
+  wrap.appendChild(stunBtn);
+
+  box.appendChild(wrap);
+
+  // dropdown results container
+  const drop = el("div", "enemy-drop hidden");
+  box.appendChild(drop);
+
+  function showDrop(filter) {
+    const f = (filter || "").toLowerCase();
+    const hits = CALC.monsters.filter((m) => m.name.toLowerCase().includes(f)).slice(0, 60);
+    drop.innerHTML = "";
+    for (const m of hits) {
+      const row = el("div", "enemy-row");
+      const ic = monsterIconUrl(m);
+      if (ic) {
+        const im = el("img", "enemy-icon");
+        im.src = ic; im.alt = ""; im.loading = "lazy";
+        im.onerror = () => { im.style.visibility = "hidden"; };
+        row.appendChild(im);
+      } else {
+        row.appendChild(el("span", "enemy-icon enemy-icon-ph", "◈"));
+      }
+      const nm = el("div", "enemy-row-name");
+      nm.appendChild(el("div", "nm", esc(m.name)));
+      const meta = [m.rank, m.size, m.faction].filter(Boolean).join(" · ");
+      nm.appendChild(el("div", "meta", esc(meta)));
+      row.appendChild(nm);
+      if (m.rarity) row.appendChild(el("span", "enemy-rarity", "★".repeat(Math.min(4, m.rarity))));
+      row.addEventListener("click", () => {
+        CALC.enemy.name = m.name;
+        search.value = m.name;
+        drop.classList.add("hidden");
+        runCalc();
+      });
+      drop.appendChild(row);
+    }
+    drop.classList.toggle("hidden", !hits.length);
+  }
+
+  search.addEventListener("input", () => showDrop(search.value));
+  search.addEventListener("focus", () => showDrop(search.value));
+  search.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      const exact = CALC.monsters.find((m) => m.name.toLowerCase() === search.value.trim().toLowerCase());
+      if (exact) { CALC.enemy.name = exact.name; drop.classList.add("hidden"); runCalc(); }
+      else showDrop(search.value);
+    }
+  });
+  document.addEventListener("click", (e) => {
+    if (!wrap.contains(e.target)) drop.classList.add("hidden");
+  });
+
+  lvl.addEventListener("change", () => {
+    CALC.enemy.level = Math.max(1, Math.min(80, parseInt(lvl.value, 10) || 60));
+    lvl.value = CALC.enemy.level;
+    runCalc();
+  });
+  stunBtn.addEventListener("click", () => {
+    CALC.enemy.stunned = !CALC.enemy.stunned;
+    stunBtn.textContent = CALC.enemy.stunned ? "Stunned ✓" : "Stunned";
+    stunBtn.className = "btn" + (CALC.enemy.stunned ? "" : " btn-ghost");
+    runCalc();
+  });
+}
+
+async function openCalc(apiAvatar) {
+  CALC.current = { avatarId: apiAvatar.Id };
+  const excel = G.avatars[String(apiAvatar.Id)];
+  const name = excel ? localize(excel.Name, String(apiAvatar.Id)) : `#${apiAvatar.Id}`;
+  $("#calc-title").textContent = `Damage — ${name} Lv.${apiAvatar.Level}`;
+  $("#calc-section").classList.remove("hidden");
+  renderCalcTarget();
+  $("#calc-body").innerHTML = `<div class="calc-loading">Calculating…</div>`;
+  $("#calc-section").scrollIntoView({ behavior: "smooth", block: "start" });
+  await runCalc();
+}
+
+async function runCalc() {
+  if (!CALC.current || !showcase) return;
+  const body = $("#calc-body");
+  body.innerHTML = `<div class="calc-loading">Calculating…</div>`;
+  try {
+    const res = await fetch("/api/calc", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        showcase,
+        avatar_id: CALC.current.avatarId,
+        enemy: CALC.enemy.name,
+        enemy_level: CALC.enemy.level,
+        stunned: CALC.enemy.stunned,
+      }),
+    });
+    const data = await res.json();
+    if (!res.ok) throw new Error(data.error || `HTTP ${res.status}`);
+    renderCalcResult(data);
+  } catch (e) {
+    body.innerHTML = `<div class="status error">${esc(e.message || "Calculation failed")}</div>`;
+  }
+}
+
+function renderCalcResult(r) {
+  const body = $("#calc-body");
+  body.innerHTML = "";
+
+  // enemy summary strip
+  const e = r.enemy;
+  const strip = el("div", "calc-enemy-strip");
+  const ic = e.icon_url ? `/img/monster/${encodeURIComponent(e.icon_url.split("/").pop())}` : null;
+  if (ic) {
+    const im = el("img", "enemy-portrait");
+    im.src = ic; im.alt = e.name;
+    im.onerror = () => { im.style.visibility = "hidden"; };
+    strip.appendChild(im);
+  }
+  const info = el("div", "enemy-info");
+  info.appendChild(el("div", "nm", `${esc(e.name)} <span class="lvl">Lv.${e.level}</span>`));
+  const resParts = Object.entries(e.res_pct || {}).filter(([, v]) => v)
+    .map(([k, v]) => `${k} ${v > 0 ? "+" : ""}${Math.round(v * 100)}%`);
+  const meta = [
+    `DEF ${fmtNum(e.def_val)}`, `HP ${fmtNum(e.hp_val)}`,
+    `Stun DMG taken +${Math.round(e.stun_taken_pct * 100)}%`,
+    resParts.length ? `RES ${resParts.join(", ")}` : null,
+    e.rank, e.faction,
+  ].filter(Boolean);
+  info.appendChild(el("div", "meta", esc(meta.join(" · "))));
+  strip.appendChild(info);
+  body.appendChild(strip);
+
+  // active buffs (toggles)
+  const active = (r.toggles || []).filter((t) => t.enabled);
+  if (active.length) {
+    const buffs = el("div", "calc-buffs");
+    buffs.appendChild(el("span", "buff-label", "Active buffs:"));
+    for (const t of active) {
+      buffs.appendChild(el("span", "buff-chip",
+        `${esc(t.source_name)} <b>+${t.value}${t.unit === "percent" ? "%" : ""} ${esc(t.stat)}</b>`));
+    }
+    body.appendChild(buffs);
+  }
+
+  // damage table
+  if (!r.rows.length) {
+    body.appendChild(el("div", "calc-empty",
+      "No skill data to calculate (agent without gear?)."));
+    return;
+  }
+  const table = el("table", "calc-table");
+  table.innerHTML = `
+    <thead><tr>
+      <th>Skill</th><th>Hit</th><th class="num">Mult</th>
+      <th class="num">Non-Crit</th><th class="num">Crit</th>
+      <th class="num">${r.stunned ? "Non-Crit (stunned)" : "If Stunned"}</th>
+    </tr></thead>`;
+  const tbody = el("tbody");
+  let lastSkill = null;
+  for (const row of r.rows) {
+    const tr = el("tr");
+    if (row.damage_pct <= 0 && row.daze_pct > 0) {
+      // daze-only hit
+      tr.className = "daze-row";
+      tr.innerHTML = `
+        <td>${row.skill === lastSkill ? "" : esc(row.skill)}</td>
+        <td>${esc(row.hit)}</td>
+        <td class="num" colspan="4">(daze-only) daze ${row.daze_pct.toFixed(1)}%</td>`;
+      lastSkill = row.skill;
+      tbody.appendChild(tr);
+      continue;
+    }
+    tr.innerHTML = `
+      <td>${row.skill === lastSkill ? "" : `<b>${esc(row.skill)}</b>`}</td>
+      <td>${esc(row.hit)}</td>
+      <td class="num">${row.damage_pct.toFixed(1)}%</td>
+      <td class="num">${fmtNum(row.non_crit)}</td>
+      <td class="num crit">${fmtNum(row.crit)}</td>
+      <td class="num">${fmtNum(row.stun_non_crit)}</td>`;
+    lastSkill = row.skill;
+    tbody.appendChild(tr);
+  }
+  table.appendChild(tbody);
+  body.appendChild(table);
+}
+
 /* ===================== helpers ===================== */
 
 function localize(key, fallback) {
@@ -365,6 +599,15 @@ function charCard(apiAvatar) {
     statsGrid.appendChild(row);
   }
   body.appendChild(statsGrid);
+
+  // calc button — terpisah dari click-card (card click = modal detail)
+  const calcBtn = el("button", "calc-btn", "⚔ Calculate");
+  calcBtn.title = "Hitung damage vs monster pilihan";
+  calcBtn.addEventListener("click", (e) => {
+    e.stopPropagation();
+    openCalc(apiAvatar);
+  });
+  body.appendChild(calcBtn);
   card.appendChild(body);
 
   card.addEventListener("click", () => openModal(apiAvatar));
@@ -596,10 +839,15 @@ async function boot() {
   document.addEventListener("keydown", (e) => {
     if (e.key === "Escape") closeModal();
   });
+  $("#calc-close").addEventListener("click", () => {
+    $("#calc-section").classList.add("hidden");
+    CALC.current = null;
+  });
 
   try {
     await loadGameData();
     loadShowcase("/api/local"); // start with bundled sample
+    loadMonsterList().catch(() => {}); // preload monster list (background)
   } catch (e) {
     setStatus("Failed to load game data: " + e.message, true);
   }

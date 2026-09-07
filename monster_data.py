@@ -160,6 +160,15 @@ class MonsterDB:
         # cache icon slug resolution (biar gak nge-probe CDN berulang)
         self._icon_slug_cache = {}
 
+        # Tag klasifikasi (size/rank/faction/rarity) buat sort UI —
+        # digenerate dari zzz-hakushin-data (join by CodeName) ke
+        # monster_tags.json. Optional: kalau file gak ada, field tetap None.
+        tags_path = base / "monster_tags.json"
+        self._tags = {}
+        if tags_path.exists():
+            with open(tags_path, "r", encoding="utf-8") as f:
+                self._tags = json.load(f)
+
     def list_names(self):
         """Semua nama monster yang bisa dipakai (yang punya sub row)."""
         return sorted(n for n, ids in self._by_name.items()
@@ -242,11 +251,28 @@ class MonsterDB:
         res_pct = {e: row[DAMAGE_RES_FIELDS[e]] / 10000.0 for e in ELEMENTS}
         codename = self._codename_by_cfg[config_ids[0]]
         icon_slug = self.resolve_icon_slug(codename)
+        # Klasifikasi buat sort UI: size/rank/faction/rarity.
+        # rank: LittleMonster < Elite < Boss < MainStoryBoss
+        # size: Small < Middle < Large < Gigantic
+        # rarity: tier card 1-4 (nanoka). Tag fallback: rarity>=3 -> Boss.
+        tags = self._tags.get(codename, {})
+        rank = tags.get("rank")
+        rarity = tags.get("rarity")
+        if rank is None and rarity is not None:
+            # varian (Energized/Infested/dll) tanpa tag rank eksplisit —
+            # infer dari tier card: >=3 Boss, 1 LittleMonster, 2 Elite.
+            rank = ("Boss" if rarity >= 3
+                    else "LittleMonster" if rarity == 1
+                    else "Elite")
         return {
             "name": name,
             "level": level,
             "sub_id": row[SUB_KEY_FIELD],
             "codename": codename,
+            "size": tags.get("size"),
+            "rank": rank,
+            "faction": tags.get("faction"),
+            "rarity": rarity,
             # Boss card image (frontend): nanoka CDN WebP by codename filename,
             # fallback suffix-strip utk varian (share card base). None = tidak
             # ada card di CDN (mob kecil) -> frontend render element icon.
@@ -267,6 +293,7 @@ def main():
     m = db.resolve(name, level)
     print(f"{m['name']} Lv.{m['level']} (sub {m['sub_id']})")
     print(f"  icon: {m['icon_url']}")
+    print(f"  class: rank={m['rank']} size={m['size']} faction={m['faction']} rarity={m['rarity']}")
     print(f"  DEF: {m['def_val']:.2f}   HP: {m['hp_val']:.1f}")
     print(f"  StunDMG taken: +{m['stun_taken_pct']*100:.0f}%")
     print("  RES:", {e: f"{v*100:+.0f}%" for e, v in m["res_pct"].items() if v})
